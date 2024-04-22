@@ -1,6 +1,6 @@
 import { postMigration } from "@/data/migration/post.migration";
 import { PostRespositoryType } from "./post_repository.type";
-import { addPostService, deletePostService, getPostsService } from "@/core/services/post.service";
+import { addPostService, deletePostService, getPostByIdService, getPostsService } from "@/core/services/post.service";
 import { PostDSO } from "@/data/dso/post.dso";
 
 const PostRepository: PostRespositoryType = {
@@ -18,11 +18,14 @@ const PostRepository: PostRespositoryType = {
   async deletePost(id) {
     return await deletePostService(id);
   },
-  // async getPost(id) {
-  //   const post = await getPostService(id);
-  //   const migratedPost = postMigration.dtoToModel(post);
-  //   return migratedPost;
-  // },
+  async getPostById(id) {
+    const post = await getPostByIdService(id);
+    if (post.isError) {
+      return post;
+    }
+    const migratedPost = postMigration.dtoToModel(post.data);
+    return Object.assign(post, {data: migratedPost});
+  },
 };
 
 export default PostRepository;

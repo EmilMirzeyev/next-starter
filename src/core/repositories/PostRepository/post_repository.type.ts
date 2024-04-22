@@ -5,5 +5,5 @@ export type PostRespositoryType = {
   getPosts(query: string): Promise<Res<PostModel[]>>;
   addPost(post: PostModel): Promise<Res<unknown>>;
   deletePost(id: number): Promise<Res<unknown>>;
-  //   getPost(id: number): Promise<PostModel>;
+  getPostById(id: number): Promise<Res<PostModel>>;
 };

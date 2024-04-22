@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { PostCardType } from "./PostCard.type";
-import { EditSVG, UpChevronSVG, XSVG } from "@public/vectors";
+import { UpChevronSVG, XSVG } from "@public/vectors";
 import Link from "next/link";
 import Button from "@/ui/shared/Button";
 
@@ -17,7 +17,7 @@ const PostCard = ({
       <h2 className="font-semibold pr-4">{title}</h2>
       <p>{description}</p>
       <div className="flex items-center gap-4 mt-auto ml-auto">
-        <Link href={id.toString()} aria-label={title} className="w-min">
+        <Link href={`/posts/${id}`} aria-label={title} className="w-min">
           <UpChevronSVG className="w-6 h-6 text-red rotate-90" />
         </Link>
       </div>
