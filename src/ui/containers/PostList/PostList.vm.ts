@@ -19,7 +19,7 @@ export const PostListVM = ({ posts }: PostListType) => {
     startTransition(async () => {
       const res = await deletePostAction({ id });
       if (res.isError) {
-        snackbar("error", res.error);
+        snackbar("error", res.error.message);
       } else {
         setVisible(false);
         snackbar("success", "Post uğurla silindi!");

@@ -4,16 +4,22 @@ import type { PostModel } from "@/data/model/post.model";
 import { addPostSchema } from "@/core/schemas/formValidations/addPost.schema";
 import { addPostAction } from "@/core/actions/addPost.action";
 import { snackbar } from "@/ui/shared/Sanckbar";
-import { useTransition } from "react";
-
-const resetForm = { title: "", description: "", isRead: null };
+import { useEffect, useTransition } from "react";
+import { useAppDispatch, useAppSelector } from "@/core/hooks/useRedux";
+import { resetPost } from "@/core/store/post/posts.slice";
 
 export const PostFormVM = () => {
+  const dispatch = useAppDispatch();
+  const postForm = useAppSelector((state) => state.posts.postForm);
   const methods = useForm<PostModel>({
     resolver: zodResolver(addPostSchema),
-    defaultValues: resetForm,
+    values: postForm,
   });
   let [isPending, startTransition] = useTransition();
+
+  useEffect(() => {
+    dispatch(resetPost());
+  }, []);
 
   const onError = (data: FieldErrors<PostModel>) => {
     console.error("error:", data);
@@ -24,9 +30,10 @@ export const PostFormVM = () => {
       startTransition(async () => {
         const res = await addPostAction({ data });
         if (res.isError) {
-          snackbar("error", res.error);
+          snackbar("error", res.error.message);
         } else {
           methods.reset();
+          dispatch(resetPost());
           snackbar("success", "Post uğurla əlavə edildi!");
         }
       }),

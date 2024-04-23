@@ -4,7 +4,7 @@ import React, { useCallback } from "react";
 export const ButtonVM = () => {
   const variants: Record<ButtonVariantsEnum, string> = {
     [ButtonVariantsEnum.FILLED]:
-      "bg-blue-500 text-white border border-transparent hover:brightness-125 disabled:bg-gray-300 disabled:hover:brightness-100",
+      "bg-blue-600 text-white border border-transparent hover:brightness-125 disabled:bg-gray-300 disabled:hover:brightness-100",
     [ButtonVariantsEnum.OUTLINED]:
       "text-gray-800 border border-gray-300 [&_.spinner]:border-gray-800",
   };

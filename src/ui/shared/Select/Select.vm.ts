@@ -5,12 +5,13 @@ import { useUpdateEffect } from "@/core/hooks/useUpdateEffect";
 
 export const SelectVM = <T extends SelectDataType>({
   data,
-  value,
   name,
+  value,
   onChange,
 }: Pick<SelectType<T>, "data" | "value" | "onChange" | "name">) => {
   const methods: UseFormReturn<FieldValues, any, undefined> = useFormContext();
   const hasMethods = methods && methods.formState;
+  const mainValue = hasMethods ? methods.getValues(name) : value;
 
   const initialValue = (val: T | null | number | undefined): T => {
     if (val === undefined || val === null) {
@@ -22,7 +23,9 @@ export const SelectVM = <T extends SelectDataType>({
     return val;
   };
 
-  const [innerValue, setInnerValue] = useState<T>(() => initialValue(value));
+  const [innerValue, setInnerValue] = useState<T>(() =>
+    initialValue(mainValue)
+  );
 
   const handleSelect = (val: T): void => {
     if (!!methods) {
@@ -35,12 +38,13 @@ export const SelectVM = <T extends SelectDataType>({
 
   useUpdateEffect(() => {
     if (
-      methods.getValues(name) === null ||
-      methods.getValues(name) === undefined
+      hasMethods &&
+      (methods.getValues(name) === null ||
+        methods.getValues(name) === undefined)
     ) {
       setInnerValue({ id: null, name: "" } as T);
     }
-  }, [methods.formState.isSubmitSuccessful]);
+  }, [methods?.formState.isSubmitSuccessful]);
 
   const resetHandler = (e: MouseEvent<SVGSVGElement>): void => {
     e.stopPropagation();
@@ -53,10 +57,10 @@ export const SelectVM = <T extends SelectDataType>({
   };
 
   useUpdateEffect(() => {
-    value !== null
-      ? setInnerValue(initialValue(value))
+    mainValue !== null
+      ? setInnerValue(initialValue(mainValue))
       : setInnerValue({ id: null, name: "" } as T);
-  }, [value]);
+  }, [mainValue]);
 
   return { innerValue, handleSelect, resetHandler, hasMethods, methods };
 };

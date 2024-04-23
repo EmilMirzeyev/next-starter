@@ -56,7 +56,7 @@ const Select = <T extends SelectDataType>({
                   className={[
                     "block truncate duration-100",
                     innerValue.id !== null && !!label ? "translate-y-1.5" : "",
-                    innerValue.id === null && !label ? "text-gray-400" : "",
+                    innerValue.id === null && !label ? "text-gray-500" : "",
                   ].join(" ")}
                 >
                   {innerValue.id !== null ? innerValue.name : label || "Seçin"}

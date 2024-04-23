@@ -58,19 +58,43 @@ export default async function fetchInstance<T>({
     console.error(
       `${method} ${endpoint} responded with status: ${res.status} with message: ${errorMessage}`
     );
-    return { isError: true, error: errorMessage };
+    return {
+      isError: true,
+      error: {
+        message: errorMessage,
+        status: res.status,
+      },
+    };
   } catch (error: unknown) {
     if (typeof error === "string") {
       console.error(`${method} ${endpoint} responded with message: ${error}`);
-      return { isError: true, error: error };
+      return {
+        isError: true,
+        error: {
+          message: error,
+          status: 500,
+        },
+      };
     } else if (error instanceof Error) {
       console.error(
         `${method} ${endpoint} responded with message: ${error.message}`
       );
-      return { isError: true, error: error.message };
+      return {
+        isError: true,
+        error: {
+          message: error.message,
+          status: 500,
+        },
+      };
     } else {
       console.error(`${method} ${endpoint} error!`);
-      return { isError: true, error: "Server error" };
+      return {
+        isError: true,
+        error: {
+          message: "Server error",
+          status: 500,
+        },
+      };
     }
   }
 }

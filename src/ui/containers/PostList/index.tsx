@@ -6,6 +6,8 @@ import PostCard from "@/ui/components/PostCard";
 import CModal from "@/ui/shared/Modal";
 import PostForm from "../PostForm";
 import Button from "@/ui/shared/Button";
+import { useAppDispatch } from "@/core/hooks/useRedux";
+import { setPost } from "@/core/store/post/posts.slice";
 
 const PostList = ({ posts }: PostListType) => {
   const {
@@ -15,8 +17,9 @@ const PostList = ({ posts }: PostListType) => {
     activePost,
     setActivePost,
     setVisible,
-    deleteHandler
+    deleteHandler,
   } = PostListVM({ posts });
+  const dispatch = useAppDispatch();
 
   return (
     <div className="flex flex-col gap-y-10">
@@ -30,6 +33,7 @@ const PostList = ({ posts }: PostListType) => {
               id={post.id}
               title={post.title}
               description={post.description}
+              updateHandler={() => dispatch(setPost({ ...post, isRead: 1 }))}
               deleteHandler={() => {
                 setActivePost(post);
                 setVisible(true);

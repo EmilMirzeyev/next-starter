@@ -1,6 +1,9 @@
 export type Res<T> = {
     isError: true;
-    error: string;
+    error: {
+        message: string;
+        status: number;
+    };
     data?: never;
 } | {
     isError: false;

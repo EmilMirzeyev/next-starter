@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
+import { StoreProvider } from "@/core/providers/store.provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,11 +38,8 @@ export const metadata: Metadata = {
     description: "Next Starter Description",
     siteName: "Next Starter",
     type: "website",
-    // images: {}
-  }
+  },
 };
-
-
 
 export default function RootLayout({
   children,
@@ -51,18 +49,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
-        <ToastContainer
-          position="bottom-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          pauseOnHover
-          theme="light"
-        />
+        <StoreProvider>
+          {children}
+          <ToastContainer
+            position="bottom-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            pauseOnHover
+            theme="light"
+          />
+        </StoreProvider>
       </body>
     </html>
   );
