@@ -3,14 +3,12 @@ import Input from "@/ui/shared/Input";
 import Form from "@/ui/shared/Form";
 import Select from "@/ui/shared/Select";
 import { PostFormVM } from "./PostForm.vm";
-import { PostModel } from "@/data/model/post.model";
 
 const PostForm = () => {
   const { methods, submitHandler, isPending } = PostFormVM();
 
   return (
     <div className="flex flex-col gap-y-4">
-      <h2>Post əlavə et</h2>
       <Form
         className="flex gap-4 justify-center"
         onSubmit={submitHandler}
