@@ -1,6 +1,11 @@
 import { postMigration } from "@/data/migration/post.migration";
 import { PostRespositoryType } from "./post_repository.type";
-import { addPostService, deletePostService, getPostByIdService, getPostsService } from "@/core/services/post.service";
+import {
+  addPostService,
+  deletePostService,
+  getPostByIdService,
+  getPostsService,
+} from "@/core/services/post.service";
 import { PostDSO } from "@/data/dso/post.dso";
 
 const PostRepository: PostRespositoryType = {
@@ -10,7 +15,7 @@ const PostRepository: PostRespositoryType = {
       return posts;
     }
     const migratedPosts = posts.data.map(postMigration.dtoToModel);
-    return Object.assign(posts, {data: migratedPosts});
+    return Object.assign(posts, { data: migratedPosts });
   },
   async addPost(post) {
     return await addPostService(post as PostDSO);
@@ -24,7 +29,7 @@ const PostRepository: PostRespositoryType = {
       return post;
     }
     const migratedPost = postMigration.dtoToModel(post.data);
-    return Object.assign(post, {data: migratedPost});
+    return Object.assign(post, { data: migratedPost });
   },
 };
 

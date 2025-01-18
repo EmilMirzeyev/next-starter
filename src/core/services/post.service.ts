@@ -1,7 +1,10 @@
 import fetchInstance from "../lib/fetch.config";
 import { endpoints } from "@/data/utils/endpoints";
 import { validator } from "../helpers/validator";
-import { postSchema, postsSchema } from "../schemas/dtoValidations/posts.schema";
+import {
+  postSchema,
+  postsSchema,
+} from "../schemas/dtoValidations/posts.schema";
 import { type PostDTO } from "@/data/dto/post.dto";
 import { PostDSO } from "@/data/dso/post.dso";
 
@@ -51,7 +54,7 @@ export const deletePostService = async (id: number) => {
 
 export const getPostByIdService = async (id: number) => {
   const res = await fetchInstance<PostDTO>({
-    endpoint: endpoints.post(id)
+    endpoint: endpoints.post(id),
   });
 
   if (res.isError) {

@@ -1,7 +1,8 @@
+"use client";
 import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
-import { twMerge } from "tailwind-merge";
 import { ButtonType } from "./button.type";
-import { ButtonVM } from "./Button.vm";
+import { ButtonVM } from "./button.vm";
+import { cn } from "@/core/utils/cn";
 
 const Button = ({
   variant = ButtonVariantsEnum.FILLED,
@@ -18,8 +19,9 @@ const Button = ({
       {...props}
       disabled={isLoading || disabled}
       onMouseDown={rippleEffect}
-      className={twMerge(
-        "relative flex items-center justify-center h-14 z-10 rounded px-6 overflow-hidden [&>span]:absolute [&>span]:z-50 [&>span]:animate-ripple [&>span]:inline-block [&>span]:bg-white/50 [&>span]:-translate-y-1/2 [&>span]:-translate-x-1/2 [&>span]:pointer-events-none [&>span]:rounded-full [&>span]:scale-0 hover:brightness-125",
+      className={cn(
+        "relative flex items-center justify-center h-14 z-10 rounded px-6 overflow-hidden [&>span]:absolute [&>span]:z-50 [&>span]:animate-ripple [&>span]:inline-block [&>span]:bg-white/50 [&>span]:-translate-y-1/2 [&>span]:-translate-x-1/2 [&>span]:pointer-events-none [&>span]:rounded-full [&>span]:scale-0",
+        isLoading && "disabled:cursor-wait",
         variants[variant],
         className
       )}

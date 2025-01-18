@@ -1,0 +1,5 @@
+export const enum ResetPasswordEnum {
+    EMAILCONFIRM = 'EMAILCONFIRM',
+    OTPCONFIRM = 'OTPCONFIRM',
+    NEWPASSWORD = 'NEWPASSWORD'
+}

@@ -1,0 +1,23 @@
+<svg width="360" height="259" viewBox="0 0 360 259" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_8698_1157" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-60" y="0" width="480" height="259">
+<rect width="480" height="259" transform="translate(-60)" fill="url(#paint0_linear_8698_1157)"/>
+</mask>
+<g mask="url(#mask0_8698_1157)">
+<circle cx="180" cy="145" r="83.5" stroke="#17B26A"/>
+<circle cx="180" cy="145" r="99.5" stroke="#47CD89"/>
+<circle cx="180" cy="145" r="115.5" stroke="#75E0A7"/>
+<circle cx="180" cy="145" r="131.5" stroke="#ABEFC6"/>
+<circle cx="180" cy="145" r="147.5" stroke="#DCFAE6"/>
+<circle cx="180" cy="145" r="163.5" stroke="#ECFDF3"/>
+<circle opacity="0.5" cx="180" cy="145" r="179.5" stroke="#ECFDF3"/>
+</g>
+<circle cx="180" cy="145" r="68" fill="#DCFAE6"/>
+<circle cx="180" cy="145" r="48" fill="#17B26A"/>
+<path d="M166 145L176 155L196 135" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<defs>
+<linearGradient id="paint0_linear_8698_1157" x1="240" y1="0" x2="240" y2="259" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>

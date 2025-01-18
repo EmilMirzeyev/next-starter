@@ -1,5 +1,5 @@
 export const t = (key: string, dynamic: any = null) => {
-  if (!!dynamic) {
+  if (dynamic) {
     const regex = /{{(.*?)}}/g;
     const matches = Array.from(key.matchAll(regex));
 

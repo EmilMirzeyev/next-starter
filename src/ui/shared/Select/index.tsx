@@ -1,110 +1,156 @@
-import { Listbox, Transition } from "@headlessui/react";
+import {
+  Listbox,
+  ListboxButton,
+  ListboxOptions,
+  Transition,
+} from "@headlessui/react";
 import { Fragment, ReactElement } from "react";
-import { twMerge } from "tailwind-merge";
+import { SelectVM } from "./select.vm";
+import { XSVG, UpChevronSVG } from "@public/vectors";
 import type { SelectDataType, SelectType } from "./select.type";
-import { SelectOptionVariantEnum } from "./select.enum";
-import { SelectVM } from "./Select.vm";
-import { UpChevronSVG, XSVG } from "@public/vectors";
-import SelectOptionFactory from "./SelectOptionFactory";
+import SelectOptionFactory from "./options/select_option.factory";
+import { SelectOptionVariantEnum } from "@/data/enum/select_option_variant.enum";
+import { cn } from "@/core/utils/cn";
+import { handleError } from "@/core/helpers/handleError";
 
 const Select = <T extends SelectDataType>({
+  name,
+  label,
+  defaultText,
   data,
   className,
-  label,
-  name,
+  buttonClassName,
+  labelClassName,
+  placeholder,
+  trailing,
+  disabled,
+  isReversed,
   hasReset = true,
+  multiple = false,
   variant = SelectOptionVariantEnum.BASE,
   value,
   onChange,
 }: SelectType<T>): ReactElement => {
-  const { innerValue, handleSelect, resetHandler, hasMethods, methods } =
-    SelectVM({
-      data,
-      value,
-      name,
-      onChange,
-    });
+  const {
+    methods,
+    innerValue,
+    handleSelect,
+    resetHandler,
+    hasMethods,
+    getValueLabel,
+  } = SelectVM({
+    data,
+    value,
+    name,
+    multiple,
+    onChange,
+    label,
+    defaultText,
+    placeholder,
+  });
+
+  const hasError =
+    hasMethods &&
+    handleError(name, methods) &&
+    methods.formState.submitCount > 0;
 
   return (
-    <div className={twMerge("w-full", className)}>
-      <Listbox value={innerValue} onChange={handleSelect}>
-        {({ open }) => {
-          return (
-            <div className="relative">
-              <Listbox.Button
-                className={[
-                  "relative flex items-center justify-between w-full cursor-default h-14 rounded-lg bg-white focus-within:border-gray-400 py-2 p-3 border text-left sm:text-sm",
-                  hasMethods &&
-                  methods.formState.errors[name] &&
-                  methods.formState.submitCount > 0
-                    ? "border-red"
-                    : "border-softBlack",
-                ].join(" ")}
-              >
-                {label && (
-                  <span
-                    className={`block truncate duration-100 text-11px400 absolute text-gray-500 ${
-                      innerValue?.id === null
-                        ? "opacity-0"
-                        : "top-1/2 -translate-y-[20px] px-1 left-2 text-xs"
-                    }`}
-                  >
-                    {label}
-                  </span>
+    <div className={cn("w-full", className)}>
+      <Listbox
+        value={innerValue}
+        onChange={handleSelect}
+        disabled={disabled}
+        multiple={multiple}
+      >
+        <div className="relative">
+          <ListboxButton
+            className={cn(
+              "relative group disabled:bg-gray-100 flex items-center justify-between w-full cursor-pointer h-14 rounded-xl bg-white py-2 px-5 border text-left sm:text-sm",
+              hasError ? "border-red-500" : "border-gray-300",
+              buttonClassName
+            )}
+          >
+            {label && (
+              <span
+                className={cn(
+                  "block absolute text-gray-500 text-11px400 duration-100",
+                  (
+                    Array.isArray(innerValue)
+                      ? !innerValue.length
+                      : innerValue?.id === null
+                  )
+                    ? "opacity-0"
+                    : "top-1/2 -translate-y-[20px] px-1 left-2 text-xs"
                 )}
-                <span
-                  className={[
-                    "block truncate duration-100",
-                    innerValue.id !== null && !!label ? "translate-y-1.5" : "",
-                    innerValue.id === null && !label ? "text-gray-500" : "",
-                  ].join(" ")}
-                >
-                  {innerValue.id !== null ? innerValue.name : label || "Seçin"}
-                </span>
-                <div className={`flex items-center gap-2 pl-3 ml-auto`}>
-                  {innerValue?.id !== null && hasReset && (
-                    <div className="bg-gray-200 rounded-full cursor-pointer w-6 h-6 flex items-center justify-center">
-                      <XSVG onClick={resetHandler} />
-                    </div>
-                  )}
-                  <span
-                    className={[
-                      "pointer-events-none relative duration-300 ease-in  flex items-center",
-                      open ? "-rotate-0" : "rotate-180",
-                    ].join(" ")}
-                  >
-                    <UpChevronSVG className="w-3 h-3" />
-                  </span>
-                </div>
-              </Listbox.Button>
-              <Transition
-                as={Fragment}
-                leave="transition ease-in duration-100"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
               >
-                <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white p-1 ring-1 ring-black/5 z-50">
-                  {data.map((d) => (
-                    <SelectOptionFactory
-                      key={d.id}
-                      data={d}
-                      selected={innerValue.id === d.id}
-                      variant={variant}
-                    />
-                  ))}
-                </Listbox.Options>
-              </Transition>
+                {label}
+              </span>
+            )}
+            <span
+              className={cn(
+                "block truncate duration-100",
+                {
+                  "translate-y-1.5":
+                    (Array.isArray(innerValue)
+                      ? innerValue.length > 0
+                      : innerValue?.id !== null) && label,
+                  "text-gray-500":
+                    (Array.isArray(innerValue)
+                      ? !innerValue.length
+                      : innerValue?.id === null) && !label,
+                },
+                labelClassName
+              )}
+            >
+              {getValueLabel()}
+            </span>
+            <div className="flex items-center gap-2 pl-3 ml-auto">
+              {!Array.isArray(innerValue) &&
+                innerValue?.id !== null &&
+                hasReset && (
+                  <div
+                    className={cn(
+                      "bg-gray-200 rounded-full size-6 flex items-center justify-center",
+                      disabled ? "cursor-not-allowed" : "cursor-pointer"
+                    )}
+                  >
+                    <XSVG onClick={resetHandler} />
+                  </div>
+                )}
+              <span className="pointer-events-none relative duration-300 ease-in flex items-center group-data-[open]:rotate-0 rotate-180">
+                <UpChevronSVG className="size-3" />
+              </span>
+              <span className="cursor-pointer">{trailing}</span>
             </div>
-          );
-        }}
+          </ListboxButton>
+          <Transition
+            as={Fragment}
+            leave="transition ease-in duration-100"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <ListboxOptions
+              className={cn(
+                "absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white p-2 ring-1 ring-black/5 z-50",
+                isReversed && "bottom-[calc(100%+10px)]"
+              )}
+            >
+              {data.length ? (
+                data.map((d) => (
+                  <SelectOptionFactory key={d.id} data={d} variant={variant} />
+                ))
+              ) : (
+                <p className="text-center">Məlumat yoxdur</p>
+              )}
+            </ListboxOptions>
+          </Transition>
+        </div>
       </Listbox>
-      {hasMethods &&
-        methods.formState.errors[name] &&
-        methods.formState.submitCount > 0 && (
-          <span role="alert" className="text-red-500 text-14px400">
-            {methods.formState.errors[name]!.message as string}
-          </span>
-        )}
+      {hasError && (
+        <span role="alert" className="text-red-500 text-14px400">
+          {handleError(name, methods)}
+        </span>
+      )}
     </div>
   );
 };

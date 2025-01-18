@@ -20,10 +20,10 @@ const PostCard = ({
       <div className="flex items-center gap-4 mt-auto ml-auto">
         <Button variant={ButtonVariantsEnum.OUTLINED} onClick={updateHandler}>
           <span className="sr-only">Update</span>
-          <EditSVG className="w-6 h-6" />
+          {/* <EditSVG className="w-6 h-6" /> */}
         </Button>
         <Link href={`/posts/${id}`} aria-label={title} className="w-min">
-          <UpChevronSVG className="w-6 h-6 text-red rotate-90" />
+          {/* <UpChevronSVG className="w-6 h-6 text-red rotate-90" /> */}
         </Link>
       </div>
       <Button
@@ -31,7 +31,7 @@ const PostCard = ({
         onClick={deleteHandler}
       >
         <span className="sr-only">Delete</span>
-        <XSVG />
+        {/* <XSVG /> */}
       </Button>
     </div>
   );

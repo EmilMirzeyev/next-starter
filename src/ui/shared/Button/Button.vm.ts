@@ -4,9 +4,13 @@ import React, { useCallback } from "react";
 export const ButtonVM = () => {
   const variants: Record<ButtonVariantsEnum, string> = {
     [ButtonVariantsEnum.FILLED]:
-      "bg-blue-600 text-white border border-transparent hover:brightness-125 disabled:bg-gray-300 disabled:hover:brightness-100",
+      "bg-brand-600 text-18px600 text-white border border-transparent hover:brightness-125 disabled:bg-gray-300 disabled:text-gray-600 disabled:hover:brightness-100 disabled:cursor-not-allowed duration-300",
     [ButtonVariantsEnum.OUTLINED]:
-      "text-gray-800 border border-gray-300 [&_.spinner]:border-gray-800",
+      "text-gray-800 border border-gray-300 [&_.spinner]:border-gray-800 hover:bg-opacity-15 hover:bg-gray-100",
+    [ButtonVariantsEnum.EMPTY]:
+      "text-gray-950 text-18px600 border border-transparent bg-white [&>span]:bg-gray-300/50 [&_.spinner]:border-gray-800 hover:gray-300",
+    [ButtonVariantsEnum.BLACK]:
+     "bg-gray-950 text-18px600 text-white border border-transparent hover:brightness-150 disabled:bg-gray-300 disabled:text-gray-600 disabled:hover:brightness-100 disabled:cursor-not-allowed duration-300",
   };
 
   const rippleEffect = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {

@@ -1,0 +1,28 @@
+import type { SignInModel } from "@/core/entities/auth/models/sign_in.model";
+import { signInFormSchema } from "@/core/entities/auth/schemas/formValidations/sgin_in_form.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { FieldErrors, useForm } from "react-hook-form";
+
+const restValues = { email: "", password: "" }
+
+export const SignInFormVM = () => {
+  const [passwordType, setPasswordType] = useState("text");
+  const methods = useForm<SignInModel>({
+    resolver: zodResolver(signInFormSchema),
+    defaultValues: restValues
+  });
+
+  const onSubmit = (data: SignInModel) => {
+    console.log("data", data);
+    methods.reset()
+  };
+
+  const onError = (error: FieldErrors<SignInModel>) => {
+    console.error("validation error", error);
+  };
+
+  const submitHandler = methods.handleSubmit(onSubmit, onError);
+
+  return { methods, submitHandler, passwordType, setPasswordType };
+};

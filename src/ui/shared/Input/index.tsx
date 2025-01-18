@@ -1,5 +1,6 @@
 import { InputType } from "./input.type";
 import { InputVM } from "./Input.vm";
+import { cn } from "@/core/utils/cn";
 
 const Input = ({
   label,
@@ -8,28 +9,45 @@ const Input = ({
   name,
   type,
   isDebounce = false,
+  mask,
+  pattern,
   placeholder,
+  className,
+  inputClassName,
+  wrapperClassName,
   onChange,
   onDebounce,
   ...props
 }: InputType) => {
-  const { reg, hasMethods, methods, keyDownHandler, changeHandler } = InputVM({
+  const {
+    reg,
+    hasMethods,
+    methods,
+    preventScrolling,
+    keyDownHandler,
+    changeHandler,
+    handleError,
+  } = InputVM({
     name,
     type,
+    mask,
+    pattern,
     isDebounce,
     onDebounce,
     onChange,
   });
 
+
   return (
-    <div className="w-full">
+    <div className={cn("w-full", wrapperClassName)} >
       <div
-        className={[
-          `relative flex items-center gap-x-4 px-4 border h-14 border-solid rounded-lg bg-white focus-within:border-gray-400 ${
-            props?.disabled ? "bg-gray-100" : "bg-white"
-          }`,
-          (hasMethods && methods.formState.errors[name]) ? "border-red" : "border-softBlack",
-        ].join(" ")}
+        className={cn(
+          "relative flex items-center gap-x-4 px-4 border h-14 border-solid rounded-xl",
+          props?.disabled ? "bg-gray-100" : "bg-white",
+          hasMethods && handleError(name)
+            ? "border-red-500"
+            : "border-gray-300  focus-within:border-gray-400",
+          className)}
       >
         {leading}
         <div className="relative h-full flex-grow">
@@ -38,12 +56,14 @@ const Input = ({
             id={name}
             type={type}
             placeholder={label ? " " : placeholder}
-            className={[
+            className={cn(
               "w-full h-full peer text-15px400 bg-transparent",
               label ? "pt-3" : "",
-            ].join(" ")}
+              inputClassName
+            )}
             onKeyDown={keyDownHandler}
             onChange={changeHandler}
+            {...preventScrolling}
             {...props}
             {...reg}
           />
@@ -59,12 +79,12 @@ const Input = ({
         </div>
         {trailing}
       </div>
-      {hasMethods && methods.formState.errors[name] && (
-        <span role="alert" className="text-red-500 text-14px400">
-          {methods.formState.errors[name]!.message as string}
+      {hasMethods && Object.values(methods.formState.errors).length ? (
+        <span role="alert" className="text-error-500 text-14px400">
+          {handleError(name)}
         </span>
-      )}
-    </div>
+      ) : null}
+    </div >
   );
 };
 

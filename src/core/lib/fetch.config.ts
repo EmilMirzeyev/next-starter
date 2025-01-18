@@ -1,35 +1,37 @@
-import { Res } from "@/data/types/res.type";
+import type { Res } from "@/data/types/res.type";
 import { BASE_URL } from "@/data/utils/environments";
 import { cookies } from "next/headers";
+import languageInstance from "./languageSingleton";
+import { redirect } from "next/navigation";
+import { getRefreshToken } from "../utils/refresToken";
 
-type Props<T> = {
+type FetchInstanceType = {
   baseUrl?: string;
   endpoint: string;
-  urlencoded?: boolean;
   data?: unknown;
   config?: RequestInit;
 };
 
 export default async function fetchInstance<T>({
   baseUrl = BASE_URL!,
-  urlencoded = false,
   endpoint,
   data,
   config,
-}: Props<T>): Promise<Res<T>> {
-  //   const token = cookies().get("token")?.value;
-  const lang = cookies().get("lang")?.value ?? "az";
-
+}: FetchInstanceType): Promise<Res<T>> {
+  const token = cookies().get("token")?.value;
+  const refreshToken = getRefreshToken();
   const headers = new Headers({
     "Content-Type": "application/json",
-    Lang: lang,
+    Lang: languageInstance.getLang(),
     ...config?.headers,
   });
 
-  //   if (token) {
-  //     headers.append("Authorization", `Bearer ${token}`);
-  //   }
-
+  if (token) {
+    headers.append("Authorization", `Bearer ${token}`);
+  }
+  const urlencoded =
+    config?.headers?.["Content-Type" as keyof HeadersInit] ===
+    "application/x-www-form-urlencoded";
   const fetchUrl = baseUrl + endpoint;
   const body = data
     ? urlencoded
@@ -46,22 +48,27 @@ export default async function fetchInstance<T>({
 
   try {
     const res = await fetch(fetchUrl, reqInit);
+    if (res.status === 401) {
+      throw new Error(res.status.toString());
+    }
     if (res.ok) {
       try {
         const result: T = await res.json();
         return { data: result, isError: false };
       } catch (error) {
-        return { data: {} as T, isError: false };
+        return { data: null as T, isError: false };
       }
     }
+
     const errorMessage = await res.text();
     console.error(
       `${method} ${endpoint} responded with status: ${res.status} with message: ${errorMessage}`
     );
+
     return {
       isError: true,
       error: {
-        message: errorMessage,
+        message: JSON.parse(errorMessage).Detail,
         status: res.status,
       },
     };
@@ -79,13 +86,15 @@ export default async function fetchInstance<T>({
       console.error(
         `${method} ${endpoint} responded with message: ${error.message}`
       );
-      return {
-        isError: true,
-        error: {
-          message: error.message,
-          status: 500,
-        },
-      };
+      if (error.message !== "401") {
+        return {
+          isError: true,
+          error: {
+            message: error.message,
+            status: 500,
+          },
+        };
+      }
     } else {
       console.error(`${method} ${endpoint} error!`);
       return {
@@ -97,4 +106,6 @@ export default async function fetchInstance<T>({
       };
     }
   }
+
+  redirect("/api/connect");
 }

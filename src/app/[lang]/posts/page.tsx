@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   title: "Posts",
 };
 
-const Posts = async ({params}: {params: {lang: LocaleType}}) => {
+const Posts = async ({ params }: { params: { lang: LocaleType } }) => {
   const { data, error, isError } = await PostRepository.getPosts("?_limit=20");
   const t = await getDictionary(params.lang);
 
   return (
-    <div className="container">
-      <p>{t.add_posts}</p>
+    <div className="container mt-20">
+      <p>{t.HomePage.title}</p>
       {isError && <ClientToast error={error.message} />}
       <PostList posts={data || []} />
     </div>

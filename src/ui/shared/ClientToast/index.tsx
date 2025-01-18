@@ -1,11 +1,12 @@
 "use client";
-import { snackbar } from "../Sanckbar";
 import { useUpdateEffect } from "@/core/hooks/useUpdateEffect";
-import { ClientToastType } from "./ClientToast.type";
+import { SnackbarStatusEnum } from "@/data/enum/snackbar_status.enum";
+import { ClientToastType } from "./client_toast.type";
+import { snackbar } from './../Sanckbar/index';
 
 const ClientToast = ({ error }: ClientToastType) => {
   useUpdateEffect(() => {
-    snackbar("error", error);
+    snackbar(SnackbarStatusEnum.ERROR, error);
   }, []);
 
   return <></>;

@@ -1,9 +1,11 @@
-import { Dispatch, PropsWithChildren, SetStateAction } from "react";
+import { PropsWithChildren } from "react";
 
 export type ModalType = PropsWithChildren & {
   title?: string;
+  hasClose?: boolean;
   dialogClassName?: string;
+  closeButton?: boolean;
   visible: boolean;
   clickOutside?: boolean;
-  setVisible: Dispatch<SetStateAction<boolean>>;
+  setVisible: (show: boolean) => void;
 };

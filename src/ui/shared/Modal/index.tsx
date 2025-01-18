@@ -1,15 +1,22 @@
-import { Dialog, Transition } from "@headlessui/react";
+import {
+  Dialog,
+  DialogPanel,
+  Transition,
+  TransitionChild,
+} from "@headlessui/react";
 import { Fragment } from "react";
 import { ModalType } from "./modal.type";
-import { XSVG } from "@public/vectors";
+import { cn } from "@/core/utils/cn";
+import { XCloseSVG } from "@public/vectors";
 
-const CModal = ({
+const Modal = ({
   children,
-  title = "",
+  title,
   dialogClassName,
   visible,
   clickOutside = true,
   setVisible,
+  hasClose,
 }: ModalType) => {
   return (
     <Transition show={visible} as={Fragment}>
@@ -18,7 +25,7 @@ const CModal = ({
         className="relative z-50"
         onClose={() => clickOutside && setVisible(false)}
       >
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter="ease-out duration-300"
           enterFrom="opacity-0"
@@ -28,10 +35,10 @@ const CModal = ({
           leaveTo="opacity-0"
         >
           <div className="fixed inset-0 bg-black bg-opacity-75" />
-        </Transition.Child>
+        </TransitionChild>
         <div className="fixed inset-0 overflow-y-auto">
           <div className="w-full flex min-h-full items-center justify-center p-4 text-center">
-            <Transition.Child
+            <TransitionChild
               as={Fragment}
               enter="ease-out duration-300"
               enterFrom="opacity-0 scale-95"
@@ -40,22 +47,29 @@ const CModal = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel
-                className={[
-                  "min-w-[260px] transform rounded bg-white dark:bg-lightBlack text-left align-middle shadow-xl transition-all p-4",
-                  dialogClassName,
-                ].join(" ")}
+              <DialogPanel
+                className={cn(
+                  "transform rounded-3xl bg-white dark:bg-lightBlack text-left align-middle shadow-xl transition-all",
+                  dialogClassName
+                )}
               >
-                <div className="flex items-center justify-between gap-x-4">
-                  <Dialog.Title>{title}</Dialog.Title>
-                  <XSVG
-                    className="cursor-pointer"
-                    onClick={() => setVisible(false)}
-                  />
-                </div>
+                {(title || hasClose) && (
+                  <div className="flex items-center justify-between gap-4 pt-4">
+                    {title && <h3 className="text-24px600">{title}</h3>}
+
+                    {hasClose && (
+                      <button
+                        onClick={() => setVisible(false)}
+                        className="ml-auto hover:bg-gray-100 rounded-full p-2"
+                      >
+                        <XCloseSVG className="flex item-center justify-center" />
+                      </button>
+                    )}
+                  </div>
+                )}
                 {children}
-              </Dialog.Panel>
-            </Transition.Child>
+              </DialogPanel>
+            </TransitionChild>
           </div>
         </div>
       </Dialog>
@@ -63,4 +77,4 @@ const CModal = ({
   );
 };
 
-export default CModal;
+export default Modal;
