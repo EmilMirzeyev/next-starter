@@ -135,6 +135,13 @@ module.exports = {
             fontWeight: "700",
         },
     ],
+    "32px800": [
+        "32px",
+        {
+            lineHeight: "40px",
+            fontWeight: "800",
+        },
+    ],
     "30px400": [
         "30px",
         {

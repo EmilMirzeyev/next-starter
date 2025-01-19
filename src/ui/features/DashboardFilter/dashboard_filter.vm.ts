@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form"
 
 export const DashboardFilterVM = () => {
+    const [showMoreFilters, setShowMoreFilters] = useState(false);
     const methods = useForm<any>()
 
     const onSubmit = (data: any) => {
@@ -13,5 +15,5 @@ export const DashboardFilterVM = () => {
 
     const submitHandler = methods.handleSubmit(onSubmit, onError)
 
-    return { methods, submitHandler }
+    return { showMoreFilters, setShowMoreFilters, methods, submitHandler }
 }

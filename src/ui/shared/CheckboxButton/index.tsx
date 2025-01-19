@@ -1,5 +1,5 @@
 import { Checkbox as CheckboxHUI, Field, Label } from "@headlessui/react";
-import { CheckSVG, PlusSVG } from "@public/vectors";
+import { PlusSVG } from "@public/vectors";
 import { cn } from "@/core/utils/cn";
 import { CheckboxButtonType } from "./checkbox_button.type";
 import { CheckboxButtonVM } from "./checkbox_button.vm";
@@ -10,6 +10,7 @@ const CheckboxButton = ({
     label,
     className,
     text,
+    fieldClassName,
     labelClassName,
     enabled,
     onChange,
@@ -17,7 +18,7 @@ const CheckboxButton = ({
     const { handleCheck } = CheckboxButtonVM({ name, value, onChange });
 
     return (
-        <Field className='w-full'>
+        <Field className={cn("w-full", fieldClassName)}>
             <CheckboxHUI
                 name={name}
                 checked={enabled}

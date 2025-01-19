@@ -3,6 +3,7 @@ export type CheckboxButtonType = {
     value?: boolean;
     text?: string;
     className?: string;
+    fieldClassName?: string;
     label?: string;
     labelClassName?: string;
     enabled?: boolean;

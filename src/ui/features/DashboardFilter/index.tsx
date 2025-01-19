@@ -5,133 +5,61 @@ import { DashboardFilterVM } from "./dashboard_filter.vm";
 import Input from "@/ui/shared/Input";
 import Button from "@/ui/shared/Button";
 import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
-import { PlusSVG } from "@public/vectors";
+import { DownChevronSVG, PlusSVG, RefreshSVG } from "@public/vectors";
 import CheckboxButton from "@/ui/shared/CheckboxButton";
+import { cn } from "@/core/utils/cn";
 
 const DashboardFilter = () => {
-    const { methods, submitHandler } = DashboardFilterVM();
+    const { showMoreFilters, setShowMoreFilters, methods, submitHandler } =
+        DashboardFilterVM();
 
     return (
-        <div className="container my-8 flex flex-col gap-y-6">
-            <h1 className="text-30px700 text-gray-900">Axarış üzrə filtrlər</h1>
-            <Form
-                methods={methods}
-                onSubmit={submitHandler}
-                className="flex flex-col gap-y-5"
-            >
-                <div className="flex gap-x-5">
-                    <Select
-                        buttonClassName="h-11"
-                        defaultText="Marka"
-                        name="brand"
-                        data={[
-                            {
-                                id: 1,
-                                name: "Ford",
-                            },
-                        ]}
-                    />
-                    <Select
-                        buttonClassName="h-11"
-                        defaultText="Model"
-                        name="model"
-                        data={[
-                            {
-                                id: 1,
-                                name: "Fusion",
-                            },
-                        ]}
-                    />
-                    <Select
-                        buttonClassName="h-11"
-                        defaultText="Ban növü"
-                        name="banType"
-                        data={[
-                            {
-                                id: 1,
-                                name: "Satisda",
-                            },
-                        ]}
-                    />
-                    <Select
-                        buttonClassName="h-11"
-                        defaultText="Şəhər"
-                        name="city"
-                        data={[
-                            {
-                                id: 1,
-                                name: "Satisda",
-                            },
-                        ]}
-                    />
-                </div>
-                <div className="flex gap-x-5">
-                    <div className="flex w-1/4">
-                        <Select
-                            defaultText="İl min."
-                            name="minYear"
-                            buttonClassName="rounded-r-none h-11"
-                            data={[
-                                {
-                                    id: 1,
-                                    name: "1990",
-                                },
-                            ]}
-                        />
-                        <Select
-                            defaultText="max."
-                            name="maxYear."
-                            buttonClassName="border-l-0 rounded-l-none h-11"
-                            data={[
-                                {
-                                    id: 1,
-                                    name: "2025",
-                                },
-                            ]}
-                        />
-                    </div>
-                    <div className="flex w-1/4">
-                        <Input
-                            name="maxPrice"
-                            className="rounded-r-none h-11"
-                            placeholder="Qiymət min."
-                        />
-                        <Input
-                            name="minPrice"
-                            className="rounded-l-none border-l-0 h-11"
-                            placeholder="max."
-                        />
-                    </div>
-                    <div className="flex w-1/4 gap-x-5">
+        <>
+            <div className="container my-8 flex flex-col gap-y-6">
+                <h1 className="text-30px700 text-gray-900">Axarış üzrə filtrlər</h1>
+                <Form
+                    methods={methods}
+                    onSubmit={submitHandler}
+                    className="flex flex-col gap-y-5"
+                >
+                    <div className="flex gap-x-5">
                         <Select
                             buttonClassName="h-11"
-                            className="w-full"
-                            defaultText="AZN"
-                            name="currency"
+                            defaultText="Marka"
+                            name="brand"
                             data={[
                                 {
                                     id: 1,
-                                    name: "AZN",
-                                },
-                                {
-                                    id: 2,
-                                    name: "USD",
-                                },
-                                {
-                                    id: 3,
-                                    name: "EUR",
+                                    name: "Ford",
                                 },
                             ]}
                         />
-                        <CheckboxButton name="credit" text="Kredit" />
-                    </div>
-                    <div className="flex gap-x-5 w-1/4">
-                        <CheckboxButton name="barter" text="Barter" />
                         <Select
                             buttonClassName="h-11"
-                            className="w-1/2"
-                            defaultText="Vəziyyəti"
-                            name="status"
+                            defaultText="Model"
+                            name="model"
+                            data={[
+                                {
+                                    id: 1,
+                                    name: "Fusion",
+                                },
+                            ]}
+                        />
+                        <Select
+                            buttonClassName="h-11"
+                            defaultText="Ban növü"
+                            name="banType"
+                            data={[
+                                {
+                                    id: 1,
+                                    name: "Satisda",
+                                },
+                            ]}
+                        />
+                        <Select
+                            buttonClassName="h-11"
+                            defaultText="Şəhər"
+                            name="city"
                             data={[
                                 {
                                     id: 1,
@@ -140,9 +68,302 @@ const DashboardFilter = () => {
                             ]}
                         />
                     </div>
-                </div>
-            </Form>
-        </div>
+                    <div className="flex gap-x-5">
+                        <div className="flex w-1/4">
+                            <Select
+                                defaultText="İl min."
+                                name="minYear"
+                                buttonClassName="rounded-r-none h-11"
+                                data={[
+                                    {
+                                        id: 1,
+                                        name: "1990",
+                                    },
+                                ]}
+                            />
+                            <Select
+                                defaultText="max."
+                                name="maxYear."
+                                buttonClassName="border-l-0 rounded-l-none h-11"
+                                data={[
+                                    {
+                                        id: 1,
+                                        name: "2025",
+                                    },
+                                ]}
+                            />
+                        </div>
+                        <div className="flex w-1/4">
+                            <Input
+                                name="maxPrice"
+                                className="rounded-r-none h-11"
+                                placeholder="Qiymət min."
+                            />
+                            <Input
+                                name="minPrice"
+                                className="rounded-l-none border-l-0 h-11"
+                                placeholder="max."
+                            />
+                        </div>
+                        <div className="flex w-1/4 gap-x-5">
+                            <Select
+                                buttonClassName="h-11"
+                                className="w-full"
+                                defaultText="AZN"
+                                name="currency"
+                                data={[
+                                    {
+                                        id: 1,
+                                        name: "AZN",
+                                    },
+                                    {
+                                        id: 2,
+                                        name: "USD",
+                                    },
+                                    {
+                                        id: 3,
+                                        name: "EUR",
+                                    },
+                                ]}
+                            />
+                            <CheckboxButton name="credit" text="Kredit" />
+                        </div>
+                        <div className="flex gap-x-5 w-1/4">
+                            <CheckboxButton name="barter" text="Barter" />
+                            <Select
+                                buttonClassName="h-11"
+                                className="w-1/2"
+                                defaultText="Vəziyyəti"
+                                name="status"
+                                data={[
+                                    {
+                                        id: 1,
+                                        name: "Satisda",
+                                    },
+                                ]}
+                            />
+                        </div>
+                    </div>
+                    <div
+                        className={cn(
+                            "flex flex-col gap-y-5 overflow-hidden transition-all duration-300 ease-in-out",
+                            showMoreFilters
+                                ? "max-h-[500px] opacity-100"
+                                : "max-h-0 opacity-0"
+                        )}
+                    >
+                        <div className="flex gap-x-5">
+                            <div className="flex w-1/4">
+                                <Select
+                                    defaultText="Rəngi"
+                                    name="color"
+                                    buttonClassName="h-11"
+                                    data={[
+                                        {
+                                            id: 1,
+                                            name: "Red",
+                                        },
+                                    ]}
+                                />
+                            </div>
+                            <div className="flex w-1/4">
+                                <Select
+                                    defaultText="Yanacaq növü"
+                                    name="fuelType"
+                                    buttonClassName="h-11"
+                                    data={[
+                                        {
+                                            id: 1,
+                                            name: "Red",
+                                        },
+                                    ]}
+                                />
+                            </div>
+                            <div className="flex w-1/4">
+                                <Select
+                                    defaultText="Ötürücü"
+                                    name="gear"
+                                    buttonClassName="h-11"
+                                    data={[
+                                        {
+                                            id: 1,
+                                            name: "Red",
+                                        },
+                                    ]}
+                                />
+                            </div>
+                            <div className="flex w-1/4">
+                                <Select
+                                    defaultText="Sürətlər qutusu"
+                                    name="gearbox"
+                                    buttonClassName="h-11"
+                                    data={[
+                                        {
+                                            id: 1,
+                                            name: "Red",
+                                        },
+                                    ]}
+                                />
+                            </div>
+                        </div>
+                        <div className="flex gap-x-5">
+                            <div className="flex w-1/3">
+                                <Select
+                                    defaultText="Həcm (sm3) min."
+                                    name="minCapacity"
+                                    buttonClassName="rounded-r-none h-11"
+                                    data={[
+                                        {
+                                            id: 1,
+                                            name: "100",
+                                        },
+                                    ]}
+                                />
+                                <Select
+                                    defaultText="max."
+                                    name="maxCapacity."
+                                    buttonClassName="border-l-0 rounded-l-none h-11"
+                                    data={[
+                                        {
+                                            id: 1,
+                                            name: "1000",
+                                        },
+                                    ]}
+                                />
+                            </div>
+                            <div className="flex w-1/3">
+                                <Input
+                                    name="minHorsePower"
+                                    className="rounded-r-none h-11"
+                                    placeholder="Güc(a.g.) min."
+                                />
+                                <Input
+                                    name="maxHorsePower"
+                                    className="rounded-l-none border-l-0 h-11"
+                                    placeholder="max."
+                                />
+                            </div>
+                            <div className="flex w-1/3">
+                                <Input
+                                    name="minMileage"
+                                    className="rounded-r-none h-11"
+                                    placeholder="Yürüş (km) min."
+                                />
+                                <Input
+                                    name="maxMileage"
+                                    className="rounded-l-none border-l-0 h-11"
+                                    placeholder="max."
+                                />
+                            </div>
+                        </div>
+                        <div className="flex gap-x-5">
+                            <div className="flex w-1/4">
+                                <Select
+                                    defaultText="Satıcı"
+                                    name="seller"
+                                    buttonClassName="h-11"
+                                    data={[
+                                        {
+                                            id: 1,
+                                            name: "Red",
+                                        },
+                                    ]}
+                                />
+                            </div>
+                            <div className="flex w-1/4">
+                                <Select
+                                    defaultText="Sahiblərinin sayı"
+                                    name="numberOfOwners"
+                                    buttonClassName="h-11"
+                                    data={[
+                                        {
+                                            id: 1,
+                                            name: "Red",
+                                        },
+                                    ]}
+                                />
+                            </div>
+                            <div className="flex w-1/4">
+                                <Select
+                                    defaultText="Yerlərin sayı"
+                                    name="numberOfSeats"
+                                    buttonClassName="h-11"
+                                    data={[
+                                        {
+                                            id: 1,
+                                            name: "Red",
+                                        },
+                                    ]}
+                                />
+                            </div>
+                            <div className="flex w-1/4">
+                                <Select
+                                    defaultText="Hansı bazar üçün yığılıb"
+                                    name="marketType"
+                                    buttonClassName="h-11"
+                                    data={[
+                                        {
+                                            id: 1,
+                                            name: "Red",
+                                        },
+                                    ]}
+                                />
+                            </div>
+                        </div>
+                        <div className="flex gap-x-5">
+                            <CheckboxButton
+                                name="hasNoDamage"
+                                text="Vuruğu yoxdur"
+                                fieldClassName="w-fit"
+                            />
+                            <CheckboxButton
+                                name="notRepainted"
+                                text="Rənglənməyib"
+                                fieldClassName="w-fit"
+                            />
+                            <CheckboxButton
+                                name="onlyAccidentCars"
+                                text="Yalnız qəzalı avtomobillər"
+                                fieldClassName="w-fit"
+                            />
+                            <CheckboxButton
+                                name="onlyByOrder"
+                                text="Yalnız sifarişlə"
+                                fieldClassName="w-fit"
+                            />
+                        </div>
+                    </div>
+                    <div className="flex gap-x-5 items-center justify-center mt-5">
+                        <Button
+                            type="button"
+                            variant={ButtonVariantsEnum.EMPTY}
+                            className="rounded-3xl h-12 bg-gray-50 flex gap-x-1.5 items-center"
+                        >
+                            Sıfırla
+                            <RefreshSVG />
+                        </Button>
+                        <Button
+                            onClick={() => setShowMoreFilters((prev) => !prev)}
+                            type="button"
+                            variant={ButtonVariantsEnum.EMPTY}
+                            className="rounded-3xl text-brand-600 h-12 flex gap-x-1.5 items-center hover:bg-brand-50 duration-300 "
+                        >
+                            Daha çox filtr
+                            <DownChevronSVG
+                                className={cn(
+                                    "text-brand-600 transition-all ease-in-out duration-200",
+                                    showMoreFilters && "rotate-180 "
+                                )}
+                            />
+                        </Button>
+                        <Button type="submit" className="rounded-3xl h-12">
+                            Elanları göstər
+                        </Button>
+                    </div>
+                </Form>
+            </div>
+            <div className="bg-gray-200 w-full h-[1px]"></div>
+        </>
     );
 };
 
