@@ -27,6 +27,7 @@
     "react-toastify": "^10.0.5",
     "swiper": "^11.2.1",
     "tailwind-merge": "^2.2.2",
+    "yet-another-react-lightbox": "^3.21.7",
     "zod": "^3.22.4"
   },
   "devDependencies": {

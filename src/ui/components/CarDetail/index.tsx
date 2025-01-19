@@ -1,17 +1,114 @@
 "use client";
 import { cn } from "@/core/utils/cn";
-import { CardDetailVM } from "./ard_detail.vm";
+import { CardDetailVM } from "./card_detail.vm";
 import Link from "next/link";
 import { InfoCircleSVG, PhoneCallSVG, ReceiptCheckSVG, Refresh5SVG, ShareSVG, Star2SVG, Whatsapp2SVG } from "@public/vectors";
 import Image from "next/image";
 import UserImage from '@public/images/user.png'
+import { useState } from "react";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+// import "yet-another-react-lightbox/plugins/captions.css";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
+// import "yet-another-react-lightbox/plugins/counter.css";
+import {
+    Thumbnails,
+    Inline
+} from "yet-another-react-lightbox/plugins";
+import { slides } from "./data";
 
 const CarDetail = () => {
     const { isExpanded, setIsExpanded } = CardDetailVM();
+    const [open, setOpen] = useState(false);
+    const [index, setIndex] = useState(-1);
+
+    const toggleOpen = (state: boolean) => () => setOpen(state);
+
+    const updateIndex = ({ index: current }: { index: number }) =>
+        setIndex(current);
 
     return (
         <section className="container flex gap-x-6 relative mb-96">
             <div className="flex flex-col gap-y-5">
+                <div className="">
+                    <Lightbox
+                        index={index}
+                        slides={slides}
+                        plugins={[Inline, Thumbnails]}
+                        on={{
+                            view: updateIndex,
+                            click: toggleOpen(true),
+                        }}
+                        carousel={{
+                            padding: 0,
+                            spacing: 0,
+                            imageFit: "cover",
+                        }}
+                        inline={{
+                            style: {
+                                width: "100%",
+                                maxWidth: "710px",
+                                aspectRatio: "3 / 2",
+                            },
+                        }}
+                        thumbnails={{
+                            position: "bottom",
+                            width: 96,
+                            height: 80,
+                            gap: 10,
+                            imageFit: "cover",
+                            border: 0,
+                        }}
+                        styles={{
+                            
+                            container: {
+                                borderRadius: "16px",
+                            },
+                            thumbnail: {
+                                backgroundColor: "transparent",
+                                padding: "0",
+                                border: "none",
+                                boxShadow: "none",
+                                outline: "none",
+                                borderRadius:"8px"
+                            },
+                            thumbnailsContainer: {
+                                backgroundColor: "transparent",
+                                boxShadow: "none",
+                                outline: "none",
+                                border: "none",
+                                padding: 0,
+                                margin: 0,
+                                marginTop:"20px",
+                                paddingLeft:'10px'
+                            },
+                            thumbnailsTrack: {
+                                boxShadow: "none",
+                              },
+                            button: {
+                                transition: "transform 0.3s ease, background-color 0.3s ease",
+                                background: "#121926A3",
+                                borderRadius: "33px",
+                                height: "48px",
+                                width: "48px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                marginRight: "20px",
+                                marginLeft: "20px"
+                            },
+                        }}
+                    />
+                    <Lightbox
+                        open={open}
+                        close={toggleOpen(false)}
+                        index={index}
+                        slides={slides}
+                        on={{ view: updateIndex }}
+                        animation={{ fade: 0 }}
+                        controller={{ closeOnPullDown: true, closeOnBackdropClick: true }}
+                    />
+                </div>
                 <article className="border border-gray-200 rounded-2xl p-8 flex flex-col gap-y-6">
                     <h2 className="text-gray-800 text-24px600">
                         Avtomobilin göstəriciləri
