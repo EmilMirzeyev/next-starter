@@ -1,12 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import postsSlice from "./post/posts.slice";
 import signUpSlice from './auth/sign_up.slice'
+import headerReducer from "./root/headerSlice";
 
 export const store = configureStore({
   reducer: {
+    header: headerReducer,
     posts: postsSlice,
     signup: signUpSlice
   },
+
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,

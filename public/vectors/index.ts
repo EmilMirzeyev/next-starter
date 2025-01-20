@@ -36,6 +36,7 @@ export { default as RefreshSVG } from "./refresh-ccw-03.svg";
 export { default as BarterSVG } from "./barter.svg";
 export { default as PercentageSVG } from "./kredit.svg";
 export { default as HeartSVG } from "./heart.svg";
+export { default as Heart2SVG } from "./heart2.svg";
 export { default as ShareSVG } from "./share-07.svg";
 export { default as InfoCircleSVG } from "./info-circle.svg";
 export { default as Star2SVG } from "./stars-02.svg";
@@ -44,4 +45,5 @@ export { default as Whatsapp2SVG } from "./whatsapp2.svg";
 export { default as ReceiptCheckSVG } from "./receipt-check.svg";
 export { default as Percentage2SVG } from "./percentage.svg";
 export { default as Refresh5SVG } from "./refresh-cw-05.svg";
+export { default as HomeSVG } from "./home-line.svg";
 
