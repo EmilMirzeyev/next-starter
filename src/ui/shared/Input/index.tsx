@@ -1,3 +1,4 @@
+"use clinet";
 import { InputType } from "./input.type";
 import { InputVM } from "./Input.vm";
 import { cn } from "@/core/utils/cn";

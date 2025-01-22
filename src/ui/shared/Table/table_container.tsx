@@ -11,6 +11,7 @@ export const TableContainer = <T extends { id: number | string }>({
   bodyData,
   state = RequestStateEnum.SUCCESS,
   trClassname,
+  thClassName,
   title,
   pagination,
 }: TableType<T>) => {
@@ -65,14 +66,14 @@ export const TableContainer = <T extends { id: number | string }>({
         <div className="inline-block min-w-full">
           <div
             className={cn(
-              "rounded-xl",
-              !!title && "border border-[#E3E8EF] p-2"
+              "rounded-3xl",
+              !!title && "border border-[#E3E8EF] p-4"
             )}
           >
-            {title && <div className="px-4 pt-5 pb-2 mb-2">{title}</div>}
+            {title && <div className="mb-4">{title}</div>}
             <div className="flex flex-col gap-y-10">
               <table className="table-fixed w-full text-left text-sm font-light">
-                <THead data={headData} />
+                <THead data={headData} thClassName={thClassName} />
                 <tbody>{render()}</tbody>
               </table>
               {pagination && state === RequestStateEnum.SUCCESS && (

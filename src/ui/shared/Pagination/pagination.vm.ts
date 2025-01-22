@@ -1,11 +1,17 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { PaginationVMType } from "./pagination.type";
 
-export const PaginationVM = ({ pageChange }: PaginationVMType) => {
+export const PaginationVM = ({
+    total,
+    perPage = 10,
+    pageChange
+}: PaginationVMType) => {
     const { replace } = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
+    const pageCount = Math.ceil(total / perPage);
+    const currentPage = Number(searchParams.get("PageNumber")) || 1;
 
     const handlePageClick = (page: { selected: number }) => {
         page.selected !== 0
@@ -16,5 +22,5 @@ export const PaginationVM = ({ pageChange }: PaginationVMType) => {
         pageChange?.(page.selected);
     };
 
-    return { searchParams, handlePageClick };
+    return { pageCount, currentPage, searchParams, handlePageClick };
 };

@@ -1,3 +1,4 @@
+"use client"
 import {
   Listbox,
   ListboxButton,
@@ -23,6 +24,7 @@ const Select = <T extends SelectDataType>({
   labelClassName,
   placeholder,
   trailing,
+  leading,
   disabled,
   isReversed,
   hasReset = true,
@@ -88,7 +90,7 @@ const Select = <T extends SelectDataType>({
             )}
             <span
               className={cn(
-                "block truncate duration-100",
+                "flex items-center truncate duration-100 gap-x-1.5",
                 {
                   "translate-y-1.5":
                     (Array.isArray(innerValue)
@@ -102,6 +104,7 @@ const Select = <T extends SelectDataType>({
                 labelClassName
               )}
             >
+              <span>{leading}</span>
               {getValueLabel()}
             </span>
             <div className="flex items-center gap-2 pl-3 ml-auto">

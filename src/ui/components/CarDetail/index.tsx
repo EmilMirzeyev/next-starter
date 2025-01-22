@@ -3,6 +3,10 @@ import { cn } from "@/core/utils/cn";
 import { CardDetailVM } from "./card_detail.vm";
 import Link from "next/link";
 import {
+    ArrowRightSVG,
+    CalendarSVG,
+    Eye2SVG,
+    HashSVG,
     Heart2SVG,
     InfoCircleSVG,
     PhoneCallSVG,
@@ -21,6 +25,8 @@ import "yet-another-react-lightbox/plugins/thumbnails.css";
 // import "yet-another-react-lightbox/plugins/counter.css";
 import { Thumbnails, Inline } from "yet-another-react-lightbox/plugins";
 import { slides } from "./data";
+import Button from "@/ui/shared/Button";
+import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
 
 const CarDetail = () => {
     const { isExpanded, open, index, setIsExpanded, toggleOpen, updateIndex } =
@@ -295,20 +301,6 @@ const CarDetail = () => {
                             Whatsapp-da yaz
                         </Link>
                     </div>
-                    <div className="p-5 rounded-[20px] border border-gray-200 flex gap-x-3 justify-between items-center">
-                        <div className="flex gap-x-3">
-                            <Image src={UserImage} alt="user image" />
-                            <div>
-                                <h3 className="text-16px500">Elnur Mobile</h3>
-                                <p className="text-brand-500 text-14px400 underline underline-offset-[3px]">
-                                    42 elan
-                                </p>
-                            </div>
-                        </div>
-                        <div className="bg-brand-500 rounded-md px-2 py-1 text-white text-12px600">
-                            Avtosalon
-                        </div>
-                    </div>
                     <div className="flex gap-x-3">
                         <button className="flex justify-center w-1/2 gap-x-1.5 bg-brand-50 border-2 border-brand-50 text-brand-600 text-16px600 rounded-[22px] px-4 py-2.5">
                             Elanı reklam et
@@ -319,19 +311,69 @@ const CarDetail = () => {
                             <Refresh5SVG className="text-white" />
                         </button>
                     </div>
-                    <div className="bg-gray-100 border border-gray-100 px-5 py-3 rounded-2xl flex items-center gap-x-3 underline-offset-[3px]">
+                    <div className="p-5 rounded-[20px] border border-gray-200 flex flex-col gap-y-5">
+                        <div className="flex gap-x-3 justify-between items-center">
+                            <div className="flex gap-x-3">
+                                <Image src={UserImage} alt="user image" />
+                                <div>
+                                    <h3 className="text-16px500">Elnur Mobile</h3>
+                                    <p className="text-brand-500 text-14px400 underline underline-offset-[3px]">
+                                        42 elan
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="bg-brand-500 rounded-md px-2 py-1 text-white text-12px600">
+                                Avtosalon
+                            </div>
+                        </div>
+                        <Link href={''} className="w-full flex">
+                            <Button variant={ButtonVariantsEnum.BLACK} className="rounded-[28px] flex gap-x-2.5 items-center w-full">
+                                Digər elanlarına bax
+                                <ArrowRightSVG />
+                            </Button>
+                        </Link>
+                    </div>
+
+                    {/* <div className="bg-gray-100 border border-gray-100 px-5 py-3 rounded-2xl flex items-center gap-x-3 underline-offset-[3px]">
                         <h3 className="text-16px400">Elanın nömrəsi:</h3>
                         <p className="text-brand-500 text-14px600 underline">#156415</p>
+                    </div> */}
+                    <div className="flex justify- gap-x-3">
+                        <div className="flex flex-col gap-y-2 border border-gray-200 rounded-xl min-w-[112px] p-4">
+                            <div className="bg-gray-200 rounded-xl w-fit p-1"><HashSVG /></div>
+                            <div className="">
+                                <h3 className="text-gray-600 text-12px400">Elan nömrəsi</h3>
+                                <p className="text-gray-800 text-14px500">#66687</p>
+                            </div>
+                        </div>
+                        <div className="flex flex-col gap-y-2 border border-gray-200 rounded-xl min-w-[112px] p-4">
+                            <div className="bg-gray-200 rounded-xl w-fit p-1">
+                                <Eye2SVG />
+                            </div>
+                            <div className="">
+                                <h3 className="text-gray-600 text-12px400">Baxış sayı</h3>
+                                <p className="text-gray-800 text-14px500">74</p>
+                            </div>
+                        </div>
+                        <div className="flex flex-col gap-y-2 border border-gray-200 rounded-xl min-w-[112px] p-4">
+                            <div className="bg-gray-200 rounded-xl w-fit p-1"><CalendarSVG /></div>
+                            <div className="">
+                                <h3 className="text-gray-600 text-12px400">Yeniləndi</h3>
+                                <p className="text-gray-800 text-14px500">01.20.2025</p>
+                            </div>
+                        </div>
                     </div>
                     <div className="flex items-center gap-x-3">
-                        <div className="rounded-[22px] w-1/2 border border-gray-200 flex justify-center px-4 py-2.5 gap-x-1.5 items-center text-16px600">
+                        <button
+                            className="rounded-[22px] w-1/2 border border-gray-200 flex justify-center px-4 py-2.5 gap-x-1.5 items-center text-16px600 hover:border-gray-300 hover:bg-gray-100 transition-all ease-in-out"
+                        >
                             Elanı paylaş
                             <ShareSVG />
-                        </div>
-                        <div className="rounded-[22px] w-1/2 border border-gray-200 flex justify-center px-4 py-2.5 gap-x-1.5 items-center text-16px600">
+                        </button>
+                        <button className="rounded-[22px] w-1/2 border border-gray-200 flex justify-center px-4 py-2.5 gap-x-1.5 items-center text-16px600 hover:border-gray-300 hover:bg-gray-100 transition-all ease-in-out">
                             Şikayət et
                             <InfoCircleSVG />
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>

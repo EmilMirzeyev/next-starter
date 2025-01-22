@@ -29,6 +29,7 @@ export type TableType<T extends { id: number | string }> = {
     title?: ReactNode;
     className?: string;
     trClassname?: string | ((row: T) => ClassValue);
+    thClassName?: string;
     total?: number;
     pagination?: { total?: number; perPage?: number };
 };

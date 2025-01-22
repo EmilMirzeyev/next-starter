@@ -14,6 +14,7 @@ export type SelectType<T extends SelectDataType> = {
   labelClassName?: string;
   placeholder?: string;
   trailing?: ReactNode;
+  leading?: ReactNode;
   label?: string;
   defaultText?: string;
   name: string;

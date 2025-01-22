@@ -68,7 +68,7 @@ export default async function RootLayout({
               <div className="min-h-screen relative flex flex-col">
                 {/* <Header /> */}
                 <div className="relative flex-grow z-10">{children}</div>
-                {/* <Footer /> */}
+                <Footer />
               </div>
               <ToastContainer
                 position="bottom-right"

@@ -34,7 +34,7 @@ const OTPConfirm = ({ setResetPasswordStep }) => {
             onSubmit={submitHandler}
             className="flex flex-col gap-y-8"
         >
-            <InfoAlertBox />
+            <InfoAlertBox description='Emailiniz spam bölməsini yoxlamağı unutmayın!' />
             <OtpInput
                 value={otp}
                 inputType="tel"
