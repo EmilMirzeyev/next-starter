@@ -39,7 +39,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       <div className="container flex justify-between item-center mt-6 mb-4">
-        <LogoV1SVG />
+        <Link href='/dashboard'>
+          <LogoV1SVG />
+        </Link>
         <div className="flex gap-x-4">
           <div>
             <HeaderProfile />

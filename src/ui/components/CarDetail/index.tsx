@@ -27,6 +27,7 @@ import { Thumbnails, Inline } from "yet-another-react-lightbox/plugins";
 import { slides } from "./data";
 import Button from "@/ui/shared/Button";
 import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
+import WhatsappImage from '@public/images/whatsapp.png'
 
 const CarDetail = () => {
     const { isExpanded, open, index, setIsExpanded, toggleOpen, updateIndex } =
@@ -297,7 +298,7 @@ const CarDetail = () => {
                             href={""}
                             className="rounded-[28px] border h-14 border-success-600 bg-success-50 text-success-600 text-15px600 flex justify-center items-center gap-x-1"
                         >
-                            <Whatsapp2SVG />
+                            <Image src={WhatsappImage} alt="Whatsapp" />
                             Whatsapp-da yaz
                         </Link>
                     </div>

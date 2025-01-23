@@ -8,6 +8,7 @@ import { getMessages } from 'next-intl/server';
 import { redirect } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Footer from "@/ui/containers/Footer";
+import DashboardFooter from "@/ui/containers/Footer/options/dashboard_footer";
 
 export const metadata: Metadata = {
   title: {
@@ -68,7 +69,8 @@ export default async function RootLayout({
               <div className="min-h-screen relative flex flex-col">
                 {/* <Header /> */}
                 <div className="relative flex-grow z-10">{children}</div>
-                <Footer />
+                {/* <Footer /> */}
+                <DashboardFooter/>
               </div>
               <ToastContainer
                 position="bottom-right"

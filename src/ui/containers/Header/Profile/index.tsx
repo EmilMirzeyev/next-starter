@@ -43,7 +43,7 @@ const HeaderProfile = () => {
                         </div>
                         <PopoverButton
                             as={Link}
-                            href={`${"BASE_URL_PORTAL"}/profile`}
+                            href='/dashboard/profile'
                             className="flex gap-x-3 p-2.5 bg-brand-600 text-white rounded-xl justify-between pl-3 hover:bg-brand-500 transition-all ease-in-out"
                         >
                             <h3 className="text-16px500">Yeni elan yerləştir</h3>
@@ -53,7 +53,7 @@ const HeaderProfile = () => {
                         </PopoverButton>
                         <PopoverButton
                             as={Link}
-                            href={`${"BASE_URL_PORTAL"}/profile`}
+                            href='/dashboard/profile'
                             className="flex justify-between rounded-xl gap-x-3 p-2.5 hover:bg-gray-100 transition-all ease-in-out"
                         >
                             <div className="flex items-center gap-x-3">
@@ -64,7 +64,7 @@ const HeaderProfile = () => {
                         </PopoverButton>
                         <PopoverButton
                             as={Link}
-                            href={`${"BASE_URL_PORTAL"}/profile`}
+                            href='/dashboard/profile'
                             className="flex gap-x-3 p-2.5 hover:bg-gray-100 rounded-xl transition-all ease-in-out"
                         >
                             <div>
@@ -74,7 +74,7 @@ const HeaderProfile = () => {
                         </PopoverButton>
                         <PopoverButton
                             as={Link}
-                            href={`${"BASE_URL_PORTAL"}/profile`}
+                            href='/dashboard/profile'
                             className="flex justify-between items-center p-2.5 hover:bg-gray-100 rounded-xl transition-all ease-in-out"
                         >
                             <div className="flex gap-x-3">
@@ -85,7 +85,7 @@ const HeaderProfile = () => {
                         </PopoverButton>
                         <PopoverButton
                             as={Link}
-                            href={`${"BASE_URL_PORTAL"}/profile`}
+                            href='/dashboard/personal-info'
                             className="flex gap-x-3 p-2.5 hover:bg-gray-100 rounded-xl transition-all ease-in-out"
                         >
                             <div>
@@ -95,7 +95,7 @@ const HeaderProfile = () => {
                         </PopoverButton>
                         <PopoverButton
                             as={Link}
-                            href={`${"BASE_URL_PORTAL"}/profile`}
+                            href='/dashboard/profile'
                             className="flex gap-x-3 p-2.5 hover:bg-gray-100 rounded-xl transition-all ease-in-out"
                         >
                             <div>
@@ -105,7 +105,7 @@ const HeaderProfile = () => {
                         </PopoverButton>
                         <PopoverButton
                             as={Link}
-                            href={`${"BASE_URL_PORTAL"}/profile`}
+                            href='/dashboard/profile'
                             className="flex gap-x-3 p-2.5 hover:bg-brand-50 rounded-xl transition-all ease-in-out"
                         >
                             <div>

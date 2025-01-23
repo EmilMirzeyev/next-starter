@@ -6,19 +6,18 @@ import Input from "@/ui/shared/Input";
 import CheckboxButton from "@/ui/shared/CheckboxButton";
 import Textarea from "@/ui/shared/Textarea";
 import RadioGroup from "@/ui/shared/RadioGroup";
+import Button from "@/ui/shared/Button";
+import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
+import { ArrowRightSVG, CheckSVG } from "@public/vectors";
 
 const CreateAnnouncementForm = () => {
     const { methods, submitHandler } = CreateAnnouncementFormVM();
     const radioData = [
         {
             id: 1,
-            render: (
-                <div>
-                    ulfat
-                </div>
-            )
-        }
-    ]
+            render: <div>ulfat</div>,
+        },
+    ];
     return (
         <Form
             methods={methods}
@@ -215,6 +214,30 @@ const CreateAnnouncementForm = () => {
             <div className="flex flex-col gap-y-5">
                 <h2 className="text-gray-800 text-18px600">Əlavə məlumatlar</h2>
                 <Textarea rows={7} name="additionalInfo" placeholder="Daxil edin..." />
+            </div>
+            <div className="flex items-center w-full gap-x-5">
+                <Button
+                    type="button"
+                    variant={ButtonVariantsEnum.OUTLINED}
+                    className="border border-gray-200 rounded-[28px] text-18px600 flex items-center gap-x-2.5 w-1/3"
+                >
+                    <ArrowRightSVG className="rotate-180" />
+                    Geriyə qayıt
+                </Button>
+                <Button
+                    type="button"
+                    variant={ButtonVariantsEnum.EMPTY}
+                    className="w-1/3 bg-gray-100 rounded-[28px]"
+                >
+                    Yadda saxla
+                </Button>
+                <Button
+                    type="submit"
+                    className="w-1/3 rounded-[28px] flex gap-x-2.5 items-center"
+                >
+                    Elanı yerləşdir
+                    <CheckSVG />
+                </Button>
             </div>
         </Form>
     );

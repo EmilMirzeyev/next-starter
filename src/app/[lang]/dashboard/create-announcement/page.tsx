@@ -1,4 +1,5 @@
 import CreateAnnouncementForm from '@/ui/features/CreateAnnouncementForm'
+import Link from 'next/link'
 import React from 'react'
 
 const CreateAnnouncement = () => {
@@ -18,6 +19,9 @@ const CreateAnnouncement = () => {
                     <p className="text-gray-800 text-16px400">Ad yerində qiymət yazmayın - bunun üçün ayrıca yer var.</p>
                     <p className="text-gray-800 text-16px400">Qadağan olunmuş məhsulları satmayın.</p>
                 </div>
+                <Link href={''} className="text-brand-500 text-14px400 underline underline-offset-[3px]">
+                    Bütün qaydaları oxu
+                </Link>
             </div>
         </div>
     )

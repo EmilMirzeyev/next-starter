@@ -150,7 +150,7 @@ const Select = <T extends SelectDataType>({
         </div>
       </Listbox>
       {hasError && (
-        <span role="alert" className="text-red-500 text-14px400">
+        <span role="alert" className="text-red-500 text-14px400 truncate">
           {handleError(name, methods)}
         </span>
       )}

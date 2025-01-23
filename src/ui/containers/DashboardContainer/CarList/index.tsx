@@ -1,5 +1,6 @@
 import AnnouncementTitle from "@/ui/components/AnnouncementTitle";
 import CarCard from "@/ui/components/CarCard";
+import Link from "next/link";
 
 const CarList = () => {
     return (
@@ -16,7 +17,9 @@ const CarList = () => {
                 <AnnouncementTitle title="Təcili alıram elanları" count={24} />
                 <div className="grid grid-cols-4 gap-6">
                     {Array.from({ length: 9 }, (_, i) => (
-                        <CarCard key={i} />
+                        <Link key={i} href={'/dashboard/1'}>
+                            <CarCard />
+                        </Link>
                     ))}
                 </div>
             </div>

@@ -25,7 +25,7 @@ export { default as PhoneTabletSVG } from "./phone_tablet.svg";
 export { default as Mail1SVG } from "./mail-01.svg";
 export { default as EyeSVG } from "./eye.svg";
 export { default as EyeOffSVG } from "./eye-off.svg";
-export { default as CheckSVG } from "./check3.svg";
+export { default as CheckS3VG } from "./check3.svg";
 export { default as PlusSVG } from "./plus.svg";
 export { default as MinusSVG } from "./minus.svg";
 export { default as ChatSVG } from "./message-text-circle-02.svg";
@@ -61,4 +61,9 @@ export { default as BellSVG } from "./bell.svg";
 export { default as Wallet2SVG } from "./wallet 1.svg";
 export { default as ChevronRightSVG } from "./chevron-right.svg";
 export { default as DoubleDownSVG } from "./double_down.svg";
+export { default as FacebookSVG } from "./facebook.svg";
+export { default as TelegramSVG } from "./telegram.svg";
+export { default as InstagramSVG } from "./instagram.svg";
+export { default as TikTokSVG } from "./tiktok.svg";
+export { default as CheckSVG } from "./check.svg";
 

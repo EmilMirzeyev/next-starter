@@ -6,7 +6,7 @@ const ScrollToTopButton = () => {
     return (
         <div
             onClick={scrollToTop}
-            className="size-12 border-2 rounded-full bg-transparent hover:bg-brand-200 hover:bg-opacity-15 hover:brightness-125 hover:cursor-pointer flex justify-center items-center border-[#9f8081] transition-all duration-200 delay-75"
+            className="size-12 border-2 rounded-full bg-brand-600  hover:brightness-125 hover:cursor-pointer flex justify-center items-center border-brand-600 transition-all duration-200"
         >
             <ArrowRightSVG className="-rotate-90 text-white" />
         </div>
