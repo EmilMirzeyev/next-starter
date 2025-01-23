@@ -66,4 +66,5 @@ export { default as TelegramSVG } from "./telegram.svg";
 export { default as InstagramSVG } from "./instagram.svg";
 export { default as TikTokSVG } from "./tiktok.svg";
 export { default as CheckSVG } from "./check.svg";
+export { default as Send3SVG } from "./send-03.svg";
 

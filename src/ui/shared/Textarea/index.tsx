@@ -22,10 +22,10 @@ const Textarea = ({
         <div className="w-full">
             <div
                 className={cn(
-                    "relative flex items-center gap-x-4 px-4 border border-solid rounded-lg bg-white focus-within:border-gray-400",
+                    "relative flex items-center gap-x-4 px-4 border border-solid rounded-lg bg-white",
                     props?.disabled ? "bg-gray-100" : "bg-white",
                     hasMethods && methods.formState.errors[name]
-                        ? "border-red"
+                        ? "border-error-500"
                         : "border-softBlack"
                 )}
             >
@@ -54,7 +54,7 @@ const Textarea = ({
                 </div>
             </div>
             {hasMethods && methods.formState.errors[name] && (
-                <span role="alert" className="text-red-500 text-14px400">
+                <span role="alert" className="text-error-500 text-14px400">
                     {methods.formState.errors[name]!.message as string}
                 </span>
             )}
