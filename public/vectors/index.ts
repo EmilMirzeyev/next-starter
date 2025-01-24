@@ -71,4 +71,6 @@ export { default as Send3SVG } from "./send-03.svg";
 export { default as TrashSVG } from "./trash-03.svg";
 export { default as Edit3SVG } from "./edit-03.svg";
 export { default as CalloutSVG } from "./Callout.svg";
+export { default as ExclamationSVG } from "./exclamation.svg";
+export { default as ExclamationBGSVG } from "./exclamationBG.svg";
 

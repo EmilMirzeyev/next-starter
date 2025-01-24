@@ -10,8 +10,13 @@ import CheckboxButton from "@/ui/shared/CheckboxButton";
 import { cn } from "@/core/utils/cn";
 
 const DashboardFilter = () => {
-    const { showMoreFilters, setShowMoreFilters, methods, submitHandler } =
-        DashboardFilterVM();
+    const {
+        showMoreFilters,
+        setShowMoreFilters,
+        methods,
+        submitHandler,
+        resetQueryParams,
+    } = DashboardFilterVM();
 
     return (
         <>
@@ -336,6 +341,7 @@ const DashboardFilter = () => {
                     <div className="flex gap-x-5 items-center justify-center mt-5">
                         <Button
                             type="button"
+                            onClick={resetQueryParams}
                             variant={ButtonVariantsEnum.EMPTY}
                             className="rounded-3xl h-12 bg-gray-50 flex gap-x-1.5 items-center"
                         >
@@ -343,8 +349,8 @@ const DashboardFilter = () => {
                             <RefreshSVG />
                         </Button>
                         <Button
-                            onClick={() => setShowMoreFilters((prev) => !prev)}
                             type="button"
+                            onClick={() => setShowMoreFilters((prev) => !prev)}
                             variant={ButtonVariantsEnum.EMPTY}
                             className="rounded-3xl text-brand-600 h-12 flex gap-x-1.5 items-center hover:bg-brand-50 duration-300 "
                         >

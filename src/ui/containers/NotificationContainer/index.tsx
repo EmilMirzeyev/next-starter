@@ -6,9 +6,15 @@ import Button from "@/ui/shared/Button";
 import { TableContainer } from "@/ui/shared/Table/table_container";
 import { Edit3SVG, PlusSVG, TrashSVG } from "@public/vectors";
 import { NotificationContainerVM } from "./notification_container.vm";
+import RemoveCarModal from "@/ui/components/RemoveCarModal";
 
 const NotificationContainer = () => {
-    const { addCarModalVisible, setAddCarModalVisible } = NotificationContainerVM()
+    const {
+        addCarModalVisible,
+        setAddCarModalVisible,
+        removeCarModalVisible,
+        setRemoveCarModalVisible,
+    } = NotificationContainerVM();
 
     const headData: any[] = [
         {
@@ -60,7 +66,11 @@ const NotificationContainer = () => {
                     <button className="bg-gray-100 rounded-full p-2 hover:brightness-95">
                         <Edit3SVG />
                     </button>
-                    <button className="bg-brand-25 rounded-full p-2 hover:bg-brand-50">
+                    <button
+                        type="button"
+                        onClick={() => setRemoveCarModalVisible(true)}
+                        className="bg-brand-25 rounded-full p-2 hover:bg-brand-50"
+                    >
                         <TrashSVG />
                     </button>
                 </div>
@@ -124,7 +134,14 @@ const NotificationContainer = () => {
                     perPage: bodyData.length / 5,
                 }}
             />
-            <AddCarModal visible={addCarModalVisible} setVisible={setAddCarModalVisible} />
+            <AddCarModal
+                visible={addCarModalVisible}
+                setVisible={setAddCarModalVisible}
+            />
+            <RemoveCarModal
+                visible={removeCarModalVisible}
+                setVisible={setRemoveCarModalVisible}
+            />
         </div>
     );
 };
