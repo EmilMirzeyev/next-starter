@@ -54,9 +54,12 @@ const Modal = ({
                 )}
               >
                 {(title || hasClose) && (
-                  <div className="flex items-center justify-between gap-4 pt-4">
-                    {title && <h3 className="text-24px600">{title}</h3>}
-
+                  <div className="flex items-center justify-between gap-4">
+                    {title && (
+                      <div className="text-24px600">
+                        {typeof title === "string" ? <h3>{title}</h3> : title}
+                      </div>
+                    )}
                     {hasClose && (
                       <button
                         onClick={() => setVisible(false)}

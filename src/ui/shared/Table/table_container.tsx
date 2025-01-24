@@ -70,7 +70,7 @@ export const TableContainer = <T extends { id: number | string }>({
               !!title && "border border-[#E3E8EF] p-4"
             )}
           >
-            {title && <div className="mb-4">{title}</div>}
+            {title && <div className="mb-6">{title}</div>}
             <div className="flex flex-col gap-y-10">
               <table className="table-fixed w-full text-left text-sm font-light">
                 <THead data={headData} thClassName={thClassName} />

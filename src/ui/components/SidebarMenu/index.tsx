@@ -1,9 +1,9 @@
 "use client";
 import { cn } from "@/core/utils/cn";
 import {
+    BellPlusSVG,
     HeartSVG,
     LockSVG,
-    SettingsSVG,
     User3SVG,
     WalletSVG,
 } from "@public/vectors";
@@ -40,10 +40,10 @@ const SidebarMenu = async () => {
             key: "personal-info",
         },
         {
-            href: "/dashboard/settings",
-            label: "Tənzimləmələr",
-            icon: <SettingsSVG />,
-            key: "settings",
+            href: "/dashboard/notifications",
+            label: "Bildirişlər",
+            icon: <BellPlusSVG />,
+            key: "notifications",
         },
     ];
 

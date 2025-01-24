@@ -1,7 +1,7 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, ReactNode } from "react";
 
 export type ModalType = PropsWithChildren & {
-  title?: string;
+  title?: string | ReactNode;
   hasClose?: boolean;
   dialogClassName?: string;
   closeButton?: boolean;

@@ -9,7 +9,7 @@ const BalansContainer = () => {
         {
             id: 1,
             name: <p className="text-14px700 text-brand-600">#</p>,
-            width: "52px",
+            width: "45px",
             render: (row: any) => (
                 <p className="text-gray-900 text-16px500">{row.id}</p>
             ),
@@ -17,7 +17,7 @@ const BalansContainer = () => {
         {
             id: 2,
             name: <p className="text-14px700 text-brand-600">Xidmətin adı</p>,
-            width: "150px",
+            width: "145px",
             render: (row: any) => (
                 <p className="text-gray-900 text-16px500">{row.serviceName}</p>
             ),
@@ -25,7 +25,7 @@ const BalansContainer = () => {
         {
             id: 3,
             name: "",
-            width: "223px",
+            width: "220px",
             render: (row: any) => (
                 <p className="text-gray-900 text-16px500 truncate">{row.text}</p>
             ),
@@ -33,15 +33,15 @@ const BalansContainer = () => {
         {
             id: 4,
             name: <p className="text-14px700 text-brand-600">Əvvəlki balans</p>,
-            width: "132px",
+            width: "125px",
             render: (row: any) => (
-                <p className="text-gray-900 text-16px500">{row.previousBalance}</p>
+                <p className="text-gray-900 text-16px500 text-center">{row.previousBalance}</p>
             ),
         },
         {
             id: 5,
             name: <p className="text-14px700 text-brand-600">Ödəniş miqdarı</p>,
-            width: "136px",
+            width: "130px",
             render: (row: any) => (
                 <div className="flex items-center gap-x-3">
                     <DoubleDownSVG
@@ -63,7 +63,7 @@ const BalansContainer = () => {
         {
             id: 6,
             name: <p className="text-14px700 text-brand-600">Son balans</p>,
-            width: "115px",
+            width: "110px",
             render: (row: any) => (
                 <p className="text-gray-900 text-16px500">{row.currentBalance}</p>
             ),

@@ -58,6 +58,7 @@ export { default as CheckHeartSVG } from "./check-heart.svg";
 export { default as User3SVG } from "./user-03.svg";
 export { default as PlusCircleSVG } from "./plus-circle.svg";
 export { default as BellSVG } from "./bell.svg";
+export { default as BellPlusSVG } from "./bell-plus.svg";
 export { default as Wallet2SVG } from "./wallet 1.svg";
 export { default as ChevronRightSVG } from "./chevron-right.svg";
 export { default as DoubleDownSVG } from "./double_down.svg";
@@ -67,4 +68,7 @@ export { default as InstagramSVG } from "./instagram.svg";
 export { default as TikTokSVG } from "./tiktok.svg";
 export { default as CheckSVG } from "./check.svg";
 export { default as Send3SVG } from "./send-03.svg";
+export { default as TrashSVG } from "./trash-03.svg";
+export { default as Edit3SVG } from "./edit-03.svg";
+export { default as CalloutSVG } from "./Callout.svg";
 
