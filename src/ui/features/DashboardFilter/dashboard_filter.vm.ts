@@ -33,6 +33,17 @@ type DashboardFilterModel = {
     notRepainted: boolean;
     onlyAccidentCars: boolean;
     onlyByOrder: boolean;
+    alloyWheels: boolean;
+    abs: boolean;
+    sunRoof: boolean;
+    centralLockingSystem: boolean;
+    xenonLamps: boolean;
+    rainSensor: boolean;
+    sideCurtains: boolean;
+    leatherInterior: boolean;
+    parkingRadar: boolean;
+    rearCamera: boolean;
+    seatVentilation: boolean;
 };
 
 export const DashboardFilterVM = () => {
@@ -69,6 +80,17 @@ export const DashboardFilterVM = () => {
             notRepainted: false,
             onlyAccidentCars: false,
             onlyByOrder: false,
+            alloyWheels: false,
+            abs: false,
+            sunRoof: false,
+            centralLockingSystem: false,
+            xenonLamps: false,
+            rainSensor: false,
+            sideCurtains: false,
+            leatherInterior: false,
+            parkingRadar: false,
+            rearCamera: false,
+            seatVentilation: false,
         }
     });
     const { replace } = useRouter();

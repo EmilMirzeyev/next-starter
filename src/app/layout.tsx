@@ -67,7 +67,7 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages}>
             <StoreProvider>
               <div className="min-h-screen relative flex flex-col">
-                {/* <Header /> */}
+                 {/* <Header />  */}
                 <div className="relative flex-grow z-10">{children}</div>
                 {/* <Footer /> */}
                 <DashboardFooter/>

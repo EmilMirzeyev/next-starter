@@ -1,10 +1,12 @@
 import { type FieldValues, useFormContext, UseFormReturn } from "react-hook-form"
 import { CheckboxButtonVMType } from "./checkbox_button.type"
+import { useEffect, useState } from "react"
 
-export const CheckboxButtonVM = ({ name, onChange }: CheckboxButtonVMType) => {
+export const CheckboxButtonVM = ({ name, value, onChange }: CheckboxButtonVMType) => {
     const methods: UseFormReturn<FieldValues, any, undefined> = useFormContext()
     // const hasMethods = methods && methods.formState
     // const mainValue = hasMethods ? methods.getValues(name) : value;
+    const [innerValue, setInnerValue] = useState(false);
 
     const handleCheck = (val: boolean) => {
         console.log('val checkbox', val)
@@ -12,8 +14,14 @@ export const CheckboxButtonVM = ({ name, onChange }: CheckboxButtonVMType) => {
             methods.setValue(name, val)
             methods.trigger(name)
         }
+        setInnerValue(val)
         onChange?.(val)
     }
 
-    return { handleCheck }
+    useEffect(() => {
+        const formValue = methods.getValues(name);
+        setInnerValue(!!formValue);
+    }, [methods.watch(name)]);
+
+    return { innerValue, handleCheck }
 }

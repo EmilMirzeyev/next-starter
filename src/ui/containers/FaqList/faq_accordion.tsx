@@ -3,17 +3,88 @@ import { cn } from "@/core/utils/cn";
 import Accordion from "@/ui/shared/Accordion";
 import { DownChevronSVG } from "@public/vectors";
 
-type FaqAccordionType = {
-    faqData: {
-        id: number;
-        title: string;
-        description: string;
-    }[];
-};
+// type FaqAccordionType = {
+//     faqData: {
+//         id: number;
+//         title: string;
+//         description: string;
+//     }[];
+// };
 
-const FaqAccordion = ({ faqData }: FaqAccordionType) => {
+const FaqAccordion = () => {
+    const faqData = [
+        {
+            id: 1,
+            title: "Kenapa bumi muter? Apa karena di depan nikah?",
+            description:
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore dicta quibusdam fugit nemo cumque omnis quis consequatur? Laudantium, eum nesciunt.",
+        },
+        {
+            id: 2,
+            title: "Kenapa bumi muter? Apa karena di depan nikah?",
+            description:
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore dicta quibusdam fugit nemo cumque omnis quis consequatur? Laudantium, eum nesciunt.",
+        },
+        {
+            id: 122,
+            title:
+                "Placerat vulputate tincidunt nunc aliquam in bibendum. Cursus aliquet scelerisque nec arcu et id.",
+            description:
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore dicta quibusdam fugit nemo cumque omnis quis consequatur? Laudantium, eum nesciunt.",
+        },
+        {
+            id: 12,
+            title:
+                "Placerat vulputate tincidunt nunc aliquam in bibendum. Cursus aliquet scelerisque nec arcu et id.",
+            description:
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore dicta quibusdam fugit nemo cumque omnis quis consequatur? Laudantium, eum nesciunt.",
+        },
+        {
+            id: 21,
+            title:
+                "Placerat vulputate tincidunt nunc aliquam in bibendum. Cursus aliquet scelerisque nec arcu et id.",
+            description:
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore dicta quibusdam fugit nemo cumque omnis quis consequatur? Laudantium, eum nesciunt.",
+        },
+        {
+            id: 22,
+            title:
+                "Placerat vulputate tincidunt nunc aliquam in bibendum. Cursus aliquet scelerisque nec arcu et id.",
+            description:
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore dicta quibusdam fugit nemo cumque omnis quis consequatur? Laudantium, eum nesciunt.",
+        },
+        {
+            id: 23,
+            title:
+                "Placerat vulputate tincidunt nunc aliquam in bibendum. Cursus aliquet scelerisque nec arcu et id.",
+            description:
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore dicta quibusdam fugit nemo cumque omnis quis consequatur? Laudantium, eum nesciunt.",
+        },
+        {
+            id: 232,
+            title:
+                "Placerat vulputate tincidunt nunc aliquam in bibendum. Cursus aliquet scelerisque nec arcu et id.",
+            description:
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore dicta quibusdam fugit nemo cumque omnis quis consequatur? Laudantium, eum nesciunt.",
+        },
+        {
+            id: 2322,
+            title:
+                "Placerat vulputate tincidunt nunc aliquam in bibendum. Cursus aliquet scelerisque nec arcu et id.",
+            description:
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore dicta quibusdam fugit nemo cumque omnis quis consequatur? Laudantium, eum nesciunt.",
+        },
+        {
+            id: 2232,
+            title:
+                "Placerat vulputate tincidunt nunc aliquam in bibendum. Cursus aliquet scelerisque nec arcu et id.",
+            description:
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore dicta quibusdam fugit nemo cumque omnis quis consequatur? Laudantium, eum nesciunt.",
+        },
+    ];
+
     return (
-        <>
+        <div className="space-y-6 w-3/4 max-w-[940px]">
             {faqData.map((faq, index) => (
                 <article key={faq.id} className="border border-gray-100 rounded-[20px]">
                     <Accordion
@@ -44,7 +115,7 @@ const FaqAccordion = ({ faqData }: FaqAccordionType) => {
                     </Accordion>
                 </article>
             ))}
-        </>
+        </div>
     );
 };
 
