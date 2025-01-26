@@ -10,7 +10,7 @@ export const ButtonVM = () => {
     [ButtonVariantsEnum.EMPTY]:
       "text-gray-950 text-18px600 border border-transparent bg-white [&>span]:bg-gray-300/50 [&_.spinner]:border-gray-800 hover:brightness-95 duration-300 transition-all ease-in-out",
     [ButtonVariantsEnum.BLACK]:
-      "bg-gray-950 text-18px600 text-white border border-transparent hover:brightness-150 disabled:bg-gray-300 disabled:text-gray-600 disabled:hover:brightness-100 disabled:cursor-not-allowed duration-300 transition-all ease-in-out",
+      "bg-gray-950 text-18px600 text-white border border-transparent hover:brightness-[1.7] disabled:bg-gray-300 disabled:text-gray-600 disabled:hover:brightness-100 disabled:cursor-not-allowed duration-300 transition-all ease-in-out",
   };
 
   const rippleEffect = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {

@@ -1,7 +1,9 @@
+import PersonalInfoForm from "@/ui/features/PersonalInfoForm"
+
 const PersonalInfo = () => {
     return (
-        <div>
-PersonalInfo
+        <div className="w-full">
+            <PersonalInfoForm />
         </div>
     )
 }

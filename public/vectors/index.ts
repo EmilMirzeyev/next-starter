@@ -73,4 +73,6 @@ export { default as Edit3SVG } from "./edit-03.svg";
 export { default as CalloutSVG } from "./Callout.svg";
 export { default as ExclamationSVG } from "./exclamation.svg";
 export { default as ExclamationBGSVG } from "./exclamationBG.svg";
+export { default as ShoppingBagSVG } from "./shopping-bag-03.svg";
+export { default as DollarSVG } from "./currency-dollar-circle.svg";
 

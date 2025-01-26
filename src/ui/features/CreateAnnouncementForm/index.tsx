@@ -5,19 +5,12 @@ import Form from "@/ui/shared/Form";
 import Input from "@/ui/shared/Input";
 import CheckboxButton from "@/ui/shared/CheckboxButton";
 import Textarea from "@/ui/shared/Textarea";
-import RadioGroup from "@/ui/shared/RadioGroup";
 import Button from "@/ui/shared/Button";
 import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
 import { ArrowRightSVG, CheckSVG } from "@public/vectors";
 
 const CreateAnnouncementForm = () => {
-    const { methods, submitHandler } = CreateAnnouncementFormVM();
-    const radioData = [
-        {
-            id: 1,
-            render: <div>ulfat</div>,
-        },
-    ];
+    const { router,methods, submitHandler } = CreateAnnouncementFormVM();
     return (
         <Form
             methods={methods}
@@ -218,6 +211,7 @@ const CreateAnnouncementForm = () => {
             <div className="flex items-center w-full gap-x-5">
                 <Button
                     type="button"
+                    onClick={()=>router.push('/dashboard')}
                     variant={ButtonVariantsEnum.OUTLINED}
                     className="border border-gray-200 rounded-[28px] text-18px600 flex items-center gap-x-2.5 w-1/3"
                 >

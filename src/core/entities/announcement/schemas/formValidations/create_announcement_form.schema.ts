@@ -37,7 +37,7 @@ export const createAnnouncementSchema = z.object({
     parkingRadar: z.boolean().optional(),
     rearCamera: z.boolean().optional(),
     seatVentilation: z.boolean().optional(),
-    additionalInfo: z.string().optional(),
+    additionalInfo: z.string(),
 });
 
 // Infer the TypeScript type

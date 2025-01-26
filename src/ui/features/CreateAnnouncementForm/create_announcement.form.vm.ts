@@ -2,9 +2,11 @@
 import type { CreateAnnouncementFormModel } from "@/core/entities/announcement/models/create_announcement_form.model";
 import { createAnnouncementSchema } from "@/core/entities/announcement/schemas/formValidations/create_announcement_form.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { FieldErrors, useForm } from "react-hook-form";
 
 export const CreateAnnouncementFormVM = () => {
+    const router = useRouter()
     const methods = useForm<CreateAnnouncementFormModel>({
         resolver: zodResolver(createAnnouncementSchema),
         defaultValues: {
@@ -57,5 +59,5 @@ export const CreateAnnouncementFormVM = () => {
 
     const submitHandler = methods.handleSubmit(onSubmit, onError);
 
-    return { methods, submitHandler };
+    return {router, methods, submitHandler };
 };
