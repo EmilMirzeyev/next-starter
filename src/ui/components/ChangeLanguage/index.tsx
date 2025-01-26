@@ -2,8 +2,6 @@
 import { cn } from "@/core/utils/cn";
 import { ChangeLanguageVM } from "./change_language.vm";
 import { DownChevronSVG } from "@public/vectors";
-import { useRouter } from "@/i18n/routing";
-import { i18n } from "@/core/lib/i18n.config";
 
 const ChangeLanguage = () => {
   const {
@@ -11,17 +9,10 @@ const ChangeLanguage = () => {
     isOpen,
     setIsOpen,
     lang,
-    // locales,
-    // removeLocaleFromPath,
-    // handleLanguageClick,
-    // pathname,
-    // searchParams,
+    hrefs,
+    locales,
+    changeLanguage
   } = ChangeLanguageVM();
-  const router = useRouter();
-
-  const changeLanguage = (locale: string) => {
-    router.replace(locale);
-  };
 
   return (
     <div
@@ -48,25 +39,10 @@ const ChangeLanguage = () => {
             isOpen ? "max-h-[200px] opacity-100" : "max-h-0 opacity-0"
           )}
         >
-          {/* {locales.map((locale, i) => (
-            <Link
-              key={i}
-              href={
-                `/${locale + removeLocaleFromPath(pathname)}` +
-                (searchParams ? `?${searchParams}` : "")
-              }
-              className={cn(
-                "py-3 px-5 block text-16px500 hover:bg-brand-900 hover:rounded-md duration-300 ease-in-out",
-                locale === lang && "bg-brand-900 rounded-md"
-              )}
-              onClick={(e) => changeLanguage(e)}
-            >
-              {locale.toLocaleUpperCase()}
-            </Link>
-          ))} */}
-          {i18n.locales.map((locale, i) => (
-            <button
-              key={i}
+          {locales.map((locale, i) => (
+            <a
+            key={i}
+            href={hrefs[i]}
               className={cn(
                 "py-3 px-5 block text-16px500 hover:bg-gray-100 rounded-md duration-300 ease-in-out",
                 locale === lang && "bg-gray-100 rounded-md"
@@ -74,7 +50,7 @@ const ChangeLanguage = () => {
               onClick={() => changeLanguage(locale)}
             >
               {locale.toLocaleUpperCase()}
-            </button>
+            </a>
           ))}
         </div>
       </div>

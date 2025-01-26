@@ -5,8 +5,11 @@ import Button from "@/ui/shared/Button";
 import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
 import { Link as NILink } from "@/i18n/routing";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const Header = () => {
+  const t = useTranslations('HomePage');
+
   return (
     <div className="container justify-between flex items-center py-8 text-white absolute top-0 z-20 w-full left-1/2 transform -translate-x-1/2">
       <div className="flex">
@@ -16,19 +19,19 @@ const Header = () => {
         <nav aria-label="Main Navigation">
           <ul className="flex items-center h-full gap-6 text-14px700">
             <li>
-              <Link href="#about">Niyə biz</Link>
+              <Link href="#about">{t('navigation.about')}</Link>
             </li>
             <li>
-              <Link href="#advantages">Yeniliklərimiz</Link>
+              <Link href="#advantages">{t('navigation.advantages')}</Link>
             </li>
             <li>
-              <Link href="#statistics">Statistika</Link>
+              <Link href="#statistics">{t('navigation.statistics')}</Link>
             </li>
             <li>
-              <Link href="#partners">Tərəfdaşlarımız</Link>
+              <Link href="#partners">{t('navigation.partners')}</Link>
             </li>
             <li>
-              <Link href="#faq">FAQ</Link>
+              <Link href="#faq">{t('navigation.faq')}</Link>
             </li>
           </ul>
         </nav>

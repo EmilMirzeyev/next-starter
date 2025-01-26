@@ -8,33 +8,17 @@ import ProfileImage from "@public/images/profile.png";
 import HeaderProfile from "@/ui/containers/Header/Profile";
 import ChangeLanguage from "@/ui/components/ChangeLanguage";
 import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
+import { useTranslations } from "next-intl";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-  const profileData = [
-    {
-      id: 1,
-      name: "Digər elanlara bax",
-    },
-    {
-      id: 2,
-      name: "Şəxsi kabinet",
-    },
-    {
-      id: 3,
-      name: "Abunəliklər",
-    },
-    {
-      id: 4,
-      name: "Balans",
-    },
-    {
-      id: 5,
-      name: "Tənzimləmələr",
-    },
-    {
-      id: 6,
-      name: "Hesabdan çıxış",
-    },
+  const t = useTranslations("Dashboard")
+  
+  const navItems = [
+    { href: "/", label: t("navigation.search") },
+    { href: "", label: t("navigation.carDealerships") },
+    { href: "/dashboard/privacy-policy", label: t("navigation.privacyPolicy") },
+    { href: "/dashboard/faq", label: t("navigation.faq") },
+    { href: "/dashboard/contact", label: t("navigation.contact") },
   ];
 
   return (
@@ -54,37 +38,15 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
       <div className="bg-gray-100 py-3">
         <nav className="flex items-center justify-between container text-14px500">
-          <ul className="flex items-center gap-x-8">
-            <li className="group">
-              <Link href={""} className="relative">
-                Axtar
-                <span className="absolute left-0 -bottom-[2.5px] w-full h-[1px] bg-black opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
-              </Link>
-            </li>
-            <li className="group">
-              <Link href={""} className="relative">
-                Avtosalonlar
-                <span className="absolute left-0 -bottom-[2.5px] w-full h-[1px] bg-black opacity-0 group-hover:opacity-100 transition-transform duration-300"></span>
-              </Link>
-            </li>
-            <li className="group">
-              <Link href="/dashboard/privacy-policy" className="relative">
-                Qaydalar və şərtlər
-                <span className="absolute left-0 -bottom-[2.5px] w-full h-[1px] bg-black opacity-0 group-hover:opacity-100 transition-transform duration-300"></span>
-              </Link>
-            </li>
-            <li className="group">
-              <Link href="/dashboard/faq" className="relative">
-                FAQ
-                <span className="absolute left-0 -bottom-[2.5px] w-full h-[1px] bg-black opacity-0 group-hover:opacity-100 transition-transform duration-300"></span>
-              </Link>
-            </li>
-            <li className="group">
-              <Link href="/dashboard/contact" className="relative">
-                Əlaqə
-                <span className="absolute left-0 -bottom-[2.5px] w-full h-[1px] bg-black opacity-0 group-hover:opacity-100 transition-transform duration-300"></span>
-              </Link>
-            </li>
+        <ul className="flex items-center gap-x-8">
+            {navItems.map(({ href, label }, idx) => (
+              <li key={idx} className="group">
+                <Link href={href} className="relative">
+                  {label}
+                  <span className="absolute left-0 -bottom-[2.5px] w-full h-[1px] bg-black opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
+                </Link>
+              </li>
+            ))}
           </ul>
           <ul className="flex items-center gap-x-4">
             <li className="group">

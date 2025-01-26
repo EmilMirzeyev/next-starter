@@ -1,6 +1,25 @@
 {
   "HomePage": {
     "title": "Salam dünya!",
-    "about": "Haqqında səhifəsinə keçin"
+    "about": "Haqqında səhifəsinə keçin",
+    "navigation": {
+      "about": "Niyə biz",
+      "advantages": "Yeniliklərimiz",
+      "statistics": "Statistika",
+      "partners": "Tərəfdaşlarımız",
+      "faq": "FAQ"
+    }
+  },
+  "Dashboard": {
+    "navigation": {
+      "search": "Axtar",
+      "carDealerships": "Avtosalonlar",
+      "privacyPolicy": "Qaydalar və şərtlər",
+      "faq": "FAQ",
+      "contact": "Əlaqə",
+      "barter": "Barter et",
+      "buySellUrgent": "Təcili al / sat",
+      "newAd": "Yeni elan"
+    }
   }
 }

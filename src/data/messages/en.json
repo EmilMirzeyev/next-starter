@@ -1,6 +1,25 @@
 {
   "HomePage": {
     "title": "Hello world!",
-    "about": "Go to the about page"
+    "about": "Go to the about page",
+    "navigation": {
+      "about": "Why Us",
+      "advantages": "Our Innovations",
+      "statistics": "Statistics",
+      "partners": "Our Partners",
+      "faq": "FAQ"
+    }
+  },
+  "Dashboard": {
+    "navigation": {
+      "search": "Search",
+      "carDealerships": "Car Dealerships",
+      "privacyPolicy": "Privacy Policy",
+      "faq": "FAQ",
+      "contact": "Contact",
+      "barter": "Barter",
+      "buySellUrgent": "Buy / Sell Urgently",
+      "newAd": "New Ad"
+    }
   }
 }

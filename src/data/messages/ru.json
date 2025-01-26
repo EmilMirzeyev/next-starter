@@ -1,6 +1,25 @@
 {
   "HomePage": {
     "title": "Привет, мир!",
-    "about": "Перейти на страницу о нас"
+    "about": "Перейти на страницу о нас",
+    "navigation": {
+      "about": "Почему мы",
+      "advantages": "Наши инновации",
+      "statistics": "Статистика",
+      "partners": "Наши партнеры",
+      "faq": "FAQ"
+    }
+  },
+  "Dashboard": {
+    "navigation": {
+    "search": "Поиск",
+    "carDealerships": "Автосалоны",
+    "privacyPolicy": "Правила и условия",
+    "faq": "Часто задаваемые вопросы",
+    "contact": "Контакты",
+    "barter": "Бартер",
+    "buySellUrgent": "Срочно купить / продать",
+    "newAd": "Новое объявление"
+    }
   }
 }
