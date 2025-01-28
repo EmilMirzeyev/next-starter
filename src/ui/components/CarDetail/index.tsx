@@ -366,7 +366,7 @@ const CarDetail = () => {
                                 </div>
                             </div>
                         </div>
-                        <Link href={""} className="w-full flex">
+                        <Link href="/dashboard/profile/1" className="w-full flex">
                             <Button
                                 variant={ButtonVariantsEnum.BLACK}
                                 className="rounded-[28px] flex gap-x-2.5 items-center w-full"

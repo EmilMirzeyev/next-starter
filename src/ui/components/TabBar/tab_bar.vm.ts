@@ -1,5 +1,5 @@
 "use clinet";
-import { useSearchParams,useRouter } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { TabBarVMType } from "./tab_bar.type";
 
@@ -33,7 +33,7 @@ export const TabBarVM = ({ tabParam }: TabBarVMType) => {
         } else {
             params.set(tabParam, String(id));
         }
-        router.push(`?${params.toString()}`);
+        router.replace(`?${params.toString()}`, { scroll: false });
     };
     return { indicatorStyle, currentTab, tabRefs, handleTabClick }
 }

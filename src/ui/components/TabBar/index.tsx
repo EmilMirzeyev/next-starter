@@ -9,7 +9,7 @@ const TabBar = ({ tabParam, tabData }: TabBarType) => {
     return (
         <div className="flex bg-gray-50 px-3 rounded-xl overflow-hidden relative">
             <div className="container">
-                <div className="flex space-x-2 border-b transition-all ease-in-out relative">
+                <div className="flex space-x-2 border-b border-gray-200 transition-all ease-in-out relative w-fit">
                     <span
                         className="absolute bottom-0 h-0.5 bg-brand-500 transition-all duration-300"
                         style={indicatorStyle}
