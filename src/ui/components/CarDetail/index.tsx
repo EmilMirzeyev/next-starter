@@ -14,7 +14,6 @@ import {
     Refresh5SVG,
     ShareSVG,
     ShoppingBagSVG,
-    Star2SVG,
 } from "@public/vectors";
 import Image from "next/image";
 import UserImage from "@public/images/user.png";

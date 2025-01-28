@@ -3,7 +3,7 @@ import { LocaleType } from "./i18n.config";
 type Props = { currentLang: LocaleType };
 
 let instance: unknown;
-let globalState: Props = {
+const globalState: Props = {
     currentLang: "az",
 };
 
@@ -25,6 +25,6 @@ class StateUtility {
     }
 }
 
-let languageInstance = Object.freeze(new StateUtility());
+const languageInstance = Object.freeze(new StateUtility());
 
 export default languageInstance;

@@ -10,8 +10,11 @@ import { DownChevronSVG } from "@public/vectors";
 //         description: string;
 //     }[];
 // };
+type FaqAccordionType = {
+    className?: string;
+}
 
-const FaqAccordion = () => {
+const FaqAccordion = ({ className }: FaqAccordionType) => {
     const faqData = [
         {
             id: 1,
@@ -84,7 +87,7 @@ const FaqAccordion = () => {
     ];
 
     return (
-        <div className="space-y-6 w-3/4 max-w-[940px]">
+        <div className={cn("space-y-6 w-3/4 max-w-[940px]", className)}>
             {faqData.map((faq, index) => (
                 <article key={faq.id} className="border border-gray-100 rounded-[20px]">
                     <Accordion
@@ -102,7 +105,7 @@ const FaqAccordion = () => {
                                         stroke="#000"
                                         className={cn(
                                             "duration-500 ease-in-out transform",
-                                            open ? "rotate-180" : ""
+                                            open ? "-rotate-180" : ""
                                         )}
                                     />
                                 </div>

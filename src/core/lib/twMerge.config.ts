@@ -1,5 +1,5 @@
+import fontSize from "@/data/constants/font_size";
 import { extendTailwindMerge } from "tailwind-merge";
-const fontSize = require("../../data/constants/font_size");
 
 const merge = extendTailwindMerge({
     extend: {

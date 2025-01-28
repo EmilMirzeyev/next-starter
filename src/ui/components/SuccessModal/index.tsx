@@ -10,6 +10,7 @@ const SuccessModal = ({
     description,
     buttonText,
     link,
+    action,
     visible,
     setVisible,
 }: SuccessModalType) => {
@@ -35,6 +36,7 @@ const SuccessModal = ({
                 </div>
                 <Link href={link}>
                     <Button
+                        onClick={action}
                         variant={ButtonVariantsEnum.BLACK}
                         className="flex gap-x-2.5 rounded-[28px] w-full"
                     >

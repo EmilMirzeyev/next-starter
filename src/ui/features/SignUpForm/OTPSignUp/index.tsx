@@ -4,9 +4,7 @@ import Form from "@/ui/shared/Form";
 import OtpInput from "react-otp-input";
 import { cn } from "@/core/utils/cn";
 import Button from "@/ui/shared/Button";
-import { ArrowRightSVG, SuccessModalSVG } from "@public/vectors";
-import Modal from "@/ui/shared/Modal";
-import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
+import { ArrowRightSVG } from "@public/vectors";
 import { OTPSignUpFormVM } from "./otp_sign_up.form.vm";
 import {
     CountdownCircleTimer,
@@ -14,6 +12,9 @@ import {
 } from "react-countdown-circle-timer";
 import { useState } from "react";
 import SuccessModal from "@/ui/components/SuccessModal";
+import { useAppDispatch } from "@/core/hooks/useRedux";
+import { setSignUpStep } from "@/core/store/auth/sign_steps.slice";
+import { SignUpStepsEnum } from "@/data/enum/sign_up_steps.enum";
 
 const OTPSignUpForm = () => {
     const {
@@ -45,6 +46,8 @@ const OTPSignUpForm = () => {
         console.log("retry");
     };
 
+    const dispatch = useAppDispatch()
+
     return (
         <>
             <Form
@@ -52,7 +55,7 @@ const OTPSignUpForm = () => {
                 onSubmit={submitHandler}
                 className="flex flex-col gap-y-8"
             >
-               <InfoAlertBox description='Emailiniz spam bölməsini yoxlamağı unutmayın!' />
+                <InfoAlertBox description='Emailiniz spam bölməsini yoxlamağı unutmayın!' />
                 <OtpInput
                     value={otp}
                     inputType="tel"
@@ -116,7 +119,8 @@ const OTPSignUpForm = () => {
                 </Button>
             </Form>
             <SuccessModal
-                link="/"
+                link="/signin"
+                action={() => dispatch(setSignUpStep(SignUpStepsEnum.SIGNUP))}
                 title="Qeydiyyatınız tamamlandı"
                 buttonText="Əsas səhifəyə keçid"
                 description="Müraciətiniz operatorlarımız tərəfindən baxılıb təsdiqləndikdən

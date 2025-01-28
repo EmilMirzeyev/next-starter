@@ -1,4 +1,3 @@
-// import Link from "next/link";
 import ChangeLanguage from "@/ui/components/ChangeLanguage";
 import { ArrowRightSVG, LogoV1SVG } from "@public/vectors";
 import Button from "@/ui/shared/Button";
@@ -8,36 +7,36 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 
 const Header = () => {
-  const t = useTranslations('HomePage');
+  const t = useTranslations("HomePage");
+  const navItems = [
+    { href: "#about", label: t("navigation.about") },
+    { href: "#advantages", label: t("navigation.advantages") },
+    { href: "#statistics", label: t("navigation.statistics") },
+    { href: "#partners", label: t("navigation.partners") },
+    { href: "#faq", label: t("navigation.faq") },
 
+  ];
   return (
     <div className="container justify-between flex items-center py-8 text-white absolute top-0 z-20 w-full left-1/2 transform -translate-x-1/2">
-      <div className="flex">
+      <div className="flex gap-x-16 items-center">
         <Link href="/" className="max-w-[153px]" aria-label="Homepage">
           <LogoV1SVG />
         </Link>
-        <nav aria-label="Main Navigation">
-          <ul className="flex items-center h-full gap-6 text-14px700">
-            <li>
-              <Link href="#about">{t('navigation.about')}</Link>
-            </li>
-            <li>
-              <Link href="#advantages">{t('navigation.advantages')}</Link>
-            </li>
-            <li>
-              <Link href="#statistics">{t('navigation.statistics')}</Link>
-            </li>
-            <li>
-              <Link href="#partners">{t('navigation.partners')}</Link>
-            </li>
-            <li>
-              <Link href="#faq">{t('navigation.faq')}</Link>
-            </li>
+       <nav aria-label="Main Navigation">
+          <ul className="flex gap-6 text-14px700">
+            {navItems.map(({ href, label }) => (
+              <li key={href} className="group relative">
+                <Link href={href}>
+                  {label}
+                  <span className="absolute left-0 -bottom-[2.5px] w-full h-[1px] bg-black opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>
       <div className="flex items-center gap-x-4">
-        <NILink href='/about'>
+        <NILink href="/signin">
           <Button
             aria-label="Login"
             variant={ButtonVariantsEnum.EMPTY}
@@ -55,12 +54,9 @@ const Header = () => {
 
 export default Header;
 
-
-
-
-
 //First version
-{/* <div className="container justify-between flex items-center py-8 text-white absolute top-0 z-20 w-full left-1/2 transform -translate-x-1/2">
+{
+  /* <div className="container justify-between flex items-center py-8 text-white absolute top-0 z-20 w-full left-1/2 transform -translate-x-1/2">
 <div className="flex">
   <Link href="/" className="max-w-[153px]" aria-label="Homepage">
     <LogoV1SVG />
@@ -98,4 +94,5 @@ export default Header;
   </NILink>
   <ChangeLanguage />
 </div>
-</div> */}
+</div> */
+}

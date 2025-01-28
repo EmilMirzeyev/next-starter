@@ -2,19 +2,6 @@
 import { useHeaderContent } from "@/core/hooks/userHeaderContent";
 import InfoAlertBox from "@/ui/components/InfoAlertBox";
 import TabBar from "@/ui/components/TabBar";
-import IncreaseBalanceForm from "@/ui/features/IncreaseBalanceForm";
-import {
-    ArrowRightSVG,
-    HeartSVG,
-    LayersThreeSVG,
-    LockSVG,
-    SettingsSVG,
-    User3SVG,
-    WalletSVG,
-} from "@public/vectors";
-import Link from "next/link";
-import BannerImage from "@public/images/Banner.jpg";
-import Image from "next/image";
 import CarCard from "@/ui/components/CarCard";
 
 const Profile = () => {
@@ -48,7 +35,7 @@ const Profile = () => {
         { id: 6, name: "Adi elanlar", count: 7 },
     ];
 
-    const isUser = false;
+    // const isUser = false;
 
     return (
         <div className="w-full flex flex-col gap-y-8">
@@ -63,7 +50,7 @@ const Profile = () => {
             <TabBar tabParam="tabId" tabData={tabData2} />
             <div className="grid grid-cols-3 gap-6">
                 {Array.from({ length: 7 }, (_, i) => (
-                    <CarCard />
+                    <CarCard key={i} />
                 ))}
             </div>
         </div>

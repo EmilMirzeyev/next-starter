@@ -12,7 +12,7 @@ const FAQList = () => {
                     </p>
                 </div>
                 <div className="space-y-6 w-3/4 max-w-[940px]">
-                    <FaqAccordion />
+                    <FaqAccordion className="w-full"/>
                 </div>
             </div>
         </section>

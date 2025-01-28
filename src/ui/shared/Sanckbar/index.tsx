@@ -1,4 +1,3 @@
-import { SnackbarStatusEnum } from "@/data/enum/snackbar_status.enum";
 import { toast, ToastOptions } from "react-toastify";
 
 const handleSnackbar = (

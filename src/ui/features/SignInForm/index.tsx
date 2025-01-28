@@ -51,7 +51,7 @@ const SignInForm = () => {
                     label="Yadda saxla"
                     labelClassName="text-14px500"
                 />
-                <Link href={""} className="text-brand-500 text-14px500">
+                <Link href='/resetpassword' className="text-brand-500 text-14px500">
                     Şifrəni unutdun?
                 </Link>
             </div>
@@ -62,7 +62,7 @@ const SignInForm = () => {
             <div className="flex justify-center gap-x-2">
                 <h3 className="text-gray-800 text-14px500">Hesabınız yoxdur?</h3>
                 <Link
-                    href={""}
+                    href="/signup"
                     className="border-b border-brand-500 text-brand-500 leading-none mb-2 mt-0.5 text-14px500"
                 >
                     Qeydiyyatdan keçin

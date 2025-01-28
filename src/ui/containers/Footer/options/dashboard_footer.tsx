@@ -10,6 +10,13 @@ import Contact from "../../Contact";
 import Link from "next/link";
 
 const DashboardFooter = () => {
+    const socialIcons = [
+        { Component: FacebookSVG, href: "/", hoverColor: "#EC1C24" },
+        { Component: TelegramSVG, href: "/", hoverColor: "#EC1C24" },
+        { Component: InstagramSVG, href: "/", hoverColor: "#EC1C24" },
+        { Component: TikTokSVG, href: "/", hoverColor: "#EC1C24" },
+    ];
+
     return (
         <div className='flex flex-col gap-y-16 mt-[120px]'>
             <Contact />
@@ -24,18 +31,14 @@ const DashboardFooter = () => {
                         </h3>
                     </div>
                     <ul className="flex items-center gap-x-2">
-                        <li className="group p-2 rounded-xl hover:bg-brand-50 size-12 flex items-center justify-center duration-200 cursor-pointer">
-                            <FacebookSVG className="fill-[#667085] group-hover:fill-[#EC1C24]" />
-                        </li>
-                        <li className="group p-2 rounded-xl hover:bg-brand-50 size-12 flex items-center justify-center duration-200 cursor-pointer">
-                            <TelegramSVG className="fill-[#667085] group-hover:fill-[#EC1C24]" />
-                        </li>
-                        <li className="group p-2 rounded-xl hover:bg-brand-50 size-12 flex items-center justify-center duration-200 cursor-pointer">
-                            <InstagramSVG className="fill-[#667085] group-hover:fill-[#EC1C24]" />
-                        </li>
-                        <li className="group p-2 rounded-xl hover:bg-brand-50 size-12 flex items-center justify-center duration-200 cursor-pointer">
-                            <TikTokSVG className="fill-[#667085] group-hover:fill-[#EC1C24]" />
-                        </li>
+                        {socialIcons.map(({ Component, /*hoverColor*/ }, idx) => (
+                            <li
+                                key={idx}
+                                className="group p-2 rounded-xl hover:bg-brand-50 flex items-center justify-center duration-200 cursor-pointer"
+                            >
+                                <Component className="fill-[#667085] group-hover:fill-[hoverColor]" />
+                            </li>
+                        ))}
                     </ul>
                     <div className="absolute -right-28"><ScrollToTopButton /></div>
                 </div>

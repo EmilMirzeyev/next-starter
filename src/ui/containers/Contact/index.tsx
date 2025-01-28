@@ -1,7 +1,5 @@
 import { WhatsappSVG } from "@public/vectors";
 import Link from "next/link";
-// import WhatsappImage from '@public/images/whatsapp.png'
-import Image from "next/image";
 
 const Contact = () => {
     return (
@@ -13,17 +11,16 @@ const Contact = () => {
                 <h2 id="contact-heading" className="text-36px700 text-white">
                     Hər-hansı məsələdə çətinliyiniz olduğu təqdirdə bizimlə əlaqə saxlayın
                 </h2>
-                <div className="flex flex-col gap-y-4 w-1/3">
+                <div className="flex flex-col items-center justify-center gap-y-4 min-w-[225px]">
                     <Link
                         href="/"
                         aria-label="Contact us on WhatsApp"
-                        className="flex items-center rounded-[38px] py-4 px-5 gap-x-4 bg-success-50 text-success-600 text-24px600"
+                        className="flex items-center rounded-[38px] py-4 px-5 pr-8 gap-x-4 bg-success-50 text-success-600 text-24px600"
                     >
-                        {/* <Image src={WhatsappImage} alt="Whatsapp image" className="size-10" /> */}
                         <WhatsappSVG fill='#5BD066' />
                         Bizə yazın
                     </Link>
-                    <p className="text-16px400 text-white text-center">
+                    <p className="text-16px400 text-[#c6b2b3] text-center">
                         CarBuy komandası
                     </p>
                 </div>

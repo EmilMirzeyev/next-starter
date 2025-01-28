@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 
 const TestButton = () => {
-    let [isPending, startTransition] = useTransition();
+    const [isPending, startTransition] = useTransition();
     const router = useRouter();
     console.log('isPending', isPending)
 

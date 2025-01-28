@@ -12,7 +12,7 @@ const SubscribeForm = () => {
         <Form methods={methods} onSubmit={submitHandler}>
             <Input
                 name="email"
-                className="rounded-[32px] h-16"
+                className="rounded-[32px] h-16 gap-x-2"
                 inputClassName="placeholder:text-16px400"
                 placeholder="olivia@untitledui.com"
                 leading={
@@ -23,7 +23,7 @@ const SubscribeForm = () => {
                 trailing={
                     <Button type="submit" className="rounded-3xl flex items-center gap-1.5 text-16px600 h-12 -mr-2">
                         Abonə ol
-                        <ArrowRightSVG className="text-white"/>
+                        <ArrowRightSVG className="text-white" />
                     </Button>
                 }
             />

@@ -14,13 +14,15 @@ export const PaginationVM = ({
     const currentPage = Number(searchParams.get("PageNumber")) || 1;
 
     const handlePageClick = (page: { selected: number }) => {
-        page.selected !== 0
-            ? params.set("PageNumber", (Number(page.selected) + 1).toString())
-            : params.delete("PageNumber");
-
+        if (page.selected !== 0) {
+            params.set("PageNumber", (Number(page.selected) + 1).toString());
+        } else {
+            params.delete("PageNumber");
+        }
         replace(pathname + `?${params.toString()}`);
         pageChange?.(page.selected);
     };
+
 
     return { pageCount, currentPage, searchParams, handlePageClick };
 };

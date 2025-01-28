@@ -33,18 +33,27 @@ export const InputVM = ({
 
 
   useUpdateEffect(() => {
-    dirty && isDebounce && onDebounce?.(innerValue!);
+    if (dirty && isDebounce) {
+      onDebounce?.(innerValue!);
+    }
   }, [debouncedValue]);
 
   const keyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-    type === "number" && ["e", "+"].includes(e.key) && e.preventDefault();
+    if (type === "number" && ["e", "+"].includes(e.key)) {
+      e.preventDefault();
+    }
   };
-
+  
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    isDebounce && setInnerValue(e.target.value);
-    !dirty && setDirty(true);
+    if (isDebounce) {
+      setInnerValue(e.target.value);
+    }
+    if (!dirty) {
+      setDirty(true);
+    }
     onChange?.(e.target.value);
   };
+  
 
   const numberInputOnWheelPreventChange = (
     e: React.WheelEvent<HTMLInputElement>

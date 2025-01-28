@@ -1,6 +1,6 @@
 import { useDebounce } from "@/core/hooks/useDebounce";
 import { useUpdateEffect } from "@/core/hooks/useUpdateEffect";
-import { ChangeEvent, KeyboardEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { FieldValues, UseFormReturn, useFormContext } from "react-hook-form";
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
 
 export const TextareaVM = ({
     name,
-    type,
+    // type,
     isDebounce,
     onDebounce,
     onChange,
@@ -26,12 +26,19 @@ export const TextareaVM = ({
     const hasMethods = methods && methods.formState;
 
     useUpdateEffect(() => {
-        dirty && isDebounce && onDebounce?.(innerValue!);
+        if (dirty && isDebounce) {
+            onDebounce?.(innerValue!);
+        }
     }, [debouncedValue]);
 
-    const changeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        isDebounce && setInnerValue(e.target.value);
-        !dirty && setDirty(true);
+
+    const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        if (isDebounce) {
+            setInnerValue(e.target.value);
+        }
+        if (!dirty) {
+            setDirty(true);
+        }
         onChange?.(e.target.value);
     };
 

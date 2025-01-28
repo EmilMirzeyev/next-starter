@@ -3,7 +3,7 @@ import { BASE_URL } from "@/data/utils/environments";
 import { cookies } from "next/headers";
 import languageInstance from "./languageSingleton";
 import { redirect } from "next/navigation";
-import { getRefreshToken } from "../utils/refresToken";
+// import { getRefreshToken } from "../utils/refresToken";
 
 type FetchInstanceType = {
   baseUrl?: string;
@@ -18,8 +18,8 @@ export default async function fetchInstance<T>({
   data,
   config,
 }: FetchInstanceType): Promise<Res<T>> {
-  const token = cookies().get("token")?.value;
-  const refreshToken = getRefreshToken();
+  const token = (await cookies()).get("token")?.value;
+  // const refreshToken = getRefreshToken();
   const headers = new Headers({
     "Content-Type": "application/json",
     Lang: languageInstance.getLang(),
@@ -56,6 +56,7 @@ export default async function fetchInstance<T>({
         const result: T = await res.json();
         return { data: result, isError: false };
       } catch (error) {
+        console.log('error', error)
         return { data: null as T, isError: false };
       }
     }

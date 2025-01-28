@@ -8,7 +8,7 @@ import type { PostModel } from "@/data/model/post.model";
 export const PostListVM = ({ posts }: PostListType) => {
   const [visible, setVisible] = useState(false);
   const [activePost, setActivePost] = useState<PostModel | null>(null);
-  let [isPending, startTransition] = useTransition();
+  const [isPending, startTransition] = useTransition();
 
   const requestState = useMemo(() => {
     if (posts?.length) return RequestStateEnum.SUCCESS;

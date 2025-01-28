@@ -1,13 +1,11 @@
 "use client";
-import { useState } from "react"
 import OTPConfirm from "./OTPConfirm"
 import EmailConfirm from "./EmailConfirm"
 import { ResetPasswordEnum } from "@/data/enum/reset_password.enum";
 import NewPassword from "./NewPassword";
+import { ResetPasswordFormType } from "./reset_password.form.type";
 
-
-const ResetPasswordForm = () => {
-  const [resetPasswordStep, setResetPasswordStep] = useState(ResetPasswordEnum.EMAILCONFIRM)
+const ResetPasswordForm = ({ resetPasswordStep, setResetPasswordStep }: ResetPasswordFormType) => {
 
   const renderResetPasswordStep = {
     [ResetPasswordEnum.EMAILCONFIRM]: <EmailConfirm setResetPasswordStep={setResetPasswordStep} />,

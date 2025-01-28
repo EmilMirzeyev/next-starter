@@ -1,11 +1,11 @@
 import { SignUpModel } from "@/core/entities/auth/models/sign_up.model";
 import { signUpFormSchema } from "@/core/entities/auth/schemas/formValidations/sign_up_form.schema";
-import { SignUpStepsEnum } from "@/data/enum/sign_up_steps.enum";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { FieldErrors, useFieldArray, useForm } from "react-hook-form";
 import { useAppDispatch } from "@/core/hooks/useRedux";
-import { setSignUpStep } from "@/core/store/auth/sign_up.slice";
+import { SignUpStepsEnum } from "@/data/enum/sign_up_steps.enum";
+import { setSignUpStep } from "@/core/store/auth/sign_steps.slice";
 
 export const SignUpFormVM = () => {
     const [userType, setUserType] = useState<number | null>(null);
@@ -69,7 +69,6 @@ export const SignUpFormVM = () => {
         userType,
         setUserType,
         inputType,
-        setInputType,
         togglePasswordVisibility,
     };
 };

@@ -1,7 +1,6 @@
 import PostRepository from "@/core/repositories/PostRepository/post.repository";
 import ClientToast from "@/ui/shared/ClientToast";
 import PostList from "@/ui/containers/PostList";
-import React, { Suspense } from "react";
 import { Metadata } from "next";
 import { getDictionary } from "@/core/helpers/getDictionary";
 import { LocaleType } from "@/core/lib/i18n.config";

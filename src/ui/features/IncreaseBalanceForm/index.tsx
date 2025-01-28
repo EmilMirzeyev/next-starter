@@ -4,7 +4,7 @@ import { IncreaseBalanceFormVM } from "./increase_balance.form.vm"
 import Input from "@/ui/shared/Input"
 import Button from "@/ui/shared/Button"
 import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum"
-import { PlusSVG, Wallet2SVG } from "@public/vectors"
+import { PlusSVG } from "@public/vectors"
 import Profile3Image from '@public/images/profile3.png'
 import Image from "next/image"
 import WalletImage from "@public/images/wallet 1.png"

@@ -1,4 +1,4 @@
-module.exports = {
+const fontSize = {
     "72px400": [
         "72px",
         {
@@ -395,3 +395,5 @@ module.exports = {
         },
     ],
 };
+
+export default fontSize;

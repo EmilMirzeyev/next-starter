@@ -5,16 +5,15 @@ const initialState = {
     signUpStep: SignUpStepsEnum.SIGNUP
 }
 
-export const signUpSlice = createSlice({
-    name: "signup",
+export const signStepsSlice = createSlice({
+    name: "sign",
     initialState,
     reducers: {
         setSignUpStep: (state, action: PayloadAction<SignUpStepsEnum>) => {
-            console.log('action.payload', action.payload)
             state.signUpStep = action.payload
-        }
+        },
     }
 })
 
-export const { setSignUpStep } = signUpSlice.actions
-export default signUpSlice.reducer
+export const { setSignUpStep } = signStepsSlice.actions
+export default signStepsSlice.reducer

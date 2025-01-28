@@ -10,6 +10,7 @@ export const OTPSignUpFormVM = () => {
 
     const onSubmit = (data: any) => {
         setSuccessModalVisible(true)
+        console.log('data', data)
     };
     const onError = () => { };
 

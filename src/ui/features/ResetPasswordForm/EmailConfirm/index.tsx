@@ -5,10 +5,11 @@ import Input from "@/ui/shared/Input";
 import { ArrowRightSVG, Mail1SVG } from "@public/vectors";
 import Button from "@/ui/shared/Button";
 import { EmailConfirmVM } from "./email_confirm.vm";
+import { ResetPasswordFormType } from "../reset_password.form.type";
 
-const EmailConfirm = ({setResetPasswordStep}) => {
+const EmailConfirm = ({ setResetPasswordStep }: Pick<ResetPasswordFormType, 'setResetPasswordStep'>) => {
     const { emailValue, setEmailValue, methods, submitHandler } =
-        EmailConfirmVM({setResetPasswordStep});
+        EmailConfirmVM({ setResetPasswordStep });
 
     return (
         <Form methods={methods} onSubmit={submitHandler} className="flex flex-col gap-y-8">
@@ -27,7 +28,7 @@ const EmailConfirm = ({setResetPasswordStep}) => {
                 type="submit"
                 className="rounded-[28px] flex gap-x-2.5 item-center w-full"
             >
-                Daxil ol
+                Davam et
                 <ArrowRightSVG
                     className="mt-0.5"
                     stroke={emailValue ? "#fff" : "#475467"}

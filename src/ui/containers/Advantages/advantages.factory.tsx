@@ -1,5 +1,7 @@
 import Button from "@/ui/shared/Button";
-import { ArrowRightSVG, TabpanelSVG } from "@public/vectors";
+import { ArrowRightSVG } from "@public/vectors";
+import AdvantagesImage from "@public/images/advantages.png";
+import Image from "next/image";
 
 const AdvantagesFactory = ({ activeTab }: { activeTab: number }) => {
     const enum AdvantagesEnum {
@@ -39,7 +41,7 @@ const AdvantagesFactory = ({ activeTab }: { activeTab: number }) => {
                         </Button>
                     </div>
                     <div className="w-1/2">
-                        <TabpanelSVG />
+                        <Image src={AdvantagesImage} alt="advantages" />
                     </div>
                 </>
             ),

@@ -1,7 +1,7 @@
 import { useClickOutside } from "@/core/hooks/useClickOutside";
 import { useRouter } from "@/i18n/routing";
 import { useParams, usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import { i18n } from "@/core/lib/i18n.config";
 
 export const ChangeLanguageVM = () => {

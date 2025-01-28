@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { PostCardType } from "./PostCard.type";
-import { EditSVG, UpChevronSVG, XSVG } from "@public/vectors";
+// import { EditSVG, UpChevronSVG, XSVG } from "@public/vectors";
 import Link from "next/link";
 import Button from "@/ui/shared/Button";
 import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";

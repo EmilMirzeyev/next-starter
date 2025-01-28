@@ -5,7 +5,7 @@ import { DashboardFilterVM } from "./dashboard_filter.vm";
 import Input from "@/ui/shared/Input";
 import Button from "@/ui/shared/Button";
 import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
-import { DownChevronSVG, PlusSVG, RefreshSVG } from "@public/vectors";
+import { DownChevronSVG, RefreshSVG } from "@public/vectors";
 import CheckboxButton from "@/ui/shared/CheckboxButton";
 import { cn } from "@/core/utils/cn";
 

@@ -55,7 +55,7 @@ const NewPassword = () => {
                 </Button>
             </Form>
             <SuccessModal
-                link="/"
+                link="/signin"
                 buttonText="Sistemə giriş et"
                 title="Şifrə yeniləmə tamamlandı"
                 description="Yeni təyin etdiyiniz şifrə ilə aşağıdakı linkdən sistemə daxil ola bilərsiniz"

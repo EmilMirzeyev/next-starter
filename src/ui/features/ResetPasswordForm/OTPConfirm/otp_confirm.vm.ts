@@ -1,8 +1,9 @@
 import { ResetPasswordEnum } from "@/data/enum/reset_password.enum";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { ResetPasswordFormType } from "../reset_password.form.type";
 
-export const OTPConfirmVM = ({ setResetPasswordStep }) => {
+export const OTPConfirmVM = ({ setResetPasswordStep }: Pick<ResetPasswordFormType, 'setResetPasswordStep'>) => {
     const [key, setKey] = useState(0);
     const [otp, setOtp] = useState("");
     const isOtpComplete = otp.length === 6;
@@ -11,6 +12,7 @@ export const OTPConfirmVM = ({ setResetPasswordStep }) => {
 
     const onSubmit = (data: any) => {
         setResetPasswordStep(ResetPasswordEnum.NEWPASSWORD)
+        console.log('data', data)
     };
     const onError = () => { };
 
@@ -19,8 +21,7 @@ export const OTPConfirmVM = ({ setResetPasswordStep }) => {
     const formatTime = (remainingTime: number) => {
         const minutes = Math.floor(remainingTime / 60);
         const seconds = remainingTime % 60;
-        return `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds
-            }`;
+        return `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
     };
 
     const handleRetry = () => {

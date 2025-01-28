@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import languageInstance from "@/core/lib/languageSingleton";
 import { i18n } from "@/core/lib/i18n.config";
 import { twMerge } from "tailwind-merge";
 import { usePathname } from "next/navigation";

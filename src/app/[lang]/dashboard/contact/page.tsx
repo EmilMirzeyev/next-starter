@@ -1,4 +1,3 @@
-import { useHeaderContent } from "@/core/hooks/userHeaderContent";
 import ContactUsForm from "@/ui/features/ContactUsForm";
 
 const ContactUs = () => {

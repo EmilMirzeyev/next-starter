@@ -1,7 +1,7 @@
 "use client";
 import ReactPaginate from "react-paginate";
 import type { PaginationType } from "./pagination.type";
-import { ArrowRightSVG, ChevronRightSVG, UpChevronSVG } from "@public/vectors";
+import {  ChevronRightSVG } from "@public/vectors";
 import { PaginationVM } from "./pagination.vm";
 import { cn } from "@/core/utils/cn";
 

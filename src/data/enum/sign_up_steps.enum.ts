@@ -1,4 +1,4 @@
 export const enum SignUpStepsEnum {
-    SIGNUP = "SIGNUP",
-    OTP = "OTP",
+    SIGNUP = "signup",
+    OTP = "otp",
 }

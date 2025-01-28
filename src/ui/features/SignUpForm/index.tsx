@@ -26,7 +26,6 @@ const SignUpForm = () => {
         userType,
         setUserType,
         inputType,
-        setInputType,
         togglePasswordVisibility
     } = SignUpFormVM();
 
@@ -191,7 +190,7 @@ const SignUpForm = () => {
                 <div className="flex justify-center gap-x-2">
                     <h3 className="text-gray-800 text-14px500">Artıq hesabınız var?</h3>
                     <Link
-                        href={""}
+                        href="/signin"
                         className="border-b border-brand-500 text-brand-500 leading-none mb-2 mt-0.5 text-14px500"
                     >
                         Daxil olun

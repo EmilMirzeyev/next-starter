@@ -1,8 +1,9 @@
-import { ImageSVG } from "@public/vectors";
+import AboutImage from "@public/images/about.png";
+import Image from "next/image";
 
 const About = () => {
     return (
-        <section id="about" className="bg-gray-50" aria-labelledby="about-title">
+        <section id="about" className="bg-[linear-gradient(to_right,_#fffefe_5%,_#fff6f7_30%,_#fffefe_60%,_#fff6f7_90%)]" aria-labelledby="about-title">
             <div className="container py-[120px] flex flex-col gap-y-16">
                 <div className="flex justify-between items-center">
                     <h2 className="text-gray-800 text-60px700 w-3/5">Niyə biz</h2>
@@ -32,7 +33,7 @@ const About = () => {
                             </p>
                         </div>
                     </article>
-                    <ImageSVG className="rounded-lg" />
+                    <Image src={AboutImage} alt="about"  className="rounded-[8px]"/>
                 </div>
             </div>
         </section>

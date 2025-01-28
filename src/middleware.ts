@@ -1,14 +1,12 @@
-import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { i18n, LocaleType } from "./core/lib/i18n.config";
+import { i18n } from "./core/lib/i18n.config";
 import createMiddleware from "next-intl/middleware";
-import { routing } from "./i18n/routing";
 
 export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
-  const pathnameIsMissingLocale = i18n.locales.every(
-    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
-  );
+  // const pathname = request.nextUrl.pathname;
+  // const pathnameIsMissingLocale = i18n.locales.every(
+  //   (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+  // );
 
   // const response = NextResponse.next();
   // response.headers.set(

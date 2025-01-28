@@ -16,7 +16,7 @@ export const PostFormVM = () => {
     values: postForm,
   });
 
-  let [isPending, startTransition] = useTransition();
+  const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
     dispatch(resetPost());

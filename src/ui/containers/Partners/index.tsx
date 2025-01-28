@@ -1,11 +1,6 @@
 import Swipper from "@/ui/components/Swipper";
 import {
-    Partner1SVG,
-    Partner2SVG,
-    Partner3SVG,
-    Partner4SVG,
-    Partner5SVG,
-    Partner6SVG,
+    LogoV1SVG,
     StarSVG,
 } from "@public/vectors";
 
@@ -19,52 +14,52 @@ const Partners = () => {
         {
             id: 1,
             name: "Delta Group",
-            icon: <Partner1SVG />,
+            icon: <LogoV1SVG />,
         },
         {
             id: 2,
             name: "Delta Group 2",
-            icon: <Partner2SVG />,
+            icon: <LogoV1SVG />,
         },
         {
             id: 3,
             name: "Delta Group 3",
-            icon: <Partner3SVG />,
+            icon: <LogoV1SVG />,
         },
         {
             id: 4,
             name: "Delta Group 3",
-            icon: <Partner4SVG />,
+            icon: <LogoV1SVG />,
         },
         {
             id: 5,
             name: "Delta Group 3",
-            icon: <Partner5SVG />,
+            icon: <LogoV1SVG />,
         },
         {
             id: 6,
             name: "Delta Group 3",
-            icon: <Partner6SVG />,
+            icon: <LogoV1SVG />,
         },
         {
             id: 7,
             name: "Delta Group 3",
-            icon: <Partner5SVG />,
+            icon: <LogoV1SVG />,
         },
         {
             id: 8,
             name: "Delta Group 3",
-            icon: <Partner6SVG />,
+            icon: <LogoV1SVG />,
         },
         {
             id: 9,
             name: "Delta Group 3",
-            icon: <Partner6SVG />,
+            icon: <LogoV1SVG />,
         },
         {
             id: 10,
             name: "Delta Group 3",
-            icon: <Partner6SVG />,
+            icon: <LogoV1SVG />,
         },
     ];
 

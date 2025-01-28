@@ -4,17 +4,17 @@ import SignUpForm from "@/ui/features/SignUpForm"
 import OTPSignUpForm from "@/ui/features/SignUpForm/OTPSignUp";
 
 const SignUpContainerFactory = () => {
-    const { signUpStep } = useAppSelector((store) => store.signup)
+    const { signUpStep } = useAppSelector((store) => store.signSteps)
 
     const handleSignUpSteps = () => {
         const renderStepComponent = {
             [SignUpStepsEnum.SIGNUP]: <SignUpForm />,
             [SignUpStepsEnum.OTP]: <OTPSignUpForm />,
         };
-        return renderStepComponent[signUpStep] || null;
+        return renderStepComponent[signUpStep];
     };
 
-    return {  handleSignUpSteps };
+    return { handleSignUpSteps };
 };
 
 export default SignUpContainerFactory;

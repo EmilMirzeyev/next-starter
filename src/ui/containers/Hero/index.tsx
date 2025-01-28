@@ -61,13 +61,13 @@ const Hero = () => {
                     </div>
                 </div>
                 <div className="flex relative -right-[56px]">
-                    <Awsome1SVG className="absolute z-20 left-7" aria-hidden="true" />
+                    <Awsome1SVG className="absolute z-10 left-7" aria-hidden="true" />
                     <Awsome2SVG
-                        className="absolute -top-[80px] z-20 left-80"
+                        className="absolute -top-[80px] z-10 left-80"
                         aria-hidden="true"
                     />
                     <Awsome3SVG
-                        className="absolute -bottom-[120px] z-20 left-72"
+                        className="absolute -bottom-[120px] z-10 left-72"
                         aria-hidden="true"
                     />
                     <PhoneTabletSVG className="absolute -top-[95px]" aria-hidden="true" />

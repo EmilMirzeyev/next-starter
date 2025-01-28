@@ -3,11 +3,8 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
 
-export const generateMetadata = async ({
-  params,
-}: {
-  params: { postId: string };
-}): Promise<Metadata> => {
+export const generateMetadata = async ({ params }: RouteParams): Promise<Metadata> => 
+{
   const { data, error, isError } = await PostRepository.getPostById(
     Number(params.postId)
   );
@@ -29,9 +26,14 @@ export const generateMetadata = async ({
     // },
   };
 };
+type RouteParams = {
+  params: {
+    postId: string;
+  };
+};
 
 const PostDetail = async ({ params }: { params: { postId: string } }) => {
-  const { data, error, isError } = await PostRepository.getPostById(
+  const { data, isError } = await PostRepository.getPostById(
     Number(params.postId)
   );
 

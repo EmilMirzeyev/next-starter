@@ -14,7 +14,6 @@ import {
 } from "@public/vectors";
 import { cn } from "@/core/utils/cn";
 import Button from "@/ui/shared/Button";
-import Link from "next/link";
 import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
 
 const PersonalInfoForm = () => {
