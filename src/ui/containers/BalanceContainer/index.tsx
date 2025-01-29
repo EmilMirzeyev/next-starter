@@ -1,10 +1,13 @@
+"use client";
 import { cn } from "@/core/utils/cn";
 import { RequestStateEnum } from "@/data/enum/request_state.enum";
 import { TableContainer } from "@/ui/shared/Table/table_container";
 import { DoubleDownSVG } from "@public/vectors";
-import React from "react";
+import { BalanceContainerVM } from "./balance_container.vm";
 
 const BalansContainer = () => {
+   BalanceContainerVM()
+
     const headData: any[] = [
         {
             id: 1,

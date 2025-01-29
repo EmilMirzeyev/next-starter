@@ -3,10 +3,22 @@ import { useHeaderContent } from "@/core/hooks/userHeaderContent";
 import InfoAlertBox from "@/ui/components/InfoAlertBox";
 import TabBar from "@/ui/components/TabBar";
 import CarCard from "@/ui/components/CarCard";
+import { useSearchParams } from "next/navigation";
 
 const Profile = () => {
+    const searchParams = useSearchParams();
+    const statusId = searchParams.get("statusId")
+
+    const tabData = [
+        { id: 1, name: "Dərc olunmuşlar", count: 7 },
+        { id: 2, name: "Vaxtı bitmişlər", count: 7 },
+        { id: 3, name: "Gözləmədə olanlar", count: 7 },
+    ];
+
+    const currentTab = tabData.find((tab) => tab.id === Number(statusId))?.name || tabData[0].name;
+
     useHeaderContent({
-        breadcrumbs: [
+        breadcrumbs: [  
             {
                 id: 1,
                 name: "Şəxsi kabinet",
@@ -14,17 +26,13 @@ const Profile = () => {
             },
             {
                 id: 2,
-                name: "Dərc olunmuşlar",
+                name: currentTab,
                 link: "",
             },
         ],
+        deps: statusId
     });
 
-    const tabData = [
-        { id: 1, name: "Dərc olunmuşlar", count: 7 },
-        { id: 2, name: "Vaxtı bitmişlər", count: 7 },
-        { id: 3, name: "Gözləmədə olanlar", count: 7 },
-    ];
 
     const tabData2 = [
         { id: 1, name: "Bütün elanlar", count: 7 },

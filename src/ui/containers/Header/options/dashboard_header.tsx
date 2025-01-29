@@ -9,7 +9,7 @@ const DashboardHeader = () => {
     const navItems = [
         { href: "/", label: t("navigation.search") },
         { href: "", label: t("navigation.carDealerships") },
-        { href: "/dashboard/privacy-policy", label: t("navigation.privacyPolicy") },
+        { href: "/dashboard/terms-conditions", label: t("navigation.termsConditions") },
         { href: "/dashboard/faq", label: t("navigation.faq") },
         { href: "/dashboard/contact", label: t("navigation.contact") },
     ];

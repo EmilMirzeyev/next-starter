@@ -18,8 +18,23 @@ import {
 import TabBar from "@/ui/components/TabBar";
 import Link from "next/link";
 import CarCard from "@/ui/components/CarCard";
+import { useHeaderContent } from "@/core/hooks/userHeaderContent";
 
 const Profile = () => {
+    useHeaderContent({
+        breadcrumbs: [
+            {
+                id: 1,
+                name: "Şəxsi kabinet",
+                link: "",
+            },
+            {
+                id: 2,
+                name: "Dərc olunmuşlar",
+                link: "",
+            },
+        ],
+    });
     const socialIcons = [
         { Icon: FacebookSVG, href: "/", label: "Facebook" },
         { Icon: TelegramSVG, href: "/", label: "Telegram" },

@@ -16,7 +16,7 @@ const Breadcrumbs = ({ crumbs }: BreadcrumbsType) => {
     >
       <Link
         key="home"
-        href="/"
+        href="/dashboard"
         className="group size-7 flex rounded-md hover:bg-brand-50 justify-center items-center transition-all ease-in-out"
       >
         <HomeSVG className="group-hover:text-brand-700" />

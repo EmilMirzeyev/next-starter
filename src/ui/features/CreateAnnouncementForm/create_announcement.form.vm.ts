@@ -46,6 +46,7 @@ export const CreateAnnouncementFormVM = () => {
             rearCamera: false,
             seatVentilation: false,
             additionalInfo: "",
+            carPhotos: [],
         },
     });
 
@@ -59,5 +60,5 @@ export const CreateAnnouncementFormVM = () => {
 
     const submitHandler = methods.handleSubmit(onSubmit, onError);
 
-    return {router, methods, submitHandler };
+    return { router, methods, submitHandler };
 };

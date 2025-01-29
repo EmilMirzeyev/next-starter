@@ -16,17 +16,17 @@ const OtherPagesBar = () => {
         {
             id: 3,
             name: "Şəxsi kabinet",
-            href: ""
+            href: "/dashboard/profile"
         },
         {
             id: 4,
             name: "Məxfilik siyasəti",
-            href: ""
+            href: "/dashboard/privacy-policy"
         },
         {
             id: 5,
             name: "Qaydalar və şərtlər",
-            href: "/dashboard/privacy-policy"
+            href: "/dashboard/terms-conditions"
         },
         {
             id: 6,
@@ -36,7 +36,7 @@ const OtherPagesBar = () => {
         {
             id: 7,
             name: "Əlaqə",
-            href: ""
+            href: "/dashboard/contact"
         },
     ];
     

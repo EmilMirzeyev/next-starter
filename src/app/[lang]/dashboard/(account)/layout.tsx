@@ -9,6 +9,7 @@ import Link from "next/link";
 import SidebarMenu from "@/ui/components/SidebarMenu";
 
 const Accountlayout = ({ children }: { children: React.ReactNode }) => {
+
     const isUser = false;
 
     return (

@@ -74,7 +74,7 @@ const HeaderProfile = () => {
                         </PopoverButton>
                         <PopoverButton
                             as={Link}
-                            href='/dashboard/profile'
+                            href='/dashboard/balance'
                             className="flex justify-between items-center p-2.5 hover:bg-gray-100 rounded-xl transition-all ease-in-out"
                         >
                             <div className="flex gap-x-3">

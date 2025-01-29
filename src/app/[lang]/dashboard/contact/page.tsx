@@ -1,6 +1,17 @@
+"use client";
+import { useHeaderContent } from "@/core/hooks/userHeaderContent";
 import ContactUsForm from "@/ui/features/ContactUsForm";
 
 const ContactUs = () => {
+    useHeaderContent({
+        breadcrumbs: [
+            {
+                id: 1,
+                name: "Əlaqə",
+                link: "",
+            },
+        ],
+    });
     return (
         <div className="container">
             <div className="my-8">

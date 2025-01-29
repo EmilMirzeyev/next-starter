@@ -1,9 +1,11 @@
 import { BreadCrumbType } from "@/ui/shared/Breadcrumbs/breadcrumbs.type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { DependencyList } from "react";
 
 export type HeaderSliceType = {
     title?: string | null;
     breadcrumbs?: BreadCrumbType[] | null
+    deps?: string | null | DependencyList
 }
 
 const initialState: HeaderSliceType = {

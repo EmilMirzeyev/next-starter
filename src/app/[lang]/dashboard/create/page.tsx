@@ -1,7 +1,18 @@
+"use client";
+import { useHeaderContent } from '@/core/hooks/userHeaderContent';
 import CreateAnnouncementForm from '@/ui/features/CreateAnnouncementForm'
 import Link from 'next/link'
 
 const CreateAnnouncement = () => {
+    useHeaderContent({
+        breadcrumbs: [
+            {
+                id: 1,
+                name: "Yeni elan",
+                link: "",
+            },
+        ],
+    });
     return (
         <div className="container mt-8 flex gap-x-6 relative">
             <div className='w-full'>

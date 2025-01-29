@@ -79,4 +79,6 @@ export { default as LocationSVG } from "./location.svg";
 export { default as ClockSVG } from "./clock.svg";
 export { default as YoutubeSVG } from "./youtube.svg";
 export { default as TwitterSVG } from "./twitter.svg";
+export { default as UploadSVG } from "./upload.svg";
+export { default as Image2SVG } from "./image-01.svg";
 

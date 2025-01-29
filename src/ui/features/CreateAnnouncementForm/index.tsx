@@ -8,9 +8,11 @@ import Textarea from "@/ui/shared/Textarea";
 import Button from "@/ui/shared/Button";
 import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
 import { ArrowRightSVG, CheckSVG } from "@public/vectors";
+import ListFileUpload from "@/ui/shared/ListFileUpload";
+import { Controller } from "react-hook-form";
 
 const CreateAnnouncementForm = () => {
-    const { router,methods, submitHandler } = CreateAnnouncementFormVM();
+    const { router, methods, submitHandler } = CreateAnnouncementFormVM();
     return (
         <Form
             methods={methods}
@@ -21,6 +23,19 @@ const CreateAnnouncementForm = () => {
                 <h2 className="text-gray-800 text-18px600">
                     Abtomobil haqqında məlumatlar
                 </h2>
+                <div>
+                    <Controller
+                        control={methods.control}
+                        name="carPhotos"
+                        render={({ field: { onChange } }) => (
+                            <ListFileUpload
+                                name="carPhotos"
+                                onChange={onChange}
+                                accept=".jpg, .jpeg, .png"
+                            />
+                        )}
+                    />
+                </div>
                 <div className="flex gap-x-5">
                     <div className="w-1/2 flex flex-col gap-y-5">
                         <Select
@@ -211,7 +226,7 @@ const CreateAnnouncementForm = () => {
             <div className="flex items-center w-full gap-x-5">
                 <Button
                     type="button"
-                    onClick={()=>router.push('/dashboard')}
+                    onClick={() => router.push("/dashboard")}
                     variant={ButtonVariantsEnum.OUTLINED}
                     className="border border-gray-200 rounded-[28px] text-18px600 flex items-center gap-x-2.5 w-1/3"
                 >

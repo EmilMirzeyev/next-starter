@@ -35,4 +35,5 @@ export type CreateAnnouncementFormModel = {
     rearCamera: boolean;
     seatVentilation: boolean;
     additionalInfo: string;
+    carPhotos: FileList[]
 }

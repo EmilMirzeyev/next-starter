@@ -4,6 +4,7 @@ import { PersonalInfoFormVM } from "./personfal_info.form.vm";
 import Select from "@/ui/shared/Select";
 import Input from "@/ui/shared/Input";
 import {
+    ArrowRightSVG,
     ChatSVG,
     EyeOffSVG,
     EyeSVG,
@@ -194,12 +195,18 @@ const PersonalInfoForm = () => {
             </div>
             <div className="flex gap-x-5">
                 <Button
-                onClick={()=>router.push('/dashboard')}
+                    onClick={() => router.push('/dashboard')}
                     type="button"
                     variant={ButtonVariantsEnum.EMPTY}
                     className="rounded-[28px] flex items-center gap-x-2.5 w-full bg-gray-100"
                 >
-                    İmtina et
+                    {userType ? " İmtina et" : (
+                        <div className="flex gap-x-2.5 items-center">
+                            <ArrowRightSVG className="rotate-180" />
+                            Geriyə qayıt
+                        </div>
+                    )}
+
                 </Button>
                 <Button
                     type="submit"

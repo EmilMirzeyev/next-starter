@@ -1,8 +1,6 @@
-"use client";
 import { useHeaderContent } from "@/core/hooks/userHeaderContent";
-import PersonalInfoForm from "@/ui/features/PersonalInfoForm"
 
-const PersonalInfo = () => {
+export const BalanceContainerVM = () => {
     useHeaderContent({
         breadcrumbs: [
             {
@@ -12,16 +10,10 @@ const PersonalInfo = () => {
             },
             {
                 id: 2,
-                name: "Tənzimləmələr",
+                name: "Balans",
                 link: "",
             },
         ],
     });
-    return (
-        <div className="w-full">
-            <PersonalInfoForm />
-        </div>
-    )
+    return {}
 }
-
-export default PersonalInfo
