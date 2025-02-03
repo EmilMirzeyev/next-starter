@@ -15,6 +15,8 @@ import {
 import Link from "next/link";
 import Input from "@/ui/shared/Input";
 import { cn } from "@/core/utils/cn";
+import { Controller } from "react-hook-form";
+import ListFileUpload from "@/ui/shared/ListFileUpload";
 
 const SignUpForm = () => {
     const {
@@ -26,7 +28,8 @@ const SignUpForm = () => {
         userType,
         setUserType,
         inputType,
-        togglePasswordVisibility
+        togglePasswordVisibility,
+        isPending,
     } = SignUpFormVM();
 
     return (
@@ -38,8 +41,8 @@ const SignUpForm = () => {
             >
                 <div className="flex flex-col gap-y-5">
                     <Select
-                        hasReset={false}
-                        name="userType"
+                        resetType="none"
+                        name="role"
                         data={[{ id: 1, name: "Alverçi" }]}
                         onChange={(val) => setUserType(val.id)}
                         placeholder="İstifadəçi tipini seçin"
@@ -47,11 +50,11 @@ const SignUpForm = () => {
                     {userType === 1 && (
                         <>
                             <div className="flex gap-x-5">
-                                <Input name="name" placeholder="Ad" />
-                                <Input name="surname" placeholder="Soyad" />
+                                <Input name="first_name" placeholder="Ad" />
+                                <Input name="last_name" placeholder="Soyad" />
                             </div>
                             <Input
-                                name="whatsappNumber"
+                                name="whatsapp_number"
                                 placeholder="WhatsApp nömrəniz"
                                 trailing={
                                     <div>
@@ -60,12 +63,12 @@ const SignUpForm = () => {
                                 }
                             />
                             {fields.map((field, index) => (
-                                <div key={field.id} className="flex items-center gap-x-5">
+                                <div key={field.id} className="flex items-start gap-x-5">
                                     <Input
-                                        name={`phoneNumberList.${index}.phoneNumber`}
+                                        name={`phone_numbers.${index}.phone_number`}
                                         placeholder="Telefon nömrəniz"
                                     />
-                                    <div className="flex gap-x-2">
+                                    <div className="flex gap-x-2 mt-2">
                                         {fields.length > 1 ? (
                                             <>
                                                 <button
@@ -82,7 +85,9 @@ const SignUpForm = () => {
                                                     type="button"
                                                     className={cn(
                                                         "bg-gray-50 rounded-[20px] p-2.5",
-                                                        fields.length - 1 === index ? "visible" : "invisible"
+                                                        fields.length - 1 === index
+                                                            ? "visible"
+                                                            : "invisible"
                                                     )}
                                                     onClick={appendPhoneNumber}
                                                 >
@@ -112,31 +117,91 @@ const SignUpForm = () => {
                                     </div>
                                 </div>
                             ))}
-                            <div className="flex gap-x-5">
+                            <div className="grid grid-cols-3 gap-x-5">
                                 <Select
                                     name="day"
+                                    resetType="inner"
+                                    valueType="object"
                                     data={[
                                         {
                                             id: 1,
-                                            name: "Monday",
+                                            name: "01",
+                                        },
+                                        {
+                                            id: 2,
+                                            name: "02",
                                         },
                                     ]}
                                     placeholder="Gün"
                                 />
-                                <Select name="month" data={[
-                                    {
-                                        id: 1,
-                                        name: "March",
-                                    },
-                                ]} placeholder="Ay" />
-                                <Select name="year" data={[
-                                    {
-                                        id: 1,
-                                        name: "2019",
-                                    },
-                                ]} placeholder="İl" />
+                                <Select
+                                    name="month"
+                                    resetType="inner"
+                                    valueType="object"
+                                    data={[
+                                        {
+                                            id: 1,
+                                            name: "01",
+                                        },
+                                        {
+                                            id: 2,
+                                            name: "02",
+                                        },
+                                        {
+                                            id: 3,
+                                            name: "03",
+                                        },
+                                    ]}
+                                    placeholder="Ay"
+                                />
+                                <Select
+                                    name="year"
+                                    resetType="inner"
+                                    valueType="object"
+                                    data={[
+                                        {
+                                            id: 1,
+                                            name: "2019",
+                                        },
+                                    ]}
+                                    placeholder="İl"
+                                />
                             </div>
                             <Input name="address" placeholder="Yaşayış ünvanı" />
+                            <div className="flex flex-col gap-y-2">
+                                <h3 className="text-gray-700 text-14px500">ŞV-nin arxa və qabaq şəkilləri</h3>
+                                <div>
+                                    <Controller
+                                        control={methods.control}
+                                        name="identity_images"
+                                        render={({ field: { onChange } }) => (
+                                            <ListFileUpload
+                                                disabled={methods.getValues("identity_images").length >= 2}
+                                                multiple
+                                                name="identity_images"
+                                                onChange={onChange}
+                                                accept=".jpg, .jpeg, .png"
+                                            />
+                                        )}
+                                    />
+                                </div>
+                            </div>
+                            <div className="flex flex-col gap-y-2">
+                                <h3 className="text-gray-700 text-14px500">Profil şəkli</h3>
+                                <div>
+                                    <Controller
+                                        control={methods.control}
+                                        name="profile_image"
+                                        render={({ field: { onChange } }) => (
+                                            <ListFileUpload
+                                                name="profile_image"
+                                                onChange={onChange}
+                                                accept=".jpg, .jpeg, .png"
+                                            />
+                                        )}
+                                    />
+                                </div>
+                            </div>
                             <Input
                                 name="email"
                                 placeholder="Email"
@@ -153,23 +218,24 @@ const SignUpForm = () => {
                                 trailing={
                                     <div
                                         className="cursor-pointer"
-                                        onClick={() => togglePasswordVisibility("password")
-                                        }
+                                        onClick={() => togglePasswordVisibility("password")}
                                     >
                                         {inputType.password === "text" ? <EyeSVG /> : <EyeOffSVG />}
                                     </div>
                                 }
                             />
                             <Input
-                                name="confirmPassword"
+                                name="password_confirmation"
                                 placeholder="Təkrar daxil edin"
-                                type={inputType.confirmPassword}
+                                type={inputType.password_confirmation}
                                 trailing={
                                     <div
                                         className="cursor-pointer"
-                                        onClick={() => togglePasswordVisibility("confirmPassword")}
+                                        onClick={() =>
+                                            togglePasswordVisibility("password_confirmation")
+                                        }
                                     >
-                                        {inputType.confirmPassword === "text" ? (
+                                        {inputType.password_confirmation === "text" ? (
                                             <EyeSVG />
                                         ) : (
                                             <EyeOffSVG />
@@ -181,6 +247,7 @@ const SignUpForm = () => {
                     )}
                 </div>
                 <Button
+                    isLoading={isPending}
                     disabled={!userType}
                     className="rounded-[28px] flex items-center gap-x-2.5 w-full"
                 >

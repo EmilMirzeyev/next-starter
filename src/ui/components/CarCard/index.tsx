@@ -5,7 +5,7 @@ import { BarterSVG, HeartSVG, PercentageSVG } from "@public/vectors";
 import { CarCardVM } from "./car_card.vm";
 
 const CarCard = () => {
-    const { liked, setLiked } = CarCardVM();
+    const { liked, toggleFavorite } = CarCardVM();
 
     return (
         <div className="w-fit group">
@@ -16,7 +16,7 @@ const CarCard = () => {
                     className="group-hover:scale-125 transition-transform duration-300 "
                 />
                 <button
-                    onClick={() => setLiked((prev) => !prev)}
+                    onClick={toggleFavorite}
                     className="absolute z-10 top-3.5 right-3 transition-all"
                 >
                     <HeartSVG

@@ -4,20 +4,28 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "carbuy-api.myhome.az",
+      },
+    ],
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
       use: [
         {
-          loader: '@svgr/webpack',
+          loader: "@svgr/webpack",
           options: {
-            svgo: true, // Optimize SVGs
+            svgo: true,
             svgoConfig: {
               plugins: [
                 {
-                  name: 'preset-default',
+                  name: "preset-default",
                   params: {
-                    overrides: { removeViewBox: false }, // Keep viewBox attribute
+                    overrides: { removeViewBox: false }, 
                   },
                 },
               ],

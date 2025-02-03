@@ -25,15 +25,25 @@ const ListFileUpload = ({
         handleDragEnter,
         handleDragLeave,
         handleDrop,
-        handleRef
-    } = ListFileUploadVM({ name, fileData, value, onChange });
+        handleRef,
+    } = ListFileUploadVM({
+        name,
+        fileData,
+        value,
+        onChange,
+        multiple: props.multiple,
+        disabled: props.disabled,
+    });
+
     const renderInput = () => (
         <>
             <div
                 className={cn(
-                    "relative flex items-center justify-between px-4 border h-32 rounded-xl transition-all hover:bg-gray-50 ease-in-out",
+                    "relative flex items-center justify-between px-4 border h-32 rounded-xl transition-all",
                     dragging ? "border-red-500 bg-red-50" : "border-gray-200 bg-white",
-                    props.disabled ? "bg-gray-100 border-gray-300" : "",
+                    props.disabled
+                        ? "bg-gray-100 border-gray-300 cursor-not-allowed"
+                        : "hover:bg-gray-50 ease-in-out",
                     errors[name] && uploadedFile && !uploadedFile.length
                         ? "border-error-500"
                         : ""
@@ -68,11 +78,14 @@ const ListFileUpload = ({
                     </label> */}
                     <input
                         ref={handleRef}
-                        multiple
+                        multiple={props.multiple}
                         id={name}
                         type="file"
                         onChange={handleChangeFile}
-                        className="opacity-0 cursor-pointer w-full h-full text-15px400 border left-0 top-0 absolute"
+                        className={cn(
+                            "opacity-0 w-full h-full text-15px400 border left-0 top-0 absolute",
+                            props.disabled ? "cursor-not-allowed" : "cursor-pointer"
+                        )}
                         {...props}
                     />
                 </div>
@@ -87,11 +100,11 @@ const ListFileUpload = ({
         const hasError =
             errors[name] && (errors[name] as FieldErrorsImpl<any>)[index];
         const imageUrl = URL.createObjectURL(file);
-        // const fileSizeInMB = file.size / (1024 * 1024); 
+        // const fileSizeInMB = file.size / (1024 * 1024);
         // const fileSize =
         //     fileSizeInMB < 1
         //         ? `${(file.size / 1024).toFixed(2)} KB`
-        //         : `${fileSizeInMB.toFixed(2)} MB`; 
+        //         : `${fileSizeInMB.toFixed(2)} MB`;
 
         const fileSize = (file.size / 1024 / 1024).toFixed(2);
         return (
@@ -102,14 +115,14 @@ const ListFileUpload = ({
                         hasError ? "border-error-500" : ""
                     )}
                 >
-                    <div className="flex gap-x-4 items-center border-r border-gray-100">
+                    <div className="flex gap-x-4 items-center">
                         <div>
                             <Image
                                 src={imageUrl}
                                 alt={file.name}
                                 width={50}
                                 height={44}
-                                className="h-11 w-[50px] rounded-lg object-cover"
+                                className="size-11 rounded-lg object-cover"
                             />
                         </div>
                         <div className="flex flex-col gap-y-1">
@@ -138,9 +151,9 @@ const ListFileUpload = ({
                         </div>
                     </div>
                 </div>
-                <div className="px-2">
+                <div>
                     {hasError && (
-                        <p role="alert" className="text-error-500 text-14px400">
+                        <p role="alert" className="text-error-500 text-14px400 mt-1">
                             {(errors[name] as any)[index].message as string}
                         </p>
                     )}
@@ -163,7 +176,7 @@ const ListFileUpload = ({
             )}
             <div>
                 {errors[name] && (
-                    <p role="alert" className="text-error-500 text-14px400">
+                    <p role="alert" className={cn("text-error-500 text-14px400")}>
                         {errors[name]!.message as string}
                     </p>
                 )}

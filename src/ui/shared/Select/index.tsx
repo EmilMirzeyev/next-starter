@@ -2,6 +2,7 @@
 import {
   Listbox,
   ListboxButton,
+  ListboxOption,
   ListboxOptions,
   Transition,
 } from "@headlessui/react";
@@ -27,7 +28,8 @@ const Select = <T extends SelectDataType>({
   leading,
   disabled,
   isReversed,
-  hasReset = true,
+  resetType = "side",
+  valueType = "id",
   multiple = false,
   variant = SelectOptionVariantEnum.BASE,
   value,
@@ -49,6 +51,7 @@ const Select = <T extends SelectDataType>({
     label,
     defaultText,
     placeholder,
+    valueType
   });
 
   const hasError =
@@ -67,7 +70,7 @@ const Select = <T extends SelectDataType>({
         <div className="relative">
           <ListboxButton
             className={cn(
-              "relative group disabled:bg-gray-100 flex items-center justify-between w-full cursor-pointer h-14 rounded-xl bg-white py-2 px-5 border text-left sm:text-sm",
+              "relative group disabled:bg-gray-100 flex items-center justify-between w-full cursor-pointer h-14 rounded-xl bg-white py-2 px-3 border text-left sm:text-sm",
               hasError ? "border-red-500" : "border-gray-300",
               buttonClassName
             )}
@@ -90,7 +93,7 @@ const Select = <T extends SelectDataType>({
             )}
             <span
               className={cn(
-                "flex items-center truncate duration-100 gap-x-1.5",
+                "flex items-center truncate duration-100 gap-x-1.5 overflow-hidden whitespace-nowrap",
                 {
                   "translate-y-1.5":
                     (Array.isArray(innerValue)
@@ -107,13 +110,13 @@ const Select = <T extends SelectDataType>({
               <span>{leading}</span>
               {getValueLabel()}
             </span>
-            <div className="flex items-center gap-2 pl-3 ml-auto">
+            <div className="flex items-center ml-auto">
               {!Array.isArray(innerValue) &&
                 innerValue?.id !== null &&
-                hasReset && (
+                resetType === 'side' && (
                   <div
                     className={cn(
-                      "bg-gray-200 rounded-full size-6 flex items-center justify-center",
+                      "rounded-full size-6 flex items-center justify-center mr-2",
                       disabled ? "cursor-not-allowed" : "cursor-pointer"
                     )}
                   >
@@ -121,16 +124,19 @@ const Select = <T extends SelectDataType>({
                   </div>
                 )}
               <span className="pointer-events-none relative duration-300 ease-in flex items-center group-data-[open]:rotate-0 rotate-180">
-                <UpChevronSVG className="size-3" />
+                <UpChevronSVG className="size-3 text-gray-500" />
               </span>
               <span className="cursor-pointer">{trailing}</span>
             </div>
           </ListboxButton>
           <Transition
             as={Fragment}
-            leave="transition ease-in duration-100"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+            enter="transition-all duration-200 ease-out"
+            enterFrom="opacity-0 transform translate-y-[-4px]"
+            enterTo="opacity-100 transform translate-y-0"
+            leave="transition-all duration-150 ease-in"
+            leaveFrom="opacity-100 transform translate-y-0"
+            leaveTo="opacity-0 transform translate-y-[20px]"
           >
             <ListboxOptions
               className={cn(
@@ -139,22 +145,37 @@ const Select = <T extends SelectDataType>({
               )}
             >
               {data.length ? (
-                data.map((d) => (
-                  <SelectOptionFactory key={d.id} data={d} variant={variant} />
-                ))
-              ) : (
-                <p className="text-center">Məlumat yoxdur</p>
-              )}
+
+                <>
+                  {resetType === "inner" && (
+                    <ListboxOption
+                      value={""}
+                      onClick={resetHandler}
+                      className="flex items-center gap-x-1 relative cursor-pointer select-none text-gray-900 p-2 rounded data-[focus]:bg-gray-100 data-[selected]:bg-blue-50"
+                    >
+                      <XSVG className="text-brand-500 size-[18px]"  />
+                      Sıfırla
+                    </ListboxOption>
+                  )}
+                  {
+                    data.map((d) => (
+                      <SelectOptionFactory key={d.id} data={d} variant={variant} />
+                    ))}
+                </>
+              )
+                : (
+                  <p className="text-center">Məlumat yoxdur</p>
+                )}
             </ListboxOptions>
           </Transition>
         </div>
-      </Listbox>
+      </Listbox >
       {hasError && (
         <span role="alert" className="text-red-500 text-14px400 truncate">
           {handleError(name, methods)}
         </span>
       )}
-    </div>
+    </div >
   );
 };
 

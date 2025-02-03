@@ -21,7 +21,7 @@ export default async function fetchInstance<T>({
   const token = (await cookies()).get("token")?.value;
   // const refreshToken = getRefreshToken();
   const headers = new Headers({
-    "Content-Type": "application/json",
+    // "Content-Type": "application/json",
     Lang: languageInstance.getLang(),
     ...config?.headers,
   });
@@ -29,12 +29,16 @@ export default async function fetchInstance<T>({
   if (token) {
     headers.append("Authorization", `Bearer ${token}`);
   }
+  const isFormData = data instanceof FormData;
+  if (!isFormData) {
+    headers.append("Content-Type", "application/json");
+  }
   const urlencoded =
     config?.headers?.["Content-Type" as keyof HeadersInit] ===
     "application/x-www-form-urlencoded";
   const fetchUrl = baseUrl + endpoint;
   const body = data
-    ? urlencoded
+    ? urlencoded || isFormData 
       ? (data as string)
       : JSON.stringify(data)
     : undefined;

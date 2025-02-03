@@ -13,7 +13,7 @@ import {
 import { useState } from "react";
 import SuccessModal from "@/ui/components/SuccessModal";
 import { useAppDispatch } from "@/core/hooks/useRedux";
-import { setSignUpStep } from "@/core/store/auth/sign_steps.slice";
+import { setSignUpStep } from "@/core/store/auth";
 import { SignUpStepsEnum } from "@/data/enum/sign_up_steps.enum";
 
 const OTPSignUpForm = () => {

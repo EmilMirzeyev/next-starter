@@ -42,5 +42,4 @@ export const createAnnouncementSchema = z.object({
   carPhotos: baseImageListSchema,
 });
 
-// Infer the TypeScript type
-export type CreateAnnouncementSchema = z.infer<typeof createAnnouncementSchema>;
+

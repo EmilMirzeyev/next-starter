@@ -1,11 +1,12 @@
 import { DashboardVM } from "./dashboard.vm"
 import DashboardContainer from "@/ui/containers/DashboardContainer"
 
-const Dashboard = () => {
-    const { } = DashboardVM()
+const Dashboard = async () => {
+    const { carFilters } = await DashboardVM()
+    
     return (
         <>
-            <DashboardContainer />
+            <DashboardContainer carFilters={carFilters} />
         </>
     )
 }

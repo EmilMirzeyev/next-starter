@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "@/core/hooks/useRedux";
 import Button from "@/ui/shared/Button";
 import { SignUpStepsEnum } from "@/data/enum/sign_up_steps.enum";
 import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
-import { setSignUpStep } from "@/core/store/auth/sign_steps.slice";
+import { setSignUpStep } from "@/core/store/auth";
 import SignTab from "@/ui/components/SignTab";
 import { usePathname } from "next/navigation";
 
@@ -33,10 +33,12 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
                     <p>Məxfilik siyasəti</p>
                 </div>
             </section>
-            <section className="ml-[50%] w-[50%] py-20 px-40 flex justify-center overflow-y-auto">
+            <section className="ml-[50%] w-[50%] py-20 px-10  flex justify-center overflow-y-auto">
                 <div className="flex flex-col gap-y-[72px] items-center max-w-[480px]">
-                    <LogoV1SVG className="max-w-24" />
-                      {["signup", "signin"].includes(currentPathname) &&
+                    <div>
+                        <LogoV1SVG className="max-w-24" />
+                    </div>
+                    {["signup", "signin"].includes(currentPathname) &&
                         signUpStep !== SignUpStepsEnum.OTP && (
                             <>
                                 <article className="flex flex-col gap-y-4">

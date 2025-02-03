@@ -1,13 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import postsSlice from "./post/posts.slice";
-import signStepsSlice from './auth/sign_steps.slice'
-import headerReducer from "./root/headerSlice";
+import signStepsSlice from './auth'
+import headerSlice from "./root/headerSlice";
+import mediaSlice from './media'
 
 export const store = configureStore({
   reducer: {
-    header: headerReducer,
+    header: headerSlice,
     posts: postsSlice,
-    signSteps: signStepsSlice
+    signSteps: signStepsSlice,
+    media: mediaSlice
   },
 
   middleware: (getDefaultMiddleware) =>

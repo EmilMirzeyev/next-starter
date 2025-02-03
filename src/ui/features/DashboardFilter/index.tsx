@@ -8,16 +8,17 @@ import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
 import { DownChevronSVG, RefreshSVG } from "@public/vectors";
 import CheckboxButton from "@/ui/shared/CheckboxButton";
 import { cn } from "@/core/utils/cn";
+import { DashboardFilterType } from "./dashboard_filter.type";
 
-const DashboardFilter = () => {
+const DashboardFilter = ({ carFilters }: DashboardFilterType) => {
     const {
-        showMoreFilters,
-        setShowMoreFilters,
         methods,
         submitHandler,
+        showMoreFilters,
+        setShowMoreFilters,
         resetQueryParams,
     } = DashboardFilterVM();
-
+    console.log('carFilters', carFilters.data)
     return (
         <>
             <div className="container my-8 flex flex-col gap-y-6">
@@ -27,8 +28,9 @@ const DashboardFilter = () => {
                     onSubmit={submitHandler}
                     className="flex flex-col gap-y-5"
                 >
-                    <div className="flex gap-x-5">
+                    <div className="grid grid-cols-4 gap-x-5">
                         <Select
+                            resetType="inner"
                             buttonClassName="h-11"
                             defaultText="Marka"
                             name="brand"
@@ -43,12 +45,7 @@ const DashboardFilter = () => {
                             buttonClassName="h-11"
                             defaultText="Model"
                             name="model"
-                            data={[
-                                {
-                                    id: 1,
-                                    name: "Fusion",
-                                },
-                            ]}
+                            data={carFilters.data.body_types || []}
                         />
                         <Select
                             buttonClassName="h-11"
@@ -73,8 +70,8 @@ const DashboardFilter = () => {
                             ]}
                         />
                     </div>
-                    <div className="flex gap-x-5">
-                        <div className="flex w-1/4">
+                    <div className="grid grid-cols-8 gap-x-5">
+                        <div className="flex col-span-2">
                             <Select
                                 defaultText="İl min."
                                 name="minYear"
@@ -98,7 +95,7 @@ const DashboardFilter = () => {
                                 ]}
                             />
                         </div>
-                        <div className="flex w-1/4">
+                        <div className="flex col-span-2">
                             <Input
                                 name="maxPrice"
                                 className="rounded-r-none h-11"
@@ -110,45 +107,40 @@ const DashboardFilter = () => {
                                 placeholder="max."
                             />
                         </div>
-                        <div className="flex w-1/4 gap-x-5">
-                            <Select
-                                hasReset={false}
-                                buttonClassName="h-11"
-                                className="w-full"
-                                defaultText="AZN"
-                                name="currency"
-                                data={[
-                                    {
-                                        id: 1,
-                                        name: "AZN",
-                                    },
-                                    {
-                                        id: 2,
-                                        name: "USD",
-                                    },
-                                    {
-                                        id: 3,
-                                        name: "EUR",
-                                    },
-                                ]}
-                            />
-                            <CheckboxButton name="credit" text="Kredit" />
-                        </div>
-                        <div className="flex gap-x-5 w-1/4">
-                            <CheckboxButton name="barter" text="Barter" />
-                            <Select
-                                buttonClassName="h-11"
-                                className="w-1/2"
-                                defaultText="Vəziyyəti"
-                                name="status"
-                                data={[
-                                    {
-                                        id: 1,
-                                        name: "Satisda",
-                                    },
-                                ]}
-                            />
-                        </div>
+                        <Select
+                            resetType="none"
+                            buttonClassName="h-11"
+                            defaultText="AZN"
+                            name="currency"
+                            data={[
+                                {
+                                    id: 1,
+                                    name: "AZN",
+                                },
+                                {
+                                    id: 2,
+                                    name: "USD",
+                                },
+                                {
+                                    id: 3,
+                                    name: "EUR",
+                                },
+                            ]}
+                        />
+                        <CheckboxButton name="credit" text="Kredit" />
+                        <CheckboxButton name="barter" text="Barter" />
+                        <Select
+                            resetType="inner"
+                            buttonClassName="h-11"
+                            defaultText="Vəziyyəti"
+                            name="status"
+                            data={[
+                                {
+                                    id: 1,
+                                    name: "Satisda",
+                                },
+                            ]}
+                        />
                     </div>
                     <div
                         className={cn(
@@ -178,12 +170,7 @@ const DashboardFilter = () => {
                                         defaultText="Yanacaq növü"
                                         name="fuelType"
                                         buttonClassName="h-11"
-                                        data={[
-                                            {
-                                                id: 1,
-                                                name: "Red",
-                                            },
-                                        ]}
+                                        data={carFilters.data.fuel_types || []}
                                     />
                                 </div>
                                 <div className="flex w-1/4">
@@ -204,12 +191,7 @@ const DashboardFilter = () => {
                                         defaultText="Sürətlər qutusu"
                                         name="gearbox"
                                         buttonClassName="h-11"
-                                        data={[
-                                            {
-                                                id: 1,
-                                                name: "Red",
-                                            },
-                                        ]}
+                                        data={carFilters.data.gearboxes || []}
                                     />
                                 </div>
                             </div>
@@ -308,12 +290,7 @@ const DashboardFilter = () => {
                                         defaultText="Hansı bazar üçün yığılıb"
                                         name="marketType"
                                         buttonClassName="h-11"
-                                        data={[
-                                            {
-                                                id: 1,
-                                                name: "Red",
-                                            },
-                                        ]}
+                                        data={carFilters.data.markets || []}
                                     />
                                 </div>
                             </div>
@@ -374,7 +351,9 @@ const DashboardFilter = () => {
                             variant={ButtonVariantsEnum.EMPTY}
                             className="rounded-3xl text-brand-600 h-12 flex gap-x-1.5 items-center hover:bg-brand-50 duration-300 "
                         >
-                            Daha çox filtr
+                            {
+                                showMoreFilters ? "Daha az göstər" : "Daha çox filtr"
+                            }
                             <DownChevronSVG
                                 className={cn(
                                     "text-brand-600 transition-all ease-in-out duration-200",

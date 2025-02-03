@@ -1,67 +1,65 @@
 import Swipper from "@/ui/components/Swipper";
 import {
-    LogoV1SVG,
+    // LogoV1SVG,
     StarSVG,
 } from "@public/vectors";
+import { PartnersVM } from "./partners.vm";
 
-const Partners = () => {
-    const swipperData = [
-        // {
-        //     id: 1,
-        //     name: "Delta Group",
-        //     icon: Partner1SVG,
-        // },
-        {
-            id: 1,
-            name: "Delta Group",
-            icon: <LogoV1SVG />,
-        },
-        {
-            id: 2,
-            name: "Delta Group 2",
-            icon: <LogoV1SVG />,
-        },
-        {
-            id: 3,
-            name: "Delta Group 3",
-            icon: <LogoV1SVG />,
-        },
-        {
-            id: 4,
-            name: "Delta Group 3",
-            icon: <LogoV1SVG />,
-        },
-        {
-            id: 5,
-            name: "Delta Group 3",
-            icon: <LogoV1SVG />,
-        },
-        {
-            id: 6,
-            name: "Delta Group 3",
-            icon: <LogoV1SVG />,
-        },
-        {
-            id: 7,
-            name: "Delta Group 3",
-            icon: <LogoV1SVG />,
-        },
-        {
-            id: 8,
-            name: "Delta Group 3",
-            icon: <LogoV1SVG />,
-        },
-        {
-            id: 9,
-            name: "Delta Group 3",
-            icon: <LogoV1SVG />,
-        },
-        {
-            id: 10,
-            name: "Delta Group 3",
-            icon: <LogoV1SVG />,
-        },
-    ];
+const Partners = async () => {
+    const { partners } = await PartnersVM()
+    console.log('partners index', partners)
+    // const swipperData = [
+    //     {
+    //         id: 1,
+    //         name: "Delta Group",
+    //         icon: <LogoV1SVG />,
+    //     },
+    //     {
+    //         id: 2,
+    //         name: "Delta Group 2",
+    //         icon: <LogoV1SVG />,
+    //     },
+    //     {
+    //         id: 3,
+    //         name: "Delta Group 3",
+    //         icon: <LogoV1SVG />,
+    //     },
+    //     {
+    //         id: 4,
+    //         name: "Delta Group 3",
+    //         icon: <LogoV1SVG />,
+    //     },
+    //     {
+    //         id: 5,
+    //         name: "Delta Group 3",
+    //         icon: <LogoV1SVG />,
+    //     },
+    //     {
+    //         id: 6,
+    //         name: "Delta Group 3",
+    //         icon: <LogoV1SVG />,
+    //     },
+    //     {
+    //         id: 7,
+    //         name: "Delta Group 3",
+    //         icon: <LogoV1SVG />,
+    //     },
+    //     {
+    //         id: 8,
+    //         name: "Delta Group 3",
+    //         icon: <LogoV1SVG />,
+    //     },
+    //     {
+    //         id: 9,
+    //         name: "Delta Group 3",
+    //         icon: <LogoV1SVG />,
+    //     },
+    //     {
+    //         id: 10,
+    //         name: "Delta Group 3",
+    //         icon: <LogoV1SVG />,
+    //     },
+    // ];
 
     return (
         <section id="partners">
@@ -76,7 +74,7 @@ const Partners = () => {
                     </div>
                     <h2 className="text-60px700 text-gray-800">Partnyorlarımız</h2>
                 </div>
-                <Swipper data={swipperData} />
+                <Swipper data={partners.data?.data || []} />
             </div>
         </section>
     );

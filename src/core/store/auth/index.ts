@@ -1,7 +1,8 @@
 import { SignUpStepsEnum } from "@/data/enum/sign_up_steps.enum";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import type { SignStepsSliceType } from "./auth_slice.type";
 
-const initialState = {
+const initialState: SignStepsSliceType = {
     signUpStep: SignUpStepsEnum.SIGNUP
 }
 

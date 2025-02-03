@@ -4,7 +4,7 @@ import { DashboardBreadcrumbsVM } from './dashboard_breadcrumbs.vm'
 
 const DashboardBreadcumbs = () => {
     const { header } = DashboardBreadcrumbsVM()
-
+    // const breadcrumbs = store.getState().header.breadcrumbs;
     return (
         <>
         <div className='container'>

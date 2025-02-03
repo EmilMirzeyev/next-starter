@@ -6,5 +6,17 @@ export const endpoints = {
     getUserById: (id: string) => `/users/${id}`,
     createUser: () => '/adduser',
     deleteUser: (id: number) => `/deleteUser/${id}`,
+  },
+  general: {
+    uploadMedia: () => '/media/store',
+  },
+  landing: {
+    getPartners: () => '/partners'
+  },
+  auth: {
+    signUpUser: () => '/auth/register',
+  },
+  car: {
+    getCarFilters: () => '/car/options'
   }
 };

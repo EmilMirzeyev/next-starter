@@ -1,6 +1,6 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
 import { FieldErrors, useForm } from "react-hook-form";
+import { useState } from "react";
 
 type DashboardFilterModel = {
     brand: number | null;
@@ -100,7 +100,11 @@ export const DashboardFilterVM = () => {
 
     const updateQueryParams = (data: DashboardFilterModel) => {
         Object.entries(data).forEach(([key, value]) => {
-            value ? params.set(key, value.toString()) : params.delete(key);
+            if (value) {
+                params.set(key, value.toString());
+            } else {
+                params.delete(key);
+            }
         });
     };
 
@@ -120,6 +124,7 @@ export const DashboardFilterVM = () => {
         replace(pathname)
         methods.reset()
     }
+
 
     return { showMoreFilters, setShowMoreFilters, methods, submitHandler, resetQueryParams };
 };

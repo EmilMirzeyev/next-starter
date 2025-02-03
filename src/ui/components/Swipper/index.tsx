@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import { FreeMode } from 'swiper/modules';
+import Image from "next/image";
 
 const Swipper = ({
     data,
@@ -21,13 +22,21 @@ const Swipper = ({
                     freeMode={true}
                     modules={[FreeMode]}
                 >
-                    {data.map((swiper) => (
+                    {data.map((swiper, index) => (
                         <SwiperSlide
-                            key={swiper.id}
+                            key={index}
                             className="w-fit py-3 px-6 flex gap-x-2 justify-center items-center rounded-lg"
                         >
                             <div className="flex items-center gap-3">
-                                <div className="text-14px600">{swiper.icon}</div>
+                                {/* <div className="text-14px600">{swiper.icon}</div> */}
+                                <Image
+                                    quality={100}
+                                    className="min-w-[182px] min-h-[100px]"
+                                    width={182}
+                                    height={100}
+                                    alt="Partner"
+                                    src={swiper.url}
+                                />
                             </div >
                         </SwiperSlide >
                     ))}

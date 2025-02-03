@@ -1,6 +1,10 @@
-"use client";
+"use client"
 import { useHeaderContent } from "@/core/hooks/userHeaderContent";
 import ContactUsForm from "@/ui/features/ContactUsForm";
+import MapImage from '@public/images/map.png'
+import { FacebookSVG, InstagramSVG, TelegramSVG, TikTokSVG } from "@public/vectors";
+import Image from "next/image";
+import Link from "next/link";
 
 const ContactUs = () => {
     useHeaderContent({
@@ -12,6 +16,21 @@ const ContactUs = () => {
             },
         ],
     });
+    // store.dispatch(setHeaderContent({
+    //     breadcrumbs: [
+    //         {
+    //             id: 1,
+    //             name: "Əlaqə",
+    //             link: "",
+    //         },
+    //     ],
+    // }));
+    const socialIcons = [
+        { Icon: FacebookSVG, href: "/", label: "Facebook" },
+        { Icon: TelegramSVG, href: "/", label: "Telegram" },
+        { Icon: InstagramSVG, href: "/", label: "Instagram" },
+        { Icon: TikTokSVG, href: "/", label: "TikTok" },
+    ];
     return (
         <div className="container">
             <div className="my-8">
@@ -37,6 +56,27 @@ const ContactUs = () => {
                     <div className="p-4 rounded-xl bg-gray-100 w-full flex flex-col gap-y-1">
                         <h3 className="text-gray-500 text-14px400">Adresimiz</h3>
                         <p className="text-gray-800 text-16px500">82 Amerige St. Poughkeepsie, NY 12603</p>
+                    </div>
+                    <div>
+                        <Image src={MapImage} alt="Mah" />
+                    </div>
+                    <div className="flex flex-col gap-y-2">
+                        <h3 className="text-gray-500 text-14px400">Sosial media hesablarımız</h3>
+                        <ul className="flex items-center gap-x-2">
+                            {socialIcons.map(({ Icon, label, href }) => (
+                                <li
+                                    key={label}
+                                    className="group p-2 rounded-xl hover:bg-brand-50 flex items-center justify-center duration-200 cursor-pointer"
+                                >
+                                    <Link href={href}>
+                                        <Icon
+                                            aria-label={label}
+                                            className="fill-[#667085] group-hover:fill-[#EC1C24]"
+                                        />
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </div>

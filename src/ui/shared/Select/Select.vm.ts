@@ -12,6 +12,7 @@ export const SelectVM = <T extends SelectDataType>({
   label,
   defaultText,
   placeholder,
+  valueType,
 }: SelectVMType<T>) => {
   type initialValueType = T | T[];
   const resetValue = multiple ? [] : ({ id: null, name: "" } as T);
@@ -26,7 +27,9 @@ export const SelectVM = <T extends SelectDataType>({
       if (!val) return [] as T[];
       if (Array.isArray(val)) {
         return val.every((v) => typeof v === "number")
-          ? (val.map((v) => typeof v === "number" && data.find((d) => d.id === v)) as T[])
+          ? (val.map(
+            (v) => typeof v === "number" && data.find((d) => d.id === v)
+          ) as T[])
           : (val.filter((v) => v?.id !== null) as T[]);
       }
       return [];
@@ -45,7 +48,13 @@ export const SelectVM = <T extends SelectDataType>({
   );
 
   const handleSelect = (val: initialValueType): void => {
-    const selectedValue = Array.isArray(val) ? val.map((v) => v.id) : val.id;
+    console.log('val', val)
+    const selectedValue =
+      valueType === "id"
+        ? Array.isArray(val)
+          ? val.map((v) => v.id)
+          : val.id
+        : val;
     if (methods) {
       methods.setValue(name, selectedValue);
       methods.trigger(name);
@@ -57,7 +66,7 @@ export const SelectVM = <T extends SelectDataType>({
     }
   };
 
-  const resetHandler = (e: MouseEvent<SVGSVGElement>): void => {
+  const resetHandler = (e: React.MouseEvent<HTMLDivElement>): void => {
     e.stopPropagation();
     if (methods) {
       methods.setValue(name, null);

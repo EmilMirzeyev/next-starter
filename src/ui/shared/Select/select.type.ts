@@ -20,7 +20,8 @@ export type SelectType<T extends SelectDataType> = {
   name: string;
   disabled?: boolean;
   isReversed?: boolean;
-  hasReset?: boolean;
+  resetType?: "inner" | "side" | "none"
+  valueType?: "id" | "object";
   variant?: SelectOptionVariantEnum;
 } & (
     | {
@@ -37,7 +38,7 @@ export type SelectType<T extends SelectDataType> = {
 
 export type SelectVMType<T extends SelectDataType> = Pick<
   SelectType<T>,
-  "data" | "value" | "onChange" | "name" | "multiple" | "label" | "placeholder" | "defaultText"
+  "data" | "value" | "onChange" | "name" | "multiple" | "label" | "placeholder" | "defaultText" | "valueType"
 >;
 
 export type SelectOptionFactoryType = <T extends SelectDataType>({

@@ -23,5 +23,5 @@ export type ListFileUploadType = DetailedHTMLProps<
 
 export type ListFileUploadVMType = Pick<
     ListFileUploadType,
-    "name" | "fileData" | "value" | "onChange"
+    "name" | "fileData" | "value" | "onChange" | "multiple" | "disabled"
 >;

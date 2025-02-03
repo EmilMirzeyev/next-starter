@@ -39,7 +39,7 @@ const PersonalInfoForm = () => {
         >
             <div className="flex flex-col gap-y-5">
                 <Select
-                    hasReset={false}
+                    resetType="none"
                     name="userType"
                     data={[{ id: 1, name: "Alverçi" }]}
                     onChange={(val) => setUserType(val.id)}
