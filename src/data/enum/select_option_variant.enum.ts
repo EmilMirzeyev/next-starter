@@ -1,4 +1,5 @@
 export const enum SelectOptionVariantEnum {
     BASE,
-    CHECKABLE
+    CHECKABLE,
+    RADIO
 }

@@ -1,14 +1,15 @@
+import type { AdvantagesFactoryType } from "./advantages.type";
 import Button from "@/ui/shared/Button";
 import { ArrowRightSVG } from "@public/vectors";
 import AdvantagesImage from "@public/images/advantages.png";
 import Image from "next/image";
 
-const AdvantagesFactory = ({ activeTab }: { activeTab: number }) => {
-    const enum AdvantagesEnum {
-        PARTNERSHIP = 1,
-        EASYCONNECTION,
-    }
+const enum AdvantagesEnum {
+    PARTNERSHIP = 1,
+    EASYCONNECTION,
+}
 
+const AdvantagesFactory = ({ activeTab }: AdvantagesFactoryType) => {
     const handleAdvantagesTab = () => {
         const renderAdvantagesTab = {
             [AdvantagesEnum.PARTNERSHIP]: (
@@ -22,30 +23,32 @@ const AdvantagesFactory = ({ activeTab }: { activeTab: number }) => {
                             your follow-up with our automatic reminders.
                         </p>
                         <ul className="flex flex-col gap-2">
-                            <li className="flex gap-4 items-center">
-                                <p className="size-2.5 bg-brand-700 rounded-full" />
-                                Automated renewal tracking and reminders
-                            </li>
-                            <li className="flex gap-4 items-center">
-                                <p className="size-2.5 bg-brand-700 rounded-full" />
-                                Powerful filters and search to access information quickly
-                            </li>
-                            <li className="flex gap-4 items-center">
-                                <p className="size-2.5 bg-brand-700 rounded-full" />
-                                Folder structure to stay organized
-                            </li>
+                            {[
+                                "Automated renewal tracking and reminders",
+                                "Powerful filters and search to access information quickly",
+                                "Folder structure to stay organized",
+                            ].map((text, index) => (
+                                <li key={index} className="flex items-center gap-4">
+                                    <span className="size-2.5 bg-brand-700 rounded-full" />
+                                    {text}
+                                </li>
+                            ))}
                         </ul>
-                        <Button className="rounded-[28px] mt-8 flex gap-x-2.5 items-center duration-300">
+                        <Button className="rounded-[28px] mt-8 flex gap-x-2.5 items-center">
                             Daxil ol
                             <ArrowRightSVG stroke="#fff" />
                         </Button>
                     </div>
                     <div className="w-1/2">
-                        <Image src={AdvantagesImage} alt="advantages" />
+                        <Image
+                            quality={100}
+                            src={AdvantagesImage}
+                            alt="Üstünlüklərimiz - Tərəfdaşlıq"
+                        />
                     </div>
                 </>
             ),
-            [AdvantagesEnum.EASYCONNECTION]: <h1>Asan əlaqə</h1>,
+            [AdvantagesEnum.EASYCONNECTION]: <h3>Asan əlaqə</h3>,
         };
         return renderAdvantagesTab[
             (activeTab as AdvantagesEnum) || AdvantagesEnum.PARTNERSHIP

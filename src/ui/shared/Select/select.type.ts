@@ -12,6 +12,7 @@ export type SelectType<T extends SelectDataType> = {
   className?: string;
   buttonClassName?: string;
   labelClassName?: string;
+  listboxOptionsClassName?: string;
   placeholder?: string;
   trailing?: ReactNode;
   leading?: ReactNode;

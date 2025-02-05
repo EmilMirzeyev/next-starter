@@ -8,9 +8,9 @@ const Contact = () => {
                 aria-labelledby="contact-heading"
                 className="container flex p-16 rounded-[32px] bg-brand-900 bg-[linear-gradient(to_right,_#2D0002_1%,_#59070B_30%,_#2D0002_60%,_#59070B_90%)]"
             >
-                <h2 id="contact-heading" className="text-36px700 text-white">
+                <h3 id="contact-heading" className="text-36px700 text-white">
                     Hər-hansı məsələdə çətinliyiniz olduğu təqdirdə bizimlə əlaqə saxlayın
-                </h2>
+                </h3>
                 <div className="flex flex-col items-center justify-center gap-y-4 min-w-[225px]">
                     <Link
                         href="/"

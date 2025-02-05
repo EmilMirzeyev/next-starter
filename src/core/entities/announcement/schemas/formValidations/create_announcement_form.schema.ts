@@ -39,7 +39,7 @@ export const createAnnouncementSchema = z.object({
   rearCamera: z.boolean().optional(),
   seatVentilation: z.boolean().optional(),
   additionalInfo: z.string(),
-  carPhotos: baseImageListSchema,
+  carPhotos: baseImageListSchema({}),
 });
 
 

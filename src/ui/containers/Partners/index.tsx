@@ -7,7 +7,6 @@ import { PartnersVM } from "./partners.vm";
 
 const Partners = async () => {
     const { partners } = await PartnersVM()
-    console.log('partners index', partners)
     // const swipperData = [
     //     {
     //         id: 1,

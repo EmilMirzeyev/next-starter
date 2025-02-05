@@ -1,5 +1,11 @@
 import SubscribeForm from "@/ui/features/SubscribeForm";
-import { FacebookSVG, InstagramSVG, LogoV1SVG, TelegramSVG, TikTokSVG } from "@public/vectors";
+import {
+  FacebookSVG,
+  InstagramSVG,
+  LogoV1SVG,
+  TelegramSVG,
+  TikTokSVG,
+} from "@public/vectors";
 import Link from "next/link";
 import ScrollToTopButton from "./scroll_to_top_button";
 
@@ -20,10 +26,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer
-      aria-label="Site Footer"
-      className=" pt-[196px] mt-60 pb-10"
-    >
+    <footer aria-label="Site Footer" className=" pt-[196px] mt-60 pb-10">
       <div className="container relative">
         <section
           aria-labelledby="subscribe-heading"
@@ -89,12 +92,17 @@ const Footer = () => {
                     key={label}
                     className="group p-2 rounded-xl hover:bg-brand-50 size-12 flex items-center justify-center duration-200 cursor-pointer"
                   >
-                    <Icon className="fill-[#667085] group-hover:fill-[#EC1C24]" aria-label={label} />
+                    <Icon
+                      className="fill-[#667085] group-hover:fill-[#EC1C24]"
+                      aria-label={label}
+                    />
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="absolute -right-28"><ScrollToTopButton /></div>
+            <div className="absolute -right-28">
+              <ScrollToTopButton />
+            </div>
           </nav>
           <div className="bg-gray-200 h-[1px] w-full" />
           <section

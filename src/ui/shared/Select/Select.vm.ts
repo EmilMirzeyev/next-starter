@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from "react";
+import {  useState } from "react";
 import type { SelectDataType, SelectVMType } from "./select.type";
 import { FieldValues, UseFormReturn, useFormContext } from "react-hook-form";
 import { useUpdateEffect } from "@/core/hooks/useUpdateEffect";

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   Listbox,
   ListboxButton,
@@ -23,6 +23,7 @@ const Select = <T extends SelectDataType>({
   className,
   buttonClassName,
   labelClassName,
+  listboxOptionsClassName,
   placeholder,
   trailing,
   leading,
@@ -51,7 +52,7 @@ const Select = <T extends SelectDataType>({
     label,
     defaultText,
     placeholder,
-    valueType
+    valueType,
   });
 
   const hasError =
@@ -113,7 +114,7 @@ const Select = <T extends SelectDataType>({
             <div className="flex items-center ml-auto">
               {!Array.isArray(innerValue) &&
                 innerValue?.id !== null &&
-                resetType === 'side' && (
+                resetType === "side" && (
                   <div
                     className={cn(
                       "rounded-full size-6 flex items-center justify-center mr-2",
@@ -136,16 +137,16 @@ const Select = <T extends SelectDataType>({
             enterTo="opacity-100 transform translate-y-0"
             leave="transition-all duration-150 ease-in"
             leaveFrom="opacity-100 transform translate-y-0"
-            leaveTo="opacity-0 transform translate-y-[20px]"
+            leaveTo="opacity-0"
           >
             <ListboxOptions
               className={cn(
                 "absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white p-2 ring-1 ring-black/5 z-50",
-                isReversed && "bottom-[calc(100%+10px)]"
+                isReversed && "bottom-[calc(100%+10px)]",
+                listboxOptionsClassName
               )}
             >
               {data.length ? (
-
                 <>
                   {resetType === "inner" && (
                     <ListboxOption
@@ -153,29 +154,31 @@ const Select = <T extends SelectDataType>({
                       onClick={resetHandler}
                       className="flex items-center gap-x-1 relative cursor-pointer select-none text-gray-900 p-2 rounded data-[focus]:bg-gray-100 data-[selected]:bg-blue-50"
                     >
-                      <XSVG className="text-brand-500 size-[18px]"  />
+                      <XSVG className="text-brand-500 size-[18px]" />
                       Sıfırla
                     </ListboxOption>
                   )}
-                  {
-                    data.map((d) => (
-                      <SelectOptionFactory key={d.id} data={d} variant={variant} />
-                    ))}
+                  {data.map((d) => (
+                    <SelectOptionFactory
+                      key={d.id}
+                      data={d}
+                      variant={variant}
+                    />
+                  ))}
                 </>
-              )
-                : (
-                  <p className="text-center">Məlumat yoxdur</p>
-                )}
+              ) : (
+                <p className="text-center">Məlumat yoxdur</p>
+              )}
             </ListboxOptions>
           </Transition>
         </div>
-      </Listbox >
+      </Listbox>
       {hasError && (
         <span role="alert" className="text-red-500 text-14px400 truncate">
           {handleError(name, methods)}
         </span>
       )}
-    </div >
+    </div>
   );
 };
 

@@ -12,7 +12,7 @@ import { DownChevronSVG } from "@public/vectors";
 // };
 type FaqAccordionType = {
     className?: string;
-}
+};
 
 const FaqAccordion = ({ className }: FaqAccordionType) => {
     const faqData = [
@@ -96,7 +96,7 @@ const FaqAccordion = ({ className }: FaqAccordionType) => {
                             <div className="text-start flex justify-between gap-4 items-center p-6">
                                 <div className="flex items-center gap-x-5">
                                     <p className="text-transparent text-20px700 bg-clip-text bg-gradient-to-b from-[#FF656B] to-[#FF656B]/0">
-                                        {(index + 1).toString().padStart(2, '0')}
+                                        {(index + 1).toString().padStart(2, "0")}
                                     </p>
                                     <p className="text-20px600">{faq.title}</p>
                                 </div>

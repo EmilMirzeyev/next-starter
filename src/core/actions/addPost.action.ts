@@ -1,5 +1,4 @@
 "use server";
-
 import { PostModel } from "@/data/model/post.model";
 import PostRepository from "../repositories/PostRepository/post.repository";
 

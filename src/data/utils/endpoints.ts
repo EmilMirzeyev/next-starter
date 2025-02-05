@@ -18,5 +18,8 @@ export const endpoints = {
   },
   car: {
     getCarFilters: () => '/car/options'
+  },
+  announcement: {
+    createAnnouncement: () => '/announcement/store'
   }
 };

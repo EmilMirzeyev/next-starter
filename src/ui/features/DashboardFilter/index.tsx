@@ -1,4 +1,3 @@
-"use client";
 import Form from "@/ui/shared/Form";
 import Select from "@/ui/shared/Select";
 import { DashboardFilterVM } from "./dashboard_filter.vm";

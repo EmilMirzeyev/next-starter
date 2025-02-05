@@ -6,8 +6,8 @@ import {
     TikTokSVG,
 } from "@public/vectors";
 import ScrollToTopButton from "../scroll_to_top_button";
-import Contact from "../../Contact";
 import Link from "next/link";
+import Contact from '@/ui/containers/Contact';
 
 const DashboardFooter = () => {
     const socialIcons = [

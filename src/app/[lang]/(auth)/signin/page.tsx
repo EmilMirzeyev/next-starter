@@ -2,7 +2,7 @@ import SignInContainer from '@/ui/containers/SignInContainer'
 
 const SignIn = () => {
     return (
-        <div className='w-full'>
+        <div className='w-full pb-20'>
             <SignInContainer />
         </div>
     )

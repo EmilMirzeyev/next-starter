@@ -3,7 +3,11 @@ import Image from "next/image";
 
 const About = () => {
     return (
-        <section id="about" className="bg-[linear-gradient(to_right,_#fffefe_5%,_#fff6f7_30%,_#fffefe_60%,_#fff6f7_90%)]" aria-labelledby="about-title">
+        <section
+            id="about"
+            aria-labelledby="about-title"
+            className="bg-[linear-gradient(to_right,_#fffefe_5%,_#fff6f7_30%,_#fffefe_60%,_#fff6f7_90%)]"
+        >
             <div className="container py-[120px] flex flex-col gap-y-16">
                 <div className="flex justify-between items-center">
                     <h2 className="text-gray-800 text-60px700 w-3/5">Niyə biz</h2>
@@ -33,7 +37,12 @@ const About = () => {
                             </p>
                         </div>
                     </article>
-                    <Image src={AboutImage} alt="about"  className="rounded-[8px]"/>
+                    <Image
+                        quality={100}
+                        src={AboutImage}
+                        alt="Müştərilər niyə bizi seçir?"
+                        className="rounded-lg"
+                    />
                 </div>
             </div>
         </section>

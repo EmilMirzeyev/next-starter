@@ -7,46 +7,28 @@ import Button from "@/ui/shared/Button";
 import { ArrowRightSVG } from "@public/vectors";
 import { OTPSignUpFormVM } from "./otp_sign_up.form.vm";
 import {
-    CountdownCircleTimer,
-    useCountdown,
+    CountdownCircleTimer
 } from "react-countdown-circle-timer";
-import { useState } from "react";
 import SuccessModal from "@/ui/components/SuccessModal";
-import { useAppDispatch } from "@/core/hooks/useRedux";
-import { setSignUpStep } from "@/core/store/auth";
-import { SignUpStepsEnum } from "@/data/enum/sign_up_steps.enum";
+
 
 const OTPSignUpForm = () => {
     const {
         methods,
         submitHandler,
-        otp,
         isOtpComplete,
+        otp,
+        key,
         setOtp,
+        setKey,
         successModalVisible,
         setSuccessModalVisible,
+        remainingTime,
+        formatTime,
+        handleRetry,
+        successModalAction
     } = OTPSignUpFormVM();
 
-    const { remainingTime } = useCountdown({
-        duration: 5,
-        colors: "#abc",
-    });
-
-    const [key, setKey] = useState(0);
-
-    const formatTime = (remainingTime: number) => {
-        const minutes = Math.floor(remainingTime / 60);
-        const seconds = remainingTime % 60;
-        return `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds
-            }`;
-    };
-
-    const handleRetry = () => {
-        setKey((prevKey) => prevKey + 1);
-        console.log("retry");
-    };
-
-    const dispatch = useAppDispatch()
 
     return (
         <>
@@ -59,7 +41,7 @@ const OTPSignUpForm = () => {
                 <OtpInput
                     value={otp}
                     inputType="tel"
-                    onChange={setOtp}
+                    onChange={(value) => setOtp(value)}
                     numInputs={6}
                     shouldAutoFocus
                     renderSeparator={<span className="mx-2"></span>}
@@ -120,7 +102,7 @@ const OTPSignUpForm = () => {
             </Form>
             <SuccessModal
                 link="/signin"
-                action={() => dispatch(setSignUpStep(SignUpStepsEnum.SIGNUP))}
+                action={successModalAction}
                 title="Qeydiyyatınız tamamlandı"
                 buttonText="Əsas səhifəyə keçid"
                 description="Müraciətiniz operatorlarımız tərəfindən baxılıb təsdiqləndikdən
