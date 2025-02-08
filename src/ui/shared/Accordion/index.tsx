@@ -21,7 +21,9 @@ const Accordion = ({
     return (
         <Disclosure defaultOpen={defaultOpen}>
             {({ open, close }) => {
-                setClose && open && close();
+                if (setClose && open) {
+                    close();
+                }
                 return (
                     <div
                         className={cn(

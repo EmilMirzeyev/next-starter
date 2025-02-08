@@ -9,15 +9,21 @@ import CheckboxButton from "@/ui/shared/CheckboxButton";
 import { cn } from "@/core/utils/cn";
 import { DashboardFilterType } from "./dashboard_filter.type";
 
-const DashboardFilter = ({ carFilters }: DashboardFilterType) => {
+const DashboardFilter = ({
+    brands,
+    models,
+    carFilters,
+}: DashboardFilterType) => {
     const {
         methods,
         submitHandler,
         showMoreFilters,
         setShowMoreFilters,
         resetQueryParams,
+        brandsQuery,
+        handleChangeBrandTypeId,
     } = DashboardFilterVM();
-    console.log('carFilters', carFilters.data)
+
     return (
         <>
             <div className="container my-8 flex flex-col gap-y-6">
@@ -33,18 +39,15 @@ const DashboardFilter = ({ carFilters }: DashboardFilterType) => {
                             buttonClassName="h-11"
                             defaultText="Marka"
                             name="brand"
-                            data={[
-                                {
-                                    id: 1,
-                                    name: "Ford",
-                                },
-                            ]}
+                            data={brands.data.data || []}
+                            onChange={(val) => handleChangeBrandTypeId(val.id)}
                         />
                         <Select
+                            disabled={!brandsQuery}
                             buttonClassName="h-11"
                             defaultText="Model"
                             name="model"
-                            data={carFilters.data.body_types || []}
+                            data={models.data.data || []}
                         />
                         <Select
                             buttonClassName="h-11"
@@ -320,17 +323,57 @@ const DashboardFilter = ({ carFilters }: DashboardFilterType) => {
                         <div className="flex flex-col gap-y-6">
                             <h3 className="text-black text-18px600">Avtomobilin təchizatı</h3>
                             <div className="flex flex-wrap gap-5">
-                                <CheckboxButton name="alloyWheels" text="Yüngül lehimli disklər" fieldClassName="w-fit" />
+                                <CheckboxButton
+                                    name="alloyWheels"
+                                    text="Yüngül lehimli disklər"
+                                    fieldClassName="w-fit"
+                                />
                                 <CheckboxButton name="abs" text="ABS" fieldClassName="w-fit" />
-                                <CheckboxButton name="sunRoof" text="Lyuk" fieldClassName="w-fit" />
-                                <CheckboxButton name="rainSensor" text="Yağış sensoru" fieldClassName="w-fit" />
-                                <CheckboxButton name="centralLockingSystem" text="Mərkəzi qapanma" fieldClassName="w-fit" />
-                                <CheckboxButton name="sideCurtains" text="Yan pərdələr" fieldClassName="w-fit" />
-                                <CheckboxButton name="parkingRadar" text="Park radarı" fieldClassName="w-fit" />
-                                <CheckboxButton name="leatherInterior" text="Dəri salon" fieldClassName="w-fit" />
-                                <CheckboxButton name="xenonLamps" text="Ksenon lampalar" fieldClassName="w-fit" />
-                                <CheckboxButton name="rearCamera" text="Arxa görüntü kamerası" fieldClassName="w-fit" />
-                                <CheckboxButton name="seatVentilation" text="Oturacaqların ventilyasiyası" fieldClassName="w-fit" />
+                                <CheckboxButton
+                                    name="sunRoof"
+                                    text="Lyuk"
+                                    fieldClassName="w-fit"
+                                />
+                                <CheckboxButton
+                                    name="rainSensor"
+                                    text="Yağış sensoru"
+                                    fieldClassName="w-fit"
+                                />
+                                <CheckboxButton
+                                    name="centralLockingSystem"
+                                    text="Mərkəzi qapanma"
+                                    fieldClassName="w-fit"
+                                />
+                                <CheckboxButton
+                                    name="sideCurtains"
+                                    text="Yan pərdələr"
+                                    fieldClassName="w-fit"
+                                />
+                                <CheckboxButton
+                                    name="parkingRadar"
+                                    text="Park radarı"
+                                    fieldClassName="w-fit"
+                                />
+                                <CheckboxButton
+                                    name="leatherInterior"
+                                    text="Dəri salon"
+                                    fieldClassName="w-fit"
+                                />
+                                <CheckboxButton
+                                    name="xenonLamps"
+                                    text="Ksenon lampalar"
+                                    fieldClassName="w-fit"
+                                />
+                                <CheckboxButton
+                                    name="rearCamera"
+                                    text="Arxa görüntü kamerası"
+                                    fieldClassName="w-fit"
+                                />
+                                <CheckboxButton
+                                    name="seatVentilation"
+                                    text="Oturacaqların ventilyasiyası"
+                                    fieldClassName="w-fit"
+                                />
                             </div>
                         </div>
                     </div>
@@ -350,9 +393,7 @@ const DashboardFilter = ({ carFilters }: DashboardFilterType) => {
                             variant={ButtonVariantsEnum.EMPTY}
                             className="rounded-3xl text-brand-600 h-12 flex gap-x-1.5 items-center hover:bg-brand-50 duration-300 "
                         >
-                            {
-                                showMoreFilters ? "Daha az göstər" : "Daha çox filtr"
-                            }
+                            {showMoreFilters ? "Daha az göstər" : "Daha çox filtr"}
                             <DownChevronSVG
                                 className={cn(
                                     "text-brand-600 transition-all ease-in-out duration-200",

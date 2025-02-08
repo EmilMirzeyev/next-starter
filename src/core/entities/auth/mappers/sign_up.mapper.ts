@@ -1,7 +1,7 @@
 import { SignUpModel } from "../models/sign_up.model";
 import { SignUpUserReqDTO } from "../reqDto/sign_up_user.dto";
 
-export const SignUpMapper = {
+export const signUpMapper = {
     modelToReqDto: (model: SignUpModel): SignUpUserReqDTO => {
         console.log('SignUpMapper model', model.profile_media_id)
         return {

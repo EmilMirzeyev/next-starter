@@ -91,7 +91,7 @@ export const DashboardFilterVM = () => {
             parkingRadar: false,
             rearCamera: false,
             seatVentilation: false,
-        }
+        },
     });
     const { replace } = useRouter();
     const pathname = usePathname();
@@ -111,7 +111,7 @@ export const DashboardFilterVM = () => {
     const onSubmit = (data: DashboardFilterModel) => {
         updateQueryParams(data);
         replace(`${pathname}?${params.toString()}`);
-        console.log('data', data)
+        console.log("data", data);
     };
 
     const onError = (error: FieldErrors<DashboardFilterModel>) => {
@@ -121,10 +121,26 @@ export const DashboardFilterVM = () => {
     const submitHandler = methods.handleSubmit(onSubmit, onError);
 
     const resetQueryParams = () => {
-        replace(pathname)
-        methods.reset()
-    }
+        replace(pathname);
+        methods.reset();
+    };
+    const handleChangeBrandTypeId = (id: number | null) => {
+        methods.setValue("model", null);
+        if (id) {
+            params.set("brand", id.toString());
+        } else {
+            params.delete("brand");
+        }
+        replace(`${pathname}?${params.toString()}`)
+    };
 
-
-    return { showMoreFilters, setShowMoreFilters, methods, submitHandler, resetQueryParams };
+    return {
+        showMoreFilters,
+        setShowMoreFilters,
+        methods,
+        submitHandler,
+        resetQueryParams,
+        brandsQuery: params.get('brand'),
+        handleChangeBrandTypeId,
+    };
 };

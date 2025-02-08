@@ -1,7 +1,7 @@
 import type { AnnouncementModel } from "../models/announcement.model";
 import type { AnnouncementReqDTO } from "../reqDto/announcement.dto";
 
-export const CreateAnnouncementMapper = {
+export const createAnnouncementMapper = {
     modelToResDto: (model: AnnouncementModel): AnnouncementReqDTO => {
         return {
             brand_id: model.brand,

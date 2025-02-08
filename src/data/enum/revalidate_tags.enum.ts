@@ -3,4 +3,6 @@ export const enum RevalidateTagsEnum {
     GETUSERBYID = "getUserById",
     GETCARFILTERS = "getCarFilters",
     GETPARTNERS = "getPartners",
+    GETBRANDS = "getBrands",
+    GETMODELS = 'getModels'
 }

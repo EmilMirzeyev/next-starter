@@ -9,4 +9,5 @@ export type CarFiltersModel = {
     body_types: BaseModel[],
     fuel_types: BaseModel[],
     markets: BaseModel[],
+    features: BaseModel[],
 };

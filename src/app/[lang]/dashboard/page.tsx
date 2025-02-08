@@ -1,14 +1,18 @@
-import { DashboardVM } from "./dashboard.vm"
-import DashboardContainer from "@/ui/containers/DashboardContainer"
+import { DashboardVM } from "./dashboard.vm";
+import DashboardContainer from "@/ui/containers/DashboardContainer";
 
 const Dashboard = async () => {
-    const { carFilters } = await DashboardVM()
-    
+    const { brands, models, carFilters } = await DashboardVM();
+
     return (
         <>
-            <DashboardContainer carFilters={carFilters} />
+            <DashboardContainer
+                brands={brands}
+                models={models}
+                carFilters={carFilters}
+            />
         </>
-    )
-}
+    );
+};
 
-export default Dashboard  
+export default Dashboard;

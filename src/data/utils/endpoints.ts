@@ -4,22 +4,24 @@ export const endpoints = {
   user: {
     getUsers: (query: string = "") => `/users${query}`,
     getUserById: (id: string) => `/users/${id}`,
-    createUser: () => '/adduser',
+    createUser: () => "/adduser",
     deleteUser: (id: number) => `/deleteUser/${id}`,
   },
   general: {
-    uploadMedia: () => '/media/store',
+    uploadMedia: () => "/media/store",
   },
   landing: {
-    getPartners: () => '/partners'
+    getPartners: () => "/partners",
   },
   auth: {
-    signUpUser: () => '/auth/register',
+    signUpUser: () => "/auth/register",
   },
   car: {
-    getCarFilters: () => '/car/options'
+    getCarFilters: () => "/car/options",
+    getBrands: () => "/car/brands",
+    getModels: (id: number) => `/car/brand/${id}/models`
   },
   announcement: {
-    createAnnouncement: () => '/announcement/store'
-  }
+    createAnnouncement: () => "/announcement/store",
+  },
 };
