@@ -1,5 +1,6 @@
 export { default as EditSVG } from "./edit.svg";
 export { default as XSVG } from "./x.svg";
+export { default as X2SVG } from "./x2.svg";
 export { default as UpChevronSVG } from "./up_chevron.svg";
 export { default as ImageSVG } from "./image.svg";
 export { default as ArrowRightSVG } from "./arrow-right.svg";
@@ -83,4 +84,6 @@ export { default as TwitterSVG } from "./twitter.svg";
 export { default as UploadSVG } from "./upload.svg";
 export { default as Image2SVG } from "./image-01.svg";
 export { default as HeroBgSVG } from "./hero_bg.svg";
+export { default as SearchSVG } from "./search-lg.svg";
+
 

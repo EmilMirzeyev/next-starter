@@ -1,8 +1,17 @@
 export const enum RevalidateTagsEnum {
     GETUSERS = "getUsers",
     GETUSERBYID = "getUserById",
-    GETCARFILTERS = "getCarFilters",
+
+    // Landing
     GETPARTNERS = "getPartners",
+
+    // Car
     GETBRANDS = "getBrands",
-    GETMODELS = 'getModels'
+    GETMODELS = 'getModels',
+    GETCARFILTERS = "getCarFilters",
+
+    // Announcement
+    GETANNOUNCEMENTBYID = 'getAnnouncementById',
+    GETSIMILARANNOUNCEMENT = 'getSimilarAnnouncement',
+    GETALLANNOUNCEMENT = 'getAllAnnouncement'
 }

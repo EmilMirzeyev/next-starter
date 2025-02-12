@@ -18,7 +18,7 @@ export const CarListVM = () => {
         } else {
             params.delete('sortBy')
         }
-        router.push(`?${params}`)
+        router.push(`?${params}`, { scroll: false })
     }
 
     return {

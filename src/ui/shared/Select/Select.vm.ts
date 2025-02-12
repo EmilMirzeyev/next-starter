@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import type { SelectDataType, SelectVMType } from "./select.type";
 import { FieldValues, UseFormReturn, useFormContext } from "react-hook-form";
 import { useUpdateEffect } from "@/core/hooks/useUpdateEffect";
@@ -48,7 +48,6 @@ export const SelectVM = <T extends SelectDataType>({
   );
 
   const handleSelect = (val: initialValueType): void => {
-    console.log('val', val)
     const selectedValue =
       valueType === "id"
         ? Array.isArray(val)
@@ -66,10 +65,10 @@ export const SelectVM = <T extends SelectDataType>({
     }
   };
 
-  const resetHandler = (e: React.MouseEvent<HTMLDivElement>): void => {
+  const resetHandler = (e: React.MouseEvent<HTMLElement>): void => {
     e.stopPropagation();
     if (methods) {
-      methods.setValue(name, null);
+      methods.setValue(name, multiple ? [] : null);
       methods.trigger(name);
     }
     setInnerValue(resetValue);
@@ -79,6 +78,7 @@ export const SelectVM = <T extends SelectDataType>({
       (onChange as (value: T | null) => void)?.({ id: null, name: "" } as T);
     }
   };
+  ;
 
   useUpdateEffect(() => {
     if (hasMethods && !methods.getValues(name)) {

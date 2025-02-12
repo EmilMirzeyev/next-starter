@@ -1,3 +1,4 @@
+"use client"
 import Profile3Image from "@public/images/profile3.png";
 import Image from "next/image";
 import BannerImage from "@public/images/Banner.jpg";

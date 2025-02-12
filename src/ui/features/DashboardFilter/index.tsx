@@ -8,10 +8,10 @@ import { DownChevronSVG, RefreshSVG } from "@public/vectors";
 import CheckboxButton from "@/ui/shared/CheckboxButton";
 import { cn } from "@/core/utils/cn";
 import { DashboardFilterType } from "./dashboard_filter.type";
+import { SelectOptionVariantEnum } from "@/data/enum/select_option_variant.enum";
 
 const DashboardFilter = ({
     brands,
-    models,
     carFilters,
 }: DashboardFilterType) => {
     const {
@@ -20,7 +20,8 @@ const DashboardFilter = ({
         showMoreFilters,
         setShowMoreFilters,
         resetQueryParams,
-        brandsQuery,
+        models,
+        brandTypeId,
         handleChangeBrandTypeId,
     } = DashboardFilterVM();
 
@@ -38,21 +39,21 @@ const DashboardFilter = ({
                             resetType="inner"
                             buttonClassName="h-11"
                             defaultText="Marka"
-                            name="brand"
+                            name="brand_id"
                             data={brands.data.data || []}
                             onChange={(val) => handleChangeBrandTypeId(val.id)}
                         />
                         <Select
-                            disabled={!brandsQuery}
+                            disabled={!brandTypeId}
                             buttonClassName="h-11"
                             defaultText="Model"
-                            name="model"
-                            data={models.data.data || []}
+                            name="model_ids"
+                            data={models?.data || []}
                         />
                         <Select
                             buttonClassName="h-11"
                             defaultText="Ban növü"
-                            name="banType"
+                            name="body_type_ids"
                             data={[
                                 {
                                     id: 1,
@@ -61,13 +62,20 @@ const DashboardFilter = ({
                             ]}
                         />
                         <Select
+                            resetType="inner"
+                            multiple
+                            variant={SelectOptionVariantEnum.CHECKABLE}
                             buttonClassName="h-11"
                             defaultText="Şəhər"
-                            name="city"
+                            name="city_ids"
                             data={[
                                 {
                                     id: 1,
-                                    name: "Satisda",
+                                    name: "Baku",
+                                },
+                                {
+                                    id: 2,
+                                    name: "Shamkir",
                                 },
                             ]}
                         />
@@ -76,7 +84,7 @@ const DashboardFilter = ({
                         <div className="flex col-span-2">
                             <Select
                                 defaultText="İl min."
-                                name="minYear"
+                                name="year_min"
                                 buttonClassName="rounded-r-none h-11"
                                 data={[
                                     {
@@ -87,7 +95,7 @@ const DashboardFilter = ({
                             />
                             <Select
                                 defaultText="max."
-                                name="maxYear."
+                                name="year_max."
                                 buttonClassName="border-l-0 rounded-l-none h-11"
                                 data={[
                                     {
@@ -99,12 +107,12 @@ const DashboardFilter = ({
                         </div>
                         <div className="flex col-span-2">
                             <Input
-                                name="maxPrice"
+                                name="price_min"
                                 className="rounded-r-none h-11"
                                 placeholder="Qiymət min."
                             />
                             <Input
-                                name="minPrice"
+                                name="price_max"
                                 className="rounded-l-none border-l-0 h-11"
                                 placeholder="max."
                             />
@@ -113,7 +121,8 @@ const DashboardFilter = ({
                             resetType="none"
                             buttonClassName="h-11"
                             defaultText="AZN"
-                            name="currency"
+                            name="currency_ids"
+                            multiple
                             data={[
                                 {
                                     id: 1,
@@ -170,7 +179,7 @@ const DashboardFilter = ({
                                 <div className="flex w-1/4">
                                     <Select
                                         defaultText="Yanacaq növü"
-                                        name="fuelType"
+                                        name="fuel_type_ids"
                                         buttonClassName="h-11"
                                         data={carFilters.data.fuel_types || []}
                                     />
@@ -178,7 +187,7 @@ const DashboardFilter = ({
                                 <div className="flex w-1/4">
                                     <Select
                                         defaultText="Ötürücü"
-                                        name="gear"
+                                        name="drivetrain_ids"
                                         buttonClassName="h-11"
                                         data={[
                                             {
@@ -191,7 +200,7 @@ const DashboardFilter = ({
                                 <div className="flex w-1/4">
                                     <Select
                                         defaultText="Sürətlər qutusu"
-                                        name="gearbox"
+                                        name="gearbox_ids"
                                         buttonClassName="h-11"
                                         data={carFilters.data.gearboxes || []}
                                     />
@@ -201,7 +210,7 @@ const DashboardFilter = ({
                                 <div className="flex w-1/3">
                                     <Select
                                         defaultText="Həcm (sm3) min."
-                                        name="minCapacity"
+                                        name="engine_size_min"
                                         buttonClassName="rounded-r-none h-11"
                                         data={[
                                             {
@@ -212,7 +221,7 @@ const DashboardFilter = ({
                                     />
                                     <Select
                                         defaultText="max."
-                                        name="maxCapacity."
+                                        name="engine_size_max."
                                         buttonClassName="border-l-0 rounded-l-none h-11"
                                         data={[
                                             {
@@ -224,24 +233,24 @@ const DashboardFilter = ({
                                 </div>
                                 <div className="flex w-1/3">
                                     <Input
-                                        name="minHorsePower"
+                                        name="engine_power_min"
                                         className="rounded-r-none h-11"
                                         placeholder="Güc(a.g.) min."
                                     />
                                     <Input
-                                        name="maxHorsePower"
+                                        name="engine_power_max"
                                         className="rounded-l-none border-l-0 h-11"
                                         placeholder="max."
                                     />
                                 </div>
                                 <div className="flex w-1/3">
                                     <Input
-                                        name="minMileage"
+                                        name="mileage_min"
                                         className="rounded-r-none h-11"
                                         placeholder="Yürüş (km) min."
                                     />
                                     <Input
-                                        name="maxMileage"
+                                        name="mileage_max"
                                         className="rounded-l-none border-l-0 h-11"
                                         placeholder="max."
                                     />
@@ -251,7 +260,7 @@ const DashboardFilter = ({
                                 <div className="flex w-1/4">
                                     <Select
                                         defaultText="Satıcı"
-                                        name="seller"
+                                        name="seller_ids"
                                         buttonClassName="h-11"
                                         data={[
                                             {
@@ -277,7 +286,7 @@ const DashboardFilter = ({
                                 <div className="flex w-1/4">
                                     <Select
                                         defaultText="Yerlərin sayı"
-                                        name="numberOfSeats"
+                                        name="seats_count"
                                         buttonClassName="h-11"
                                         data={[
                                             {
@@ -290,7 +299,7 @@ const DashboardFilter = ({
                                 <div className="flex w-1/4">
                                     <Select
                                         defaultText="Hansı bazar üçün yığılıb"
-                                        name="marketType"
+                                        name="market_ids"
                                         buttonClassName="h-11"
                                         data={carFilters.data.markets || []}
                                     />
@@ -298,17 +307,17 @@ const DashboardFilter = ({
                             </div>
                             <div className="flex gap-x-5">
                                 <CheckboxButton
-                                    name="hasNoDamage"
+                                    name="has_no_damage"
                                     text="Vuruğu yoxdur"
                                     fieldClassName="w-fit"
                                 />
                                 <CheckboxButton
-                                    name="notRepainted"
+                                    name="is_original_paint"
                                     text="Rənglənməyib"
                                     fieldClassName="w-fit"
                                 />
                                 <CheckboxButton
-                                    name="onlyAccidentCars"
+                                    name="only_crashed"
                                     text="Yalnız qəzalı avtomobillər"
                                     fieldClassName="w-fit"
                                 />

@@ -4,11 +4,11 @@ import CarList from "./CarList";
 import { useHeaderContent } from "@/core/hooks/userHeaderContent";
 import { DashboardContainerType } from "./dashboard_container.type";
 
-const DashboardContainer = ({ brands, models, carFilters }: DashboardContainerType) => {
+const DashboardContainer = ({ brands, carFilters }: DashboardContainerType) => {
     useHeaderContent({});
     return (
         <div>
-            <DashboardFilter brands={brands} models={models} carFilters={carFilters} />
+            <DashboardFilter brands={brands} carFilters={carFilters} />
             <CarList />
         </div>
     );

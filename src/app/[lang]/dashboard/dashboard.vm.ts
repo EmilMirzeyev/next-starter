@@ -9,15 +9,10 @@ export const DashboardVM = async () => {
     if (brands.isError) {
         return
     }
-    const models = await getModelsAction(brands.data?.data[2].id);
 
-    if (models.isError) {
-        return
-    }
     if (carFilters.isError) {
         return
     }
-    console.log('models', models)
 
-    return { brands, models, carFilters };
+    return { brands, carFilters };
 };

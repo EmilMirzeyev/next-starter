@@ -2,7 +2,6 @@
 import {
   Listbox,
   ListboxButton,
-  ListboxOption,
   ListboxOptions,
   Transition,
 } from "@headlessui/react";
@@ -149,14 +148,13 @@ const Select = <T extends SelectDataType>({
               {data.length ? (
                 <>
                   {resetType === "inner" && (
-                    <ListboxOption
-                      value={""}
+                    <button
                       onClick={resetHandler}
-                      className="flex items-center gap-x-1 relative cursor-pointer select-none text-gray-900 p-2 rounded data-[focus]:bg-gray-100 data-[selected]:bg-blue-50"
+                      className="flex w-full items-center gap-x-1 relative cursor-pointer select-none text-gray-900 p-2 rounded data-[focus]:bg-gray-100 data-[selected]:bg-blue-50"
                     >
                       <XSVG className="text-brand-500 size-[18px]" />
                       Sıfırla
-                    </ListboxOption>
+                    </button>
                   )}
                   {data.map((d) => (
                     <SelectOptionFactory

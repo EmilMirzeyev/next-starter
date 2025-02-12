@@ -23,5 +23,8 @@ export const endpoints = {
   },
   announcement: {
     createAnnouncement: () => "/announcement/store",
+    getAnnouncementById: (id: number) => `/announcement/show/${id}`,
+    getSimilarAnnouncement: (id: number) => `/announcement/${id}/similar`,
+    getAllAnnouncement: (query: string) => `/announcement/list${query}`
   },
 };
