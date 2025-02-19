@@ -26,23 +26,23 @@ const Footer = () => {
   ];
 
   return (
-    <footer aria-label="Site Footer" className=" pt-[196px] mt-60 pb-10">
-      <div className="container relative">
+    <footer aria-label="Site Footer" className="mt-[120px] pb-10 mobile:mt-16 mobile:pb-6">
+      <div className="container flex flex-col gap-y-16">
         <section
           aria-labelledby="subscribe-heading"
-          className="container w-full rounded-[32px] absolute bottom-[150px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 border bg-brand-900 p-16 bg-[linear-gradient(to_right,_#2D0002_1%,_#59070B_30%,_#2D0002_60%,_#59070B_90%)]"
+          className="container w-full rounded-[32px] border bg-brand-900 p-16 bg-[linear-gradient(to_right,_#2D0002_1%,_#59070B_30%,_#2D0002_60%,_#59070B_90%)] mobile:p-8"
         >
-          <div className="flex justify-between gap-x-12">
-            <div className="w-1/2 flex flex-col gap-y-3">
-              <h2 className="text-36px700 text-white">
+          <div className="flex justify-between gap-x-12 mobile:flex-col mobile:gap-y-6">
+            <div className="w-1/2 flex flex-col gap-y-3 mobile:w-full">
+              <h2 className="text-36px700 text-white mobile:text-24px600 mobile:text-center">
                 Yeniliklərdən xəbərdar olmaq üçün abonə olun
               </h2>
-              <h3 className="text-14px600 text-[#d4c0c1] border border-[rgba(255,255,255,0.2)] bg-[rgba(255,255,255,0.1)] rounded-[53px] px-4 py-2 w-fit">
+              <h3 className="text-14px600 text-[rgba(255,255,255,0.7)] border border-[rgba(255,255,255,0.2)] bg-[rgba(255,255,255,0.1)] rounded-[53px] px-4 py-2 w-fit mobile:text-center">
                 Yenilik və xəbərlərdən daima məlumatlı olun
               </h3>
             </div>
-            <div className="w-1/2 flex flex-col gap-4 justify-center">
-              <p className="16px400 text-[#d4c0c1]">
+            <div className="w-1/2 flex flex-col gap-y-4 justify-center mobile:w-full">
+              <p className="16px400 text-[rgba(255,255,255,0.6)]">
                 Daxil etdiyiniz email adresinizə saytımızda olan yeniliklər və
                 sistem daxilində olan bildirişləriniz yönləndiriləcək
               </p>
@@ -50,16 +50,23 @@ const Footer = () => {
             </div>
           </div>
         </section>
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-y-10 mobile:gap-y-6">
           <section
             aria-labelledby="branding-heading"
-            className="flex justify-center"
+            className="flex justify-center mobile:flex-col mobile:gap-y-6 mobile:items-center"
           >
             <h2 id="branding-heading" className="sr-only">
               Branding Information
             </h2>
-            <div className="border border-gray-200 rounded-[53px] px-4 py-2 w-fit bg-gray-50">
-              <h3 className="text-14px600 text-black">
+            <Link
+              href="#hero"
+              className="max-w-[30px] hidden mobile:block mobile:max-w-full"
+              aria-label="Back to Home"
+            >
+              <LogoV1SVG aria-hidden="true" />
+            </Link>
+            <div className="border border-gray-200 rounded-[53px] px-4 py-2 w-fit bg-gray-50 mobile:w-full">
+              <h3 className="text-14px600 text-black mobile:text-center">
                 “Car Buy” B2B avtomobil alış-satış sistemi
               </h3>
             </div>
@@ -70,13 +77,13 @@ const Footer = () => {
           >
             <Link
               href="#hero"
-              className="max-w-[30px]"
+              className="max-w-[30px] mobile:hidden"
               aria-label="Back to Home"
             >
               <LogoV1SVG aria-hidden="true" />
             </Link>
-            <div className="flex items-center justify-between gap-x-32">
-              <ul className="text-gray-800 text-14px700 flex gap-6">
+            <div className="flex items-center justify-between gap-x-32 mobile:flex-col mobile:items-start mobile:gap-y-12">
+              <ul className="text-gray-800 text-14px700 flex gap-6 mobile:grid mobile:grid-cols-2 mobile:p-2">
                 {navLinks.map(({ href, label }) => (
                   <li key={href} className="group">
                     <Link href={href} className="relative">
@@ -100,7 +107,7 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
-            <div className="absolute -right-28">
+            <div className="absolute -right-28 mobile:right-0 mobile:bottom-0">
               <ScrollToTopButton />
             </div>
           </nav>

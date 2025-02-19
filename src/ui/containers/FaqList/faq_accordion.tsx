@@ -95,10 +95,10 @@ const FaqAccordion = ({ className }: FaqAccordionType) => {
                         accordionButton={(open) => (
                             <div className="text-start flex justify-between gap-4 items-center p-6">
                                 <div className="flex items-center gap-x-5">
-                                    <p className="text-transparent text-20px700 bg-clip-text bg-gradient-to-b from-[#FF656B] to-[#FF656B]/0">
+                                    <p className="text-transparent text-20px700 bg-clip-text bg-gradient-to-b from-[#FF656B] to-[#FF656B]/0 mobile:text-18px700">
                                         {(index + 1).toString().padStart(2, "0")}
                                     </p>
-                                    <p className="text-20px600">{faq.title}</p>
+                                    <p className="text-20px600 mobile:text-16px600">{faq.title}</p>
                                 </div>
                                 <div className="bg-gray-200 p-2 rounded-full flex">
                                     <DownChevronSVG
@@ -112,7 +112,7 @@ const FaqAccordion = ({ className }: FaqAccordionType) => {
                             </div>
                         )}
                     >
-                        <p className="text-16px400 text-gray-500 -mt-1.5 pb-6 px-[73px]">
+                        <p className="text-16px400 text-gray-500 -mt-1.5 pb-6 px-[73px] mobile:text-14px400">
                             {faq.description}
                         </p>
                     </Accordion>

@@ -16,6 +16,7 @@ const CheckboxButton = ({
     onChange,
 }: CheckboxButtonType) => {
     const { innerValue, handleCheck } = CheckboxButtonVM({ name, value, onChange });
+    
     return (
         <Field className={cn("w-full", fieldClassName)}>
             <CheckboxHUI

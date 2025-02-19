@@ -1,18 +1,25 @@
+import { getAllAnnouncement } from "@/core/entities/announcement/actions/getAllAnnouncement.action";
 import { getBrandsActions } from "@/core/entities/car/actions/getBrands.action";
 import { getCarFiltersAction } from "@/core/entities/car/actions/getCarFilters.action";
-import { getModelsAction } from "@/core/entities/car/actions/getModels.action";
 
 export const DashboardVM = async () => {
-    const brands = await getBrandsActions()
-    const carFilters = await getCarFiltersAction();
+    const [brands, carFilters, carList] = await Promise.allSettled([
+        getBrandsActions(),
+        getCarFiltersAction(),
+        getAllAnnouncement(),
+    ]);
 
-    if (brands.isError) {
-        return
-    }
+    const formatResult = <T>(
+        result: PromiseSettledResult<{ isError: boolean; data?: T }>
+    ): { data: T | null } => {
+        return result.status === "fulfilled" && !result.value.isError
+            ? { data: result.value.data! }
+            : { data: null };
+    };
 
-    if (carFilters.isError) {
-        return
-    }
-
-    return { brands, carFilters };
+    return {
+        brands: formatResult(brands),
+        carFilters: formatResult(carFilters),
+        carList: formatResult(carList),
+    };
 };

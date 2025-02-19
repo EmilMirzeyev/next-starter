@@ -2,6 +2,7 @@
 import type { Config } from "tailwindcss";
 import { colors } from './src/data/constants/colors';
 const fontSize = require("./src/data/constants/font_size");
+import scrollbarHide from 'tailwind-scrollbar-hide';
 
 const config: Config = {
   content: [
@@ -21,6 +22,10 @@ const config: Config = {
       height: {
         headerMob: "104px",
         header: "126px",
+      },
+      screens: {
+        mobile: { max: "376px" },
+        tablet: { max: "768px" }
       },
       keyframes: {
         overlayShow: {
@@ -43,13 +48,13 @@ const config: Config = {
     container: {
       center: true,
       padding: {
-        // DEFAULT: "16px",
+        DEFAULT: "16px",
       },
       screens: {
         xl: "1128px",
       },
     },
   },
-  plugins: [],
+  plugins: [scrollbarHide],
 };
 export default config;

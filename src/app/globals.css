@@ -27,6 +27,15 @@
     margin: 0;
   }
 
+  .mobile-scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+  .mobile-scrollbar-hidden {
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+  }
+  
+
   /* Firefox */
   input[type="number"] {
     -moz-appearance: textfield;

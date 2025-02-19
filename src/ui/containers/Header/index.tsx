@@ -1,5 +1,5 @@
 import ChangeLanguage from "@/ui/components/ChangeLanguage";
-import { ArrowRightSVG, LogoV1SVG } from "@public/vectors";
+import { ArrowRightSVG, BurgerMenuSVG, LogoV1SVG } from "@public/vectors";
 import { useTranslations } from "next-intl";
 import { Link as NILink } from "@/i18n/routing";
 import Button from "@/ui/shared/Button";
@@ -21,7 +21,7 @@ const Header = () => {
         <Link href="/" className="max-w-[153px]" aria-label="Homepage">
           <LogoV1SVG />
         </Link>
-        <nav aria-label="Main Navigation">
+        <nav aria-label="Main Navigation" className="mobile:hidden">
           <ul className="flex gap-x-6 text-14px700">
             {navItems.map(({ href, label }) => (
               <li key={href} className="group relative text-gray-800">
@@ -34,16 +34,21 @@ const Header = () => {
           </ul>
         </nav>
       </div>
-      <div className="flex items-center gap-x-4">
+      <div className="flex items-center gap-x-4 mobile:gap-x-2.5">
         <NILink href="/signin">
           <Button
             aria-label="Login"
-            className="text-16px600 pl-[18px] pr-4 py-3 rounded-3xl flex items-center gap-1.5 h-12"
+            className="text-16px600 pl-[18px] pr-4 py-3 rounded-3xl flex items-center gap-1.5 h-12 mobile:size-12 shrink-0"
           >
-            Daxil ol
-            <ArrowRightSVG stroke="#000" className="w-5" />
+            <div className="mobile:hidden">Daxil ol</div>
+            <div>
+              <ArrowRightSVG stroke="#000" className="w-5" />
+            </div>
           </Button>
         </NILink>
+        <button className="bg-gray-950 size-12 hidden justify-center items-center rounded-full mobile:flex">
+          <BurgerMenuSVG className="text-white" />
+        </button>
         <ChangeLanguage />
       </div>
     </header>

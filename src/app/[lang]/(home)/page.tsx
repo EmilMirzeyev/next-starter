@@ -8,7 +8,7 @@ import Statistics from "@/ui/containers/Statistics";
 
 const Home = async () => {
     return (
-        <div className="flex flex-col gap-[120px]">
+        <div className="flex flex-col gap-y-[120px] mobile:gap-y-16">
             <Hero />
             <About />
             <Advantages />

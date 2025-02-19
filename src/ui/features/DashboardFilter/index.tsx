@@ -40,7 +40,7 @@ const DashboardFilter = ({
                             buttonClassName="h-11"
                             defaultText="Marka"
                             name="brand_id"
-                            data={brands.data.data || []}
+                            data={brands?.data?.data || []}
                             onChange={(val) => handleChangeBrandTypeId(val.id)}
                         />
                         <Select
@@ -181,7 +181,7 @@ const DashboardFilter = ({
                                         defaultText="Yanacaq növü"
                                         name="fuel_type_ids"
                                         buttonClassName="h-11"
-                                        data={carFilters.data.fuel_types || []}
+                                        data={carFilters?.data?.fuel_types || []}
                                     />
                                 </div>
                                 <div className="flex w-1/4">
@@ -202,7 +202,7 @@ const DashboardFilter = ({
                                         defaultText="Sürətlər qutusu"
                                         name="gearbox_ids"
                                         buttonClassName="h-11"
-                                        data={carFilters.data.gearboxes || []}
+                                        data={carFilters?.data?.gearboxes || []}
                                     />
                                 </div>
                             </div>
@@ -301,7 +301,7 @@ const DashboardFilter = ({
                                         defaultText="Hansı bazar üçün yığılıb"
                                         name="market_ids"
                                         buttonClassName="h-11"
-                                        data={carFilters.data.markets || []}
+                                        data={carFilters?.data?.markets || []}
                                     />
                                 </div>
                             </div>

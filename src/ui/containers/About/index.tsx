@@ -8,20 +8,20 @@ const About = () => {
             aria-labelledby="about-title"
             className="bg-[linear-gradient(to_right,_#fffefe_5%,_#fff6f7_30%,_#fffefe_60%,_#fff6f7_90%)]"
         >
-            <div className="container py-[120px] flex flex-col gap-y-16">
-                <div className="flex justify-between items-center">
-                    <h2 className="text-gray-800 text-60px700 w-3/5">Niyə biz</h2>
-                    <p className="text-gray-600 text-16px500 w-2/5 text-right">
+            <div className="container py-[120px] flex flex-col gap-y-16 mobile:py-16 mobile:gap-y-10">
+                <div className="flex mobile:flex-col mobile:gap-y-4 justify-between items-center">
+                    <h2 className="text-gray-800 text-60px700 w-3/5 mobile:w-full mobile:text-center mobile:text-48px700">Niyə biz</h2>
+                    <p className="text-gray-600 text-16px500 w-2/5 text-right mobile:w-full mobile:text-center mobile:text-14px500">
                         Müştərilərimizin bizi niyə seçdikləri və seçmək isdədikləri
                         gördüyümüz yüksək keyfiyyərtli işin nəticəsidir
                     </p>
                 </div>
-                <div className="flex justify-between items-center">
-                    <article className="flex flex-col gap-y-6 w-1/2">
-                        <h3 className="text-gray-900 text-30px700">
+                <div className="flex justify-between items-center mobile:flex-col-reverse mobile:gap-y-6">
+                    <article className="flex flex-col gap-y-6 w-1/2 mobile:w-full">
+                        <h3 className="text-gray-900 text-30px700 mobile:text-24px700">
                             But I must explain to you how all this mistaken idea of denouncing
                         </h3>
-                        <div className="text-gray-600 text16px400 flex flex-col gap-y-2 pr-14">
+                        <div className="text-gray-600 text16px400 flex flex-col gap-y-2 pr-14 mobile:pr-0 mobile:text-15px400">
                             <p>
                                 It is a long established fact that a reader will be distracted
                                 by the readable content of a page when looking at its layout.

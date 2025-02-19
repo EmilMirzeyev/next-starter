@@ -4,10 +4,12 @@ import CarCard from "@/ui/components/CarCard";
 import Select from "@/ui/shared/Select";
 import Link from "next/link";
 import { CarListVM } from "./car_list.vm";
+import { CarListType } from "./car_list.type";
 
-const CarList = () => {
+const CarList = ({ carList }: CarListType) => {
     const { sortByValue, handleSearchParams } = CarListVM();
-
+    console.log('carList', carList)
+    
     return (
         <div className="container">
             <div className="flex my-12 items-center justify-between">
@@ -59,9 +61,9 @@ const CarList = () => {
             <div className="flex flex-col gap-y-6">
                 <AnnouncementTitle title="Təcili alıram elanları" count={24} />
                 <div className="grid grid-cols-4 gap-6">
-                    {Array.from({ length: 9 }, (_, i) => (
-                        <Link key={i} href={"/dashboard/1"}>
-                            <CarCard />
+                    {carList?.data?.data.map((car) => (
+                        <Link key={car.id} href={"/dashboard/1"}>
+                            <CarCard car={car} />
                         </Link>
                     ))}
                 </div>
