@@ -85,5 +85,6 @@ export { default as UploadSVG } from "./upload.svg";
 export { default as Image2SVG } from "./image-01.svg";
 export { default as HeroBgSVG } from "./hero_bg.svg";
 export { default as SearchSVG } from "./search-lg.svg";
+export { default as BurgerMenuSVG } from "./burger-menu.svg";
 
 
