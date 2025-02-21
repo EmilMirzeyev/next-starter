@@ -49,7 +49,7 @@ const SignUpForm = () => {
                     />
                     {userType === 1 && (
                         <>
-                            <div className="flex gap-x-5">
+                            <div className="flex gap-x-5 mobile:flex-col mobile:gap-y-5">
                                 <Input name="first_name" placeholder="Ad" />
                                 <Input name="last_name" placeholder="Soyad" />
                             </div>
@@ -117,7 +117,7 @@ const SignUpForm = () => {
                                     </div>
                                 </div>
                             ))}
-                            <div className="grid grid-cols-3 gap-x-5">
+                            <div className="grid grid-cols-3 gap-x-5 mobile:grid-cols-1 mobile:gap-y-5">
                                 <Select
                                     name="day"
                                     resetType="inner"
@@ -258,7 +258,7 @@ const SignUpForm = () => {
                     <h3 className="text-gray-800 text-14px500">Artıq hesabınız var?</h3>
                     <Link
                         href="/signin"
-                        className="border-b border-brand-500 text-brand-500 leading-none mb-2 mt-0.5 text-14px500"
+                        className="border-b border-brand-500 text-brand-500 leading-none mb-2 mt-1 text-14px500"
                     >
                         Daxil olun
                     </Link>

@@ -4,6 +4,7 @@ import Modal from "@/ui/shared/Modal";
 import { ArrowRightSVG, SuccessModalSVG } from "@public/vectors";
 import { SuccessModalType } from "./success_modal.type";
 import Link from "next/link";
+import { cn } from "@/core/utils/cn";
 
 const SuccessModal = ({
     title,
@@ -20,17 +21,17 @@ const SuccessModal = ({
             hasClose
             visible={visible}
             setVisible={setVisible}
-            dialogClassName="max-w-[480px] p-8 pt-6"
+            dialogClassName="max-w-[480px] p-8 pt-6 mobile:max-w-[344px]"
         >
             <div className="flex justify-center -mt-20">
                 <SuccessModalSVG />
             </div>
             <div className="flex flex-col gap-y-12 item-center -mt-7">
                 <div className="flex flex-col gap-y-2 text-center">
-                    <h3 className="text-24px600 text-gray-900">
+                    <h3 className="text-24px600 text-gray-900 mobile:te0">
                         {title}
                     </h3>
-                    <p className="text-16px400 text-gray-500">
+                    <p className="text-16px400 text-gray-500 mobile:text-14px400">
                         {description}
                     </p>
                 </div>

@@ -1,12 +1,38 @@
+"use client";
 import ChangeLanguage from "@/ui/components/ChangeLanguage";
-import { ArrowRightSVG, BurgerMenuSVG, LogoV1SVG } from "@public/vectors";
+import {
+  ArrowRightSVG,
+  BurgerMenuSVG,
+  HeroSVG,
+  LogoV1SVG,
+  XSVG,
+  FacebookSVG,
+  InstagramSVG,
+  TelegramSVG,
+  TikTokSVG,
+} from "@public/vectors";
 import { useTranslations } from "next-intl";
 import { Link as NILink } from "@/i18n/routing";
 import Button from "@/ui/shared/Button";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { cn } from "@/core/utils/cn";
+import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
+import { ChangeLanguageEnum } from "@/data/enum/change_language.enum";
 
 const Header = () => {
   const t = useTranslations("HomePage");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
+    }
+  }, [isMobileMenuOpen]);
+
   const navItems = [
     { href: "#about", label: t("navigation.about") },
     { href: "#advantages", label: t("navigation.advantages") },
@@ -15,9 +41,21 @@ const Header = () => {
     { href: "#faq", label: t("navigation.faq") },
   ];
 
+  const socialIcons = [
+    { Icon: FacebookSVG, label: "Facebook" },
+    { Icon: TelegramSVG, label: "Telegram" },
+    { Icon: InstagramSVG, label: "Instagram" },
+    { Icon: TikTokSVG, label: "TikTok" },
+  ];
+
   return (
-    <header className="container justify-between flex items-center py-8 text-white absolute top-0 z-20 w-full left-1/2 transform -translate-x-1/2">
-      <div className="flex gap-x-16 items-center">
+    <header
+      className={cn(
+        "container justify-between flex items-center py-8 text-white absolute top-0 z-20 w-full left-1/2 transform -translate-x-1/2 transition-colors duration-500",
+        isMobileMenuOpen ? "bg-white text-black" : "bg-transparent"
+      )}
+    >
+      <div className="flex gap-x-16 items-center ">
         <Link href="/" className="max-w-[153px]" aria-label="Homepage">
           <LogoV1SVG />
         </Link>
@@ -34,7 +72,7 @@ const Header = () => {
           </ul>
         </nav>
       </div>
-      <div className="flex items-center gap-x-4 mobile:gap-x-2.5">
+      <div className="flex items-center gap-x-4 mobile:gap-x-2.5 ">
         <NILink href="/signin">
           <Button
             aria-label="Login"
@@ -46,10 +84,96 @@ const Header = () => {
             </div>
           </Button>
         </NILink>
-        <button className="bg-gray-950 size-12 hidden justify-center items-center rounded-full mobile:flex">
-          <BurgerMenuSVG className="text-white" />
+        <button
+          className="bg-gray-950 size-12 hidden justify-center items-center rounded-full mobile:flex"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? (
+            <XSVG className="text-white size-5" />
+          ) : (
+            <BurgerMenuSVG className="text-white" />
+          )}
         </button>
-        <ChangeLanguage />
+        <div className="mobile:hidden">
+          <ChangeLanguage />
+        </div>
+      </div>
+
+      {/* Mobile Navbar */}
+      <div
+        className={cn(
+          "fixed hidden top-28 z-50 right-0 w-full h-screen max-h-screen  bg-white text-black transform transition-transform duration-500 ease-in-out px-4 overflow-hidden mobile:block",
+          isMobileMenuOpen ? "translate-x-0 delay-200" : "translate-x-full"
+        )}
+      >
+        <div
+          className={cn(
+            "flex flex-col justify-between gap-y-6 h-full max-h-screen overflow-y-auto transform transition-opacity duration-500 ease-in-out",
+            isMobileMenuOpen ? "opacity-100 delay-200" : "opacity-0"
+          )}
+        >
+          <div className="flex flex-col gap-y-8">
+            <h1 className="text-brand-700 text-36px700 px-4">
+              Sürətli və rahat interfeys
+            </h1>
+            <ChangeLanguage variant={ChangeLanguageEnum.TAB} />
+            <ul className="space-y-6 px-8 py-2">
+              {navItems.map(({ href, label }) => (
+                <li key={href} className="text-gray-800 text-16px700">
+                  <Link href={href} onClick={() => setIsMobileMenuOpen(false)}>
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div className="flex gap-x-4 mobile:justify-center mt-12">
+              <div className="relative">
+                <HeroSVG className="absolute -left-8 -top-8 text-brand-500 mobile:-left-8 mobile:-top-7" />
+                <Button
+                  aria-label="Log in"
+                  className="rounded-[28px] flex items-center gap-2.5 mobile:text-16px600 mobile:w-[122px] mobile:gap-1.5 mobile:px-[18px] mobile:h-12"
+                >
+                  Daxil ol
+                  <div>
+                    <ArrowRightSVG className="mobile:size-5" />
+                  </div>
+                </Button>
+              </div>
+              <Link href="#about">
+                <Button
+                  type="button"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  aria-label="Learn more about us"
+                  variant={ButtonVariantsEnum.EMPTY}
+                  className="rounded-[28px] bg-gray-100 flex items-center gap-2.5 mobile:text-16px600 mobile:h-12 mobile:gap-1.5 mobile:px-[18px]"
+                >
+                  Haqqımızda
+                  <div>
+                    <ArrowRightSVG
+                      stroke="#fff"
+                      className="rotate-90 mobile:size-5"
+                    />
+                  </div>
+                </Button>
+              </Link>
+            </div>
+          </div>
+          <div>
+            <ul className="flex justify-center items-center gap-x-2 mb-32">
+              {socialIcons.map(({ Icon, label }) => (
+                <li
+                  key={label}
+                  className="group p-2 rounded-xl hover:bg-brand-50 size-12 flex items-center justify-center duration-200 cursor-pointer"
+                >
+                  <Icon
+                    className="fill-[#667085] group-hover:fill-[#EC1C24]"
+                    aria-label={label}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </header>
   );

@@ -25,7 +25,7 @@ export const ListFileUploadVM = ({
       startTransition(async () => {
         const res = await uploadMediaAction({ data: { files: newFiles } });
         if (res.isError) {
-          snackbar("error", res.error.message);
+          // snackbar("error", res.error.message);
           console.log("error", res);
 
         } else {
@@ -35,7 +35,7 @@ export const ListFileUploadVM = ({
             const prevValues = methods.getValues('id_card_media_ids') || [];
             methods.setValue("id_card_media_ids", [...prevValues, res.data.media_id]);
           }
-          snackbar("success", "Post uğurla əlavə edildi!");
+          // snackbar("success", "Post uğurla əlavə edildi!");
           // dispatch(setUploadMedia({ media_id: res.data.media_id, name }));
         }
       });

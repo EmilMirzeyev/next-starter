@@ -18,7 +18,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
 
     return (
         <div className="flex h-screen">
-            <section className="fixed top-0 left-0 w-1/2 p-20 bg-brand-25 bg-gradient-to-r from-white via-white-500 to-brand-25 flex flex-col justify-around gap-y-10 min-h-screen">
+            <section className="fixed top-0 left-0 w-1/2 p-20 bg-brand-25 bg-gradient-to-r from-white via-white-500 to-brand-25 flex flex-col justify-around gap-y-10 min-h-screen mobile:hidden">
                 <div className="flex flex-col gap-y-4">
                     <p className="text-brand-600 text-14px600 border border-brand-200 bg-brand-25 rounded-[53px] w-fit py-2 px-4">
                         “Car Buy” B2B avtomobil alış-satış sistemi
@@ -33,19 +33,19 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
                     <p>Məxfilik siyasəti</p>
                 </div>
             </section>
-            <section className="ml-[50%] w-[50%] py-20 px-10  flex justify-center overflow-y-auto">
-                <div className="flex flex-col gap-y-[72px] items-center max-w-[480px]">
+            <section className="ml-[50%] w-[50%] py-20 px-10  flex justify-center overflow-y-auto mobile:w-full mobile:ml-0 mobile:pb-6 mobile:px-4">
+                <div className="flex flex-col gap-y-[72px] items-center max-w-[480px] mobile:gap-y-6">
                     <div>
                         <LogoV1SVG className="max-w-24" />
                     </div>
                     {["signup", "signin"].includes(currentPathname) &&
                         signUpStep !== SignUpStepsEnum.OTP && (
                             <>
-                                <article className="flex flex-col gap-y-4">
-                                    <h2 className="text-brand-700 text-48px700">
+                                <article className="flex flex-col gap-y-4 mobile:mb-6">
+                                    <h2 className="text-brand-700 text-48px700 mobile:text-36px700">
                                         Xoş Gəlmisiniz!
                                     </h2>
-                                    <p className="text-gray-800 text-16px400">
+                                    <p className="text-gray-800 text-16px400 mobile:text-14px400">
                                         {currentPathname === "signup"
                                             ? "  Signup - Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit"
                                             : "  Signin - Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit"}
