@@ -21,10 +21,14 @@ const SubscribeForm = () => {
                     </div>
                 }
                 trailing={
-                    <Button type="submit" className="rounded-3xl flex items-center gap-1.5 text-16px600 h-12 -mr-2 mobile:size-10 mobile:p-0 shrink-0">
+                    <Button
+                        type="submit"
+                        className="rounded-3xl shrink-0 flex items-center gap-1.5 text-16px600 h-12 -mr-2
+                        tablet:w-[133px] tablet:px-4 mobile:size-10 mobile:p-0"
+                    >
                         <p className="mobile:hidden">Abonə ol</p>
                         <div>
-                            <ArrowRightSVG className="text-white mobile:size-5" />
+                            <ArrowRightSVG className="text-white tablet:size-5 mobile:size-5" />
                         </div>
                     </Button>
                 }

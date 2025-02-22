@@ -47,7 +47,7 @@ const Statistics = () => {
                             <h3 className="text-48px700 text-[rgba(255,255,255,0.8)] duration-300 group-hover:text-white transition mobile:text-36px700">
                                 {count}
                             </h3>
-                            <p className="text-16px600 text-[rgba(255,255,255,0.4)] duration-300 group-hover:text-white transition mobile:text-14px600 mobile:w-full">
+                            <p className="text-16px600 text-[rgba(255,255,255,0.4)] duration-300 group-hover:text-white transition mobile:text-center mobile:text-14px600 mobile:w-full">
                                 {name}
                             </p>
                         </div>

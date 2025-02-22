@@ -15,7 +15,7 @@ import { useTranslations } from "next-intl";
 import { Link as NILink } from "@/i18n/routing";
 import Button from "@/ui/shared/Button";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { cn } from "@/core/utils/cn";
 import { ButtonVariantsEnum } from "@/data/enum/button_variants.enum";
 import { ChangeLanguageEnum } from "@/data/enum/change_language.enum";
@@ -24,12 +24,15 @@ const Header = () => {
   const t = useTranslations("HomePage");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
-    }
-  }, [isMobileMenuOpen]);
+  // useEffect(() => {
+  //   if (isMobileMenuOpen) {
+  //     document.body.style.overflow = "hidden";
+  //     document.documentElement.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "";
+  //     document.documentElement.style.overflow = "";
+  //   }
+  // }, [isMobileMenuOpen]);
 
   const navItems = [
     { href: "#about", label: t("navigation.about") },
@@ -53,7 +56,7 @@ const Header = () => {
         isMobileMenuOpen ? "bg-white text-black" : "bg-transparent"
       )}
     >
-      <div className="flex gap-x-16 items-center ">
+      <div className="flex gap-x-16 items-center">
         <Link href="/" className="max-w-[153px]" aria-label="Homepage">
           <LogoV1SVG />
         </Link>
@@ -70,7 +73,7 @@ const Header = () => {
           </ul>
         </nav>
       </div>
-      <div className="flex items-center gap-x-4 mobile:gap-x-2.5 ">
+      <div className="flex items-center gap-x-4 mobile:gap-x-2.5">
         <NILink href="/signin">
           <Button
             aria-label="Login"
@@ -100,13 +103,13 @@ const Header = () => {
       {/* Mobile Navbar */}
       <div
         className={cn(
-          "fixed hidden top-28 z-50 right-0 w-full h-screen max-h-screen  bg-white text-black transform transition-transform duration-500 ease-in-out px-4 overflow-hidden mobile:block",
-          isMobileMenuOpen ? "translate-x-0 delay-200" : "translate-x-full"
+          "fixed hidden top-28 z-50 right-0 w-full h-screen bg-white text-black transform transition-transform duration-500 ease-in-out px-4 overflow-hidden mobile:block",
+          isMobileMenuOpen ? "translate-x-0 overflow-hidden" : "translate-x-full"
         )}
       >
         <div
           className={cn(
-            "flex flex-col justify-between gap-y-6 h-full max-h-screen overflow-y-auto transform transition-opacity duration-500 ease-in-out",
+            "flex flex-col justify-between gap-y-6 h-full overflow-y-auto transform transition-opacity duration-500 ease-in-out",
             isMobileMenuOpen ? "opacity-100 delay-200" : "opacity-0"
           )}
         >
@@ -173,6 +176,13 @@ const Header = () => {
           </div>
         </div>
       </div>
+
+      {/* Prevent scrolling when menu is open */}
+      <style>
+        {isMobileMenuOpen
+          ? `html { overflow: hidden; height: 100%; }`
+          : `html { overflow: auto; }`}
+      </style>
     </header>
   );
 };
