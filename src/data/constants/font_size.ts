@@ -199,28 +199,28 @@ const fontSize = {
         },
     ],
     "20px400": [
-        "24px",
+        "20px",
         {
             lineHeight: "30px",
             fontWeight: "400",
         },
     ],
     "20px500": [
-        "24px",
+        "20px",
         {
             lineHeight: "30px",
             fontWeight: "500",
         },
     ],
     "20px600": [
-        "24px",
+        "20px",
         {
             lineHeight: "30px",
             fontWeight: "600",
         },
     ],
     "20px700": [
-        "24px",
+        "20px",
         {
             lineHeight: "30px",
             fontWeight: "700",

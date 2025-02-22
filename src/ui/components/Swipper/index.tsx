@@ -17,7 +17,7 @@ const Swipper = ({ data }: SwipperType) => {
             if (window.innerWidth <= 768 && window.innerWidth > 376) {
                 setOffsetBefore(100);
                 setOffsetAfter(250);
-                setSpaceBetween(80)
+                setSpaceBetween(130)
             } else if (window.innerWidth <= 376 && window.innerWidth > 350) {
                 setOffsetBefore(60);
                 setOffsetAfter(1005);

@@ -52,7 +52,7 @@ const Advantages = () => {
               ))}
             </div>
           </div>
-          <div className="bg-brand-25 rounded-[32px] px-12 py-16 flex justify-between items-center mobile:flex-col mobile:px-4 mobile:pt-[72px] mobile:pb-8">
+          <div className="bg-brand-25 rounded-[32px] px-12 py-16 flex justify-between items-center tablet:pb-12 tablet:pt-[72px] mobile:flex-col mobile:px-4 mobile:pt-[72px] mobile:pb-8">
             {handleAdvantagesTab()}
           </div>
         </div>

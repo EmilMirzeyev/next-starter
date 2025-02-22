@@ -5,11 +5,11 @@ import {
   BurgerMenuSVG,
   HeroSVG,
   LogoV1SVG,
-  XSVG,
   FacebookSVG,
   InstagramSVG,
   TelegramSVG,
   TikTokSVG,
+  XCloseSVG,
 } from "@public/vectors";
 import { useTranslations } from "next-intl";
 import { Link as NILink } from "@/i18n/routing";
@@ -23,13 +23,11 @@ import { ChangeLanguageEnum } from "@/data/enum/change_language.enum";
 const Header = () => {
   const t = useTranslations("HomePage");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
       document.documentElement.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-      document.documentElement.style.overflow = "auto";
     }
   }, [isMobileMenuOpen]);
 
@@ -89,7 +87,7 @@ const Header = () => {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? (
-            <XSVG className="text-white size-5" />
+            <XCloseSVG className="text-white size-5" />
           ) : (
             <BurgerMenuSVG className="text-white" />
           )}

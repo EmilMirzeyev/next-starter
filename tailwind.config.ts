@@ -3,6 +3,7 @@ import type { Config } from "tailwindcss";
 import { colors } from './src/data/constants/colors';
 const fontSize = require("./src/data/constants/font_size");
 import scrollbarHide from 'tailwind-scrollbar-hide';
+import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
   content: [
@@ -25,7 +26,7 @@ const config: Config = {
       },
       screens: {
         mobile: { max: "376px" },
-        tablet: { max: "768px" }
+        tablet: { min: "376px", max: "768px" }
       },
       keyframes: {
         overlayShow: {
@@ -49,12 +50,26 @@ const config: Config = {
       center: true,
       padding: {
         DEFAULT: "16px",
+        tablet: "48px"
       },
       screens: {
         xl: "1128px",
+        tablet: "768px"
       },
     },
   },
-  plugins: [scrollbarHide],
+  plugins: [
+    scrollbarHide,
+    plugin(({ addComponents, theme }) => {
+      addComponents({
+        "@media (min-width: 376px) and (max-width: 768px)": {
+          ".container": {
+            paddingLeft: theme("spacing.12"),
+            paddingRight: theme("spacing.12"),
+          },
+        },
+      });
+    }),
+  ],
 };
 export default config;

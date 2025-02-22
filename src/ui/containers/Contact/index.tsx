@@ -6,11 +6,12 @@ const Contact = () => {
     <section id="contact" className="container">
       <article
         aria-labelledby="contact-heading"
-        className="container flex p-16 rounded-[32px] bg-brand-900 bg-[linear-gradient(to_right,_#2D0002_1%,_#59070B_30%,_#2D0002_60%,_#59070B_90%)] mobile:flex-col mobile:gap-y-6 mobile:p-8"
+        className="container flex p-16 rounded-[32px] bg-brand-900 bg-[linear-gradient(to_right,_#2D0002_1%,_#59070B_30%,_#2D0002_60%,_#59070B_90%)] 
+        tablet:flex-col tablet:gap-y-12 mobile:flex-col mobile:gap-y-6 mobile:p-8"
       >
         <h3
           id="contact-heading"
-          className="text-36px700 text-white mobile:text-24px600"
+          className="text-36px700 text-white tablet:text-36px600 mobile:text-24px600"
         >
           Hər-hansı məsələdə çətinliyiniz olduğu təqdirdə bizimlə əlaqə saxlayın
         </h3>
@@ -18,7 +19,8 @@ const Contact = () => {
           <Link
             href="/"
             aria-label="Contact us on WhatsApp"
-            className="flex items-center rounded-[38px] py-4 px-5 pr-8 gap-x-4 bg-success-50 text-success-600 text-24px600 mobile:w-full mobile:justify-center"
+            className="flex items-center rounded-[38px] py-4 px-5 pr-8 gap-x-4 bg-success-50 text-success-600 text-24px600
+             tablet:w-full tablet:justify-center mobile:w-full mobile:justify-center"
           >
             <WhatsappSVG fill="#5BD066" />
             Bizə yazın
