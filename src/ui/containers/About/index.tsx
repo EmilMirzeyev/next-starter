@@ -8,20 +8,20 @@ const About = () => {
             aria-labelledby="about-title"
             className="bg-[linear-gradient(to_right,_#fffefe_5%,_#fff6f7_30%,_#fffefe_60%,_#fff6f7_90%)]"
         >
-            <div className="container py-[120px] flex flex-col gap-y-16 tablet:py-24 tablet:gap-y-12 mobile:py-16 mobile:gap-y-12">
-                <div className="flex tablet:flex-col tablet:gap-y-4 mobile:flex-col mobile:gap-y-4 justify-between items-center">
-                    <h2 className="text-gray-800 text-60px700 w-3/5 tablet:w-full tablet:text-center mobile:w-full mobile:text-center mobile:text-48px700">Niyə biz</h2>
-                    <p className="text-gray-600 text-16px500 w-full max-w-[480px] text-right tablet:text-center mobile:w-full mobile:text-center mobile:text-14px500">
-                    Müştərilərimizin bizi niyə seçdikləri və seçmək isdədikləri
+            <div className="container py-[120px] flex flex-col gap-y-16 laptop:py-24 laptop:gap-y-12 tablet:py-24 tablet:gap-y-12 mobile:py-16 mobile:gap-y-12">
+                <div className="flex laptop:flex-col laptop:gap-y-4 tablet:flex-col tablet:gap-y-4 mobile:flex-col mobile:gap-y-4 justify-between items-center">
+                    <h2 className="text-gray-800 text-60px700 w-3/5 laptop:w-full laptop:text-center tablet:w-full tablet:text-center mobile:w-full mobile:text-center mobile:text-40px700 smallMobile:text-36px700">Niyə biz</h2>
+                    <p className="text-gray-600 text-16px500 w-full max-w-[480px]  text-right laptop:text-center laptop:max-w-[750px] tablet:text-center mobile:w-full mobile:text-center mobile:text-14px500">
+                        Müştərilərimizin bizi niyə seçdikləri və seçmək isdədikləri
                         gördüyümüz yüksək keyfiyyərtli işin nəticəsidir
                     </p>
                 </div>
-                <div className="flex justify-between items-center tablet:flex-col-reverse tablet:gap-y-12 mobile:flex-col-reverse mobile:gap-y-6">
-                    <article className="flex flex-col gap-y-6 w-1/2 tablet:w-full tablet:px-8 mobile:w-full">
-                        <h3 className="text-gray-900 text-30px700 mobile:text-24px700">
+                <div className="flex justify-between items-center laptop:flex-col-reverse laptop:gap-y-12 tablet:flex-col-reverse tablet:gap-y-12 mobile:flex-col-reverse mobile:gap-y-6">
+                    <article className="flex flex-col gap-y-6 w-1/2 laptop:w-full laptop:px-8 tablet:w-full tablet:px-8 mobile:w-full">
+                        <h3 className="text-gray-900 pr-10 text-30px700 mobile:text-24px700 smallMobile:text-20px700">
                             But I must explain to you how all this mistaken idea of denouncing
                         </h3>
-                        <div className="text-gray-600 text16px400 flex flex-col gap-y-2 pr-14 tablet:pr-8 mobile:pr-0 mobile:text-15px400">
+                        <div className="text-gray-600 text16px400 flex flex-col gap-y-2 pr-14 tablet:pr-8 mobile:pr-0 mobile:px-4 mobile:text-15px400 smallMobile:text-14px400">
                             <p>
                                 It is a long established fact that a reader will be distracted
                                 by the readable content of a page when looking at its layout.
@@ -41,7 +41,7 @@ const About = () => {
                         quality={100}
                         src={AboutImage}
                         alt="Müştərilər niyə bizi seçir?"
-                        className="rounded-lg tablet:w-full"
+                        className="rounded-lg laptop:w-full tablet:w-full"
                     />
                 </div>
             </div>

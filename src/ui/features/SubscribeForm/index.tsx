@@ -24,11 +24,11 @@ const SubscribeForm = () => {
                     <Button
                         type="submit"
                         className="rounded-3xl shrink-0 flex items-center gap-1.5 text-16px600 h-12 -mr-2
-                        tablet:w-[133px] tablet:px-4 mobile:size-10 mobile:p-0"
+                       laptop:w-[133px] laptop:px-4 tablet:w-[133px] tablet:px-4 mobile:size-10 mobile:p-0"
                     >
                         <p className="mobile:hidden">Abonə ol</p>
                         <div>
-                            <ArrowRightSVG className="text-white tablet:size-5 mobile:size-5" />
+                            <ArrowRightSVG className="text-white laptop:size-5 tablet:size-5 mobile:size-5" />
                         </div>
                     </Button>
                 }

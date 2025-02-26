@@ -25,8 +25,11 @@ const config: Config = {
         header: "126px",
       },
       screens: {
-        mobile: { max: "376px" },
-        tablet: { min: "376px", max: "768px" }
+        desktopSm: { min: "1025px", max: "1220px" },
+        laptop: { min: "769px", max: "1024px" },
+        tablet: { min: "601px", max: "768px" },
+        mobile: { max: "600px" },
+        smallMobile: { max: "376px" },
       },
       keyframes: {
         overlayShow: {
@@ -50,11 +53,13 @@ const config: Config = {
       center: true,
       padding: {
         DEFAULT: "16px",
-        tablet: "48px"
+        tablet: "48px",
+        laptop: "48px",
       },
       screens: {
-        xl: "1128px",
-        tablet: "768px"
+        xl: "1024px",
+        tablet: "100%",
+        laptop: "100%",
       },
     },
   },
@@ -62,7 +67,13 @@ const config: Config = {
     scrollbarHide,
     plugin(({ addComponents, theme }) => {
       addComponents({
-        "@media (min-width: 376px) and (max-width: 768px)": {
+        "@media (min-width: 601px) and (max-width: 768px)": {
+          ".container": {
+            paddingLeft: theme("spacing.12"),
+            paddingRight: theme("spacing.12"),
+          },
+        },
+        "@media (min-width: 769px) and (max-width: 1024px)": {
           ".container": {
             paddingLeft: theme("spacing.12"),
             paddingRight: theme("spacing.12"),

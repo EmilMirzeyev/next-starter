@@ -29,7 +29,7 @@ const Advantages = () => {
   return (
     <section id="advantages">
       <div className="container flex flex-col gap-y-[104px]">
-        <h2 className="text-gray-800 text-60px700 text-center mobile:text-48px700">
+        <h2 className="text-gray-800 text-60px700 text-center mobile:text-40px700 smallMobile:text-36px700">
           Üstünlüklərimiz
         </h2>
         <div className="relative">
@@ -52,7 +52,7 @@ const Advantages = () => {
               ))}
             </div>
           </div>
-          <div className="bg-brand-25 rounded-[32px] px-12 py-16 flex justify-between items-center tablet:pb-12 tablet:pt-[72px] mobile:flex-col mobile:px-4 mobile:pt-[72px] mobile:pb-8">
+          <div className="bg-brand-25 rounded-[32px] px-12 py-16 flex justify-between items-center laptop:pb-12 tablet:pb-12 tablet:pt-[72px] mobile:flex-col mobile:px-4 mobile:pt-[72px] mobile:pb-8">
             {handleAdvantagesTab()}
           </div>
         </div>

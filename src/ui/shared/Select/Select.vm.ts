@@ -19,6 +19,7 @@ export const SelectVM = <T extends SelectDataType>({
   const methods: UseFormReturn<FieldValues, any, undefined> = useFormContext();
   const hasMethods = methods && methods.formState;
   const mainValue = hasMethods ? methods.getValues(name) : value;
+  const [isOpen, setIsOpen] = useState(false);
 
   const initialValue = (
     val: initialValueType | null | number | undefined
@@ -61,6 +62,7 @@ export const SelectVM = <T extends SelectDataType>({
     if (multiple) {
       (onChange as (value: T[]) => void)?.(val as T[]);
     } else {
+      setIsOpen(false);
       (onChange as (value: T | null) => void)?.(val as T);
     }
   };
@@ -110,5 +112,7 @@ export const SelectVM = <T extends SelectDataType>({
     resetHandler,
     hasMethods,
     getValueLabel,
+    isOpen,
+    setIsOpen
   };
 };

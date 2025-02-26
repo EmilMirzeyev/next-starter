@@ -63,12 +63,13 @@ const Partners = async () => {
         <div className="container flex flex-col justify-center items-center gap-y-4">
           <div
             aria-label="Partnerships Overview"
-            className="text-14px600 text-gray-900 flex items-center gap-x-2.5 border border-gray-300 bg-gray-100 rounded-[53px] py-2 px-4 h-10"
+            className="text-14px600 text-gray-900 flex items-center gap-x-2.5 border border-gray-300 bg-gray-100 rounded-[53px] py-2 px-4 h-10
+             smallMobile:text-12px600 smallMobile:gap-x-1.5"
           >
-            <StarSVG aria-hidden="true" />
-            <span>100+ şirkət CarBuy ilə əməkdaşlıq edir</span>
+            <StarSVG aria-hidden="true" className="smallMobile:size-5"/>
+            <span className="truncate">100+ şirkət CarBuy ilə əməkdaşlıq edir</span>
           </div>
-          <h2 className="text-60px700 text-gray-800 mobile:text-36px700">
+          <h2 className="text-60px700 text-gray-800 mobile:text-40px700 smallMobile:text-36px700">
             Partnyorlarımız
           </h2>
         </div>

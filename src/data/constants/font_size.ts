@@ -103,6 +103,14 @@ const fontSize = {
             fontWeight: "800",
         },
     ],
+    "40px700": [
+        "40px",
+        {
+            lineHeight: "52px",
+            letterSpacing: "-2%",
+            fontWeight: "700",
+        },
+    ],
     "36px400": [
         "36px",
         {

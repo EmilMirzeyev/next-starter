@@ -60,7 +60,10 @@ const Header = () => {
         <Link href="/" className="max-w-[153px]" aria-label="Homepage">
           <LogoV1SVG />
         </Link>
-        <nav aria-label="Main Navigation" className="mobile:hidden">
+        <nav
+          aria-label="Main Navigation"
+          className="laptop:hidden tablet:hidden mobile:hidden"
+        >
           <ul className="flex gap-x-6 text-14px700">
             {navItems.map(({ href, label }) => (
               <li key={href} className="group relative text-gray-800">
@@ -85,8 +88,12 @@ const Header = () => {
             </div>
           </Button>
         </NILink>
+        <div className="mobile:hidden">
+          <ChangeLanguage />
+        </div>
         <button
-          className="bg-gray-950 size-12 hidden justify-center items-center rounded-full mobile:flex"
+          className="bg-gray-950 size-12 hidden justify-center items-center rounded-full 
+          laptop:flex tablet:flex mobile:flex"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? (
@@ -95,16 +102,15 @@ const Header = () => {
             <BurgerMenuSVG className="text-white" />
           )}
         </button>
-        <div className="mobile:hidden">
-          <ChangeLanguage />
-        </div>
       </div>
 
       {/* Mobile Navbar */}
       <div
         className={cn(
-          "fixed hidden top-28 z-50 right-0 w-full h-screen bg-white text-black transform transition-transform duration-500 ease-in-out px-4 overflow-hidden mobile:block",
-          isMobileMenuOpen ? "translate-x-0 overflow-hidden" : "translate-x-full"
+          "fixed hidden top-28 z-50 right-0 w-full h-screen bg-white text-black transform transition-transform duration-500 ease-in-out px-4 overflow-hidden laptop:block tablet:block mobile:block",
+          isMobileMenuOpen
+            ? "translate-x-0 overflow-hidden"
+            : "translate-x-full"
         )}
       >
         <div
@@ -113,12 +119,14 @@ const Header = () => {
             isMobileMenuOpen ? "opacity-100 delay-200" : "opacity-0"
           )}
         >
-          <div className="flex flex-col gap-y-8">
-            <h1 className="text-brand-700 text-36px700 px-4">
+          <div className="flex flex-col gap-y-8 tablet:px-12">
+            <h1 className="text-brand-700 text-36px700 px-4 tablet:text-72px700">
               Sürətli və rahat interfeys
             </h1>
-            <ChangeLanguage variant={ChangeLanguageEnum.TAB} />
-            <ul className="space-y-6 px-8 py-2">
+            <div className="laptop:hidden tablet:hidden">
+              <ChangeLanguage variant={ChangeLanguageEnum.TAB} />
+            </div>
+            <ul className="space-y-6 px-8 py-2 tablet:px-4">
               {navItems.map(({ href, label }) => (
                 <li key={href} className="text-gray-800 text-16px700">
                   <Link href={href} onClick={() => setIsMobileMenuOpen(false)}>
@@ -127,12 +135,13 @@ const Header = () => {
                 </li>
               ))}
             </ul>
-            <div className="flex gap-x-4 mobile:justify-center mt-12">
-              <div className="relative">
+            <div className="flex gap-x-4 mt-12 tablet:justify-center px-4 laptop:px-8 mobile:justify-center mobile:px-8 smallMobile:flex-col gap-y-4">
+              <div className="relative w-full">
                 <HeroSVG className="absolute -left-8 -top-8 text-brand-500 mobile:-left-8 mobile:-top-7" />
                 <Button
                   aria-label="Log in"
-                  className="rounded-[28px] flex items-center gap-2.5 mobile:text-16px600 mobile:w-[122px] mobile:gap-1.5 mobile:px-[18px] mobile:h-12"
+                  className="rounded-[28px] h-12 flex items-center gap-2.5
+                  w-full mobile:text-16px600 mobile:gap-1.5 mobile:px-[18px] mobile:h-12"
                 >
                   Daxil ol
                   <div>
@@ -140,13 +149,13 @@ const Header = () => {
                   </div>
                 </Button>
               </div>
-              <Link href="#about">
+              <Link href="#about" className="w-full">
                 <Button
                   type="button"
                   onClick={() => setIsMobileMenuOpen(false)}
                   aria-label="Learn more about us"
                   variant={ButtonVariantsEnum.EMPTY}
-                  className="rounded-[28px] bg-gray-100 flex items-center gap-2.5 mobile:text-16px600 mobile:h-12 mobile:gap-1.5 mobile:px-[18px]"
+                  className="rounded-[28px] bg-gray-100 flex items-center h-12 gap-2.5 laptop:w-full tablet:w-full mobile:w-full mobile:text-16px600 mobile:h-12 mobile:gap-1.5 mobile:px-[18px]"
                 >
                   Haqqımızda
                   <div>
