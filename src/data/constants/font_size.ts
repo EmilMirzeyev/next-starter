@@ -1,4 +1,12 @@
 const fontSize = {
+    "140px700": [
+        "140px",
+        {
+            lineHeight: "140px",
+            letterSpacing: "-0.5%",
+            fontWeight: "700",
+        },
+    ],
     "72px400": [
         "72px",
         {

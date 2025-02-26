@@ -89,5 +89,6 @@ export { default as BurgerMenuSVG } from "./burger-menu.svg";
 export { default as TabletPhoneSVG } from "./tablet-phone.svg";
 export { default as MobileTabletSVG } from "./mobilTablet.svg";
 export { default as DesktopHeroSVG } from "./desktop-hero.svg";
+export { default as NotFoundSVG } from "./not-found.svg";
 
 
