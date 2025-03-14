@@ -5,7 +5,7 @@ import Link from "next/link";
 import { HomeSVG } from "@public/vectors";
 import { cn } from "@/core/utils/cn";
 
-const Breadcrumbs = ({ crumbs }: BreadcrumbsType) => {
+const Breadcrumbs = ({ homeLink, crumbs }: BreadcrumbsType) => {
   return (
     <BreadcrumbsMUI
       className="py-3"
@@ -16,7 +16,7 @@ const Breadcrumbs = ({ crumbs }: BreadcrumbsType) => {
     >
       <Link
         key="home"
-        href="/dashboard"
+        href={homeLink || "/"}
         className="group size-7 flex rounded-md hover:bg-brand-50 justify-center items-center transition-all ease-in-out"
       >
         <HomeSVG className="group-hover:text-brand-700" />

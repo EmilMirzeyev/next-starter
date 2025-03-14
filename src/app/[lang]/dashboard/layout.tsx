@@ -1,13 +1,12 @@
-import { LogoV1SVG, WalletSVG } from "@public/vectors"; 
 import Link from "next/link";
+import { LogoV1SVG, WalletSVG } from "@public/vectors";
 import DashboardBreadcumbs from "@/ui/components/DashboardBreadcrumbs";
 import HeaderProfile from "@/ui/containers/Header/Profile";
-import ChangeLanguage from "@/ui/components/ChangeLanguage"; 
+import ChangeLanguage from "@/ui/components/ChangeLanguage";
 import DashboardFooter from "@/ui/containers/Footer/options/dashboard_footer";
 import DashboardHeader from "@/ui/containers/Header/options/dashboard_header";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-
   return (
     <div>
       <div className="container flex justify-between item-center mt-6 mb-4">
@@ -24,7 +23,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         </div>
       </div>
       <DashboardHeader />
-      <DashboardBreadcumbs />
+      <DashboardBreadcumbs homeLink="/dashboard" />
       {children}
       <DashboardFooter />
     </div>

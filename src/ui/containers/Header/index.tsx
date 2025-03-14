@@ -88,7 +88,7 @@ const Header = () => {
             </div>
           </Button>
         </NILink>
-        <div className="mobile:hidden">
+        <div className="mobile:hidden relative z-50">
           <ChangeLanguage />
         </div>
         <button
@@ -107,7 +107,7 @@ const Header = () => {
       {/* Mobile Navbar */}
       <div
         className={cn(
-          "fixed hidden top-28 z-50 right-0 w-full h-screen bg-white text-black transform transition-transform duration-500 ease-in-out px-4 overflow-hidden laptop:block tablet:block mobile:block",
+          "fixed hidden top-28 z-20 right-0 w-full h-screen bg-white text-black transform transition-transform duration-500 ease-in-out px-4 overflow-hidden laptop:block tablet:block mobile:block",
           isMobileMenuOpen
             ? "translate-x-0 overflow-hidden"
             : "translate-x-full"

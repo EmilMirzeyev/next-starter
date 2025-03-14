@@ -57,7 +57,7 @@ const Hero = () => {
                                 <HeroSVG className="absolute -left-8 -top-8 text-brand-500 mobile:-top-7" />
                                 <Button
                                     aria-label="Log in"
-                                    className="rounded-[28px] flex items-center gap-2.5
+                                    className="rounded-[28px] flex items-center gap-2.5 whitespace-nowrap
                                    laptop:w-full tablet:w-full tablet:h-12 tablet:gap-x-1.5 tablet:text-16px600 mobile:text-16px600 mobile:w-full mobile:gap-x-1.5 mobile:px-[18px] mobile:h-12"
                                 >
                                     Daxil ol

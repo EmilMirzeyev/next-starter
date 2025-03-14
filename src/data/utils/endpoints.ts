@@ -27,4 +27,7 @@ export const endpoints = {
     getSimilarAnnouncement: (id: number) => `/announcement/${id}/similar`,
     getAllAnnouncement: (query: string) => `/announcement/list${query}`
   },
+  favorites: {
+    getFavorites: () => "/user/favorites"
+  }
 };

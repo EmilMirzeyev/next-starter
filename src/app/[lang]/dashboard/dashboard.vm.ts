@@ -8,7 +8,8 @@ export const DashboardVM = async () => {
         getCarFiltersAction(),
         getAllAnnouncement(),
     ]);
-
+    
+    console.log('carList', carList)
     const formatResult = <T>(
         result: PromiseSettledResult<{ isError: boolean; data?: T }>
     ): { data: T | null } => {

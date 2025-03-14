@@ -57,7 +57,7 @@ const ChangeLanguageFactory = () => {
             <div
                 ref={collapse}
                 onClick={() => setIsOpen((prev) => !prev)}
-                className="z-30"
+                className="z-50"
                 role="button"
             >
                 <div

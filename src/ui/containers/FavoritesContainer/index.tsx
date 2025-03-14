@@ -20,7 +20,7 @@ const FavoritesContainer = () => {
     <div className="flex flex-col gap-y-8">
       <TabBar tabParam="tabId" tabData={tabData} />
       <h2 className="text-gray-900 text-24px700">Bütün elanlar</h2>
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-3 gap-6">
         {Array.from({ length: 7 }, (_, i) => (
           <Link key={i} href={'/dashboard/1'}>
             <CarCard />

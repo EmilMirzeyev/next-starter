@@ -5,5 +5,6 @@ export type BreadCrumbType = {
 };
 
 export type BreadcrumbsType = {
+  homeLink?: string;
   crumbs: BreadCrumbType[];
 };

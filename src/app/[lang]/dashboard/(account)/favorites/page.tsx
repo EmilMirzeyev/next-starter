@@ -1,4 +1,4 @@
-import FavoritesContainer from "@/ui/containers/FavoritesContainer"
+import FavoritesContainer from "@/ui/containers/FavoritesContainer";
 
 const Favorites = () => {
     return (
@@ -8,7 +8,7 @@ const Favorites = () => {
             </div>
             <FavoritesContainer />
         </div>
-    )
-}
+    );
+};
 
-export default Favorites
+export default Favorites;

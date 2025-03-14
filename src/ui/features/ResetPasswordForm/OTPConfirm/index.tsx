@@ -46,7 +46,7 @@ const OTPConfirm = ({ setResetPasswordStep }) => {
                     <input
                         {...props}
                         className={cn(
-                            "rounded-lg !w-full text-36px700 border text-gray-600 !h-16",
+                            "rounded-lg !w-full text-36px700 border text-gray-600 !h-16 smallMobile:!h-12",
                             props.value ? "border-gray-600" : "border-gray-300",
                             isOtpComplete && "border-success-600 text-success-600"
                         )}

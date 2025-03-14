@@ -28,7 +28,7 @@ const Footer = () => {
   return (
     <footer
       aria-label="Site Footer"
-      className="mt-[120px] pb-10 tablet:mt-24 mobile:mt-16 mobile:pb-6"
+      className="mt-[120px] pb-10 desktopSm:mt-16 laptop:mt-16 tablet:mt-16 mobile:mt-16 mobile:pb-6"
     >
       <div className="container flex flex-col gap-y-16">
         <section
@@ -85,7 +85,7 @@ const Footer = () => {
             className="flex justify-between items-center relative"
           >
             <Link
-              href="#hero"
+              href="/"
               className="max-w-[30px] desktopSm:hidden laptop:hidden tablet:hidden mobile:hidden"
               aria-label="Back to Home"
             >
@@ -130,9 +130,9 @@ const Footer = () => {
             </h2>
             <p>&copy; 2025 All rights reserved</p>
             <div className="flex items-center">
-              <Link href="">Məxfilik siyasəti</Link>
+              <Link href="/privacy-policy">Məxfilik siyasəti</Link>
               <p className="px-4">/</p>
-              <Link href="">Qaydalar və şərtlər</Link>
+              <Link href="/terms-conditions">Qaydalar və şərtlər</Link>
             </div>
           </section>
         </div>

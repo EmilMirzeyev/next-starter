@@ -13,5 +13,8 @@ export const enum RevalidateTagsEnum {
     // Announcement
     GETANNOUNCEMENTBYID = 'getAnnouncementById',
     GETSIMILARANNOUNCEMENT = 'getSimilarAnnouncement',
-    GETALLANNOUNCEMENT = 'getAllAnnouncement'
+    GETALLANNOUNCEMENT = 'getAllAnnouncement',
+
+    // Favorites
+    GETFAVORITES = 'getFavorites'
 }

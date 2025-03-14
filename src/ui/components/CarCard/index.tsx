@@ -5,21 +5,34 @@ import { BarterSVG, HeartSVG, PercentageSVG } from "@public/vectors";
 import { CarCardVM } from "./car_card.vm";
 import { CarCardType } from "./car_card.type";
 
-const CarCard = ({ car }: CarCardType) => {
+const CarCard = ({ car = {
+    "id": 1,
+    "created_at": "2025-02-06 12:21:14",
+    "brand": "BMW",
+    "model": "5",
+    "credit": true,
+    "barter": false,
+    "price": "25000.00",
+    "currency": "",
+    "year": "2022",
+    "engine_size": "2.0",
+    "mileage": 15000,
+    "images": []
+}, }: CarCardType) => {
     const { liked, toggleFavorite } = CarCardVM();
 
     const formatDate = (dateString: string): string => {
         const date = new Date(dateString);
         const day = String(date.getDate()).padStart(2, '0');
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+        const month = String(date.getMonth() + 1).padStart(2, '0');
         const year = date.getFullYear();
         const hours = String(date.getHours()).padStart(2, '0');
         const minutes = String(date.getMinutes()).padStart(2, '0');
-
         return `${day}.${month}.${year} / ${hours}:${minutes}`;
     };
-console.log('car', car)
-    return ( 
+
+    console.log('car card', car)
+    return (
         <div className="w-fit group">
             <div className="rounded-t-2xl overflow-hidden relative">
                 <Image

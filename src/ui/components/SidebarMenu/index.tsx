@@ -11,8 +11,8 @@ import Link from "next/link";
 import { SidebarVM } from "./sidebar_menu.vm";
 
 // eslint-disable-next-line @next/next/no-async-client-component
-const SidebarMenu = async () => {
-    const { isActive } = await SidebarVM();
+const SidebarMenu = () => {
+    const { isActive } = SidebarVM();
 
     const menuItems = [
         {

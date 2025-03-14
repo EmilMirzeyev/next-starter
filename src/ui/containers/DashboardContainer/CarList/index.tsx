@@ -8,8 +8,8 @@ import { CarListType } from "./car_list.type";
 
 const CarList = ({ carList }: CarListType) => {
     const { sortByValue, handleSearchParams } = CarListVM();
-    console.log('carList', carList)
-    
+    console.log("carList", carList.data?.data);
+
     return (
         <div className="container">
             <div className="flex my-12 items-center justify-between">
@@ -61,11 +61,14 @@ const CarList = ({ carList }: CarListType) => {
             <div className="flex flex-col gap-y-6">
                 <AnnouncementTitle title="Təcili alıram elanları" count={24} />
                 <div className="grid grid-cols-4 gap-6">
-                    {carList?.data?.data.map((car) => (
-                        <Link key={car.id} href={"/dashboard/1"}>
-                            <CarCard car={car} />
-                        </Link>
-                    ))}
+                    {carList.data?.data.map((car) => {
+                        console.log("car", car);
+                        return (
+                            <Link key={car.id} href={"/dashboard/1"} prefetch={false}>
+                                <CarCard car={car} />
+                            </Link>
+                        );
+                    })}
                 </div>
             </div>
         </div>

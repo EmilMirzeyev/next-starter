@@ -1,8 +1,11 @@
+"use server";
 const TermsConditions = () => {
     return (
-        <div className="border border-gray-200 rounded-3xl p-8 flex flex-col gap-y-6">
+        <div className="border border-gray-200 rounded-3xl p-8 flex flex-col gap-y-6
+         desktopSm:border-none desktopSm:py-0 desktopSm:px-4 laptop:px-4 laptop:border-none laptop:py-0 
+         tablet:py-0 tablet:px-4 tablet:border-none mobile:border-none mobile:py-0 mobile:px-2">
             <p className="text-gray-500 text-16px500">
-                Hazırkı məxfilik siyasəti Rəqəmsal İnkişaf və Nəqliyyat Nazirliyi
+                Terms- Hazırkı məxfilik siyasəti Rəqəmsal İnkişaf və Nəqliyyat Nazirliyi
                 yanında Elektron Təhlükəsizlik Xidmətinin (bundan sonra – Elektron
                 Təhlükəsizlik Xidməti) rəsmi internet informasiya ehtiyatı
                 “www.cert.az” (bundan sonra – veb-sayt) vasitəsilə toplanılan fərdi

@@ -59,11 +59,11 @@ const SignInForm = () => {
                 Daxil ol
                 <ArrowRight2SVG className="mt-0.5" />
             </Button>
-            <div className="flex justify-center gap-x-2">
+            <div className="flex justify-center gap-x-2 smallMobile:flex-col smallMobile:items-center">
                 <h3 className="text-gray-800 text-14px500">Hesabınız yoxdur?</h3>
                 <Link
                     href="/signup"
-                    className="border-b border-brand-500 text-brand-500 leading-none mb-2 mt-0.5 text-14px500"
+                    className="border-b border-brand-500 text-brand-500 leading-none mb-2 mt-0.5 text-14px500 smallMobile:w-fit"
                 >
                     Qeydiyyatdan keçin
                 </Link>

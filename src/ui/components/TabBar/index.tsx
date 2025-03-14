@@ -21,7 +21,7 @@ const TabBar = ({ tabParam, tabData }: TabBarType) => {
                                 tabRefs.current[index] = el;
                             }}
                             className={cn(
-                                "relative pb-2 w-fit p-3 py-4 border-b-2 border-transparent",
+                                "relative w-fit p-3 py-4 border-b-2 border-transparent",
                                 currentTab === tab.id
                                     ? "text-gray-900 text-14px700"
                                     : "text-gray-500 text-14px500"
